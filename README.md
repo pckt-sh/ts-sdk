@@ -48,13 +48,13 @@ Version bumps are computed from the latest version on npm:
 
 | Change | Bump |
 | --- | --- |
-| Breaking spec change (detected by [oasdiff](https://github.com/oasdiff/oasdiff)) | major |
-| Any other spec change | minor |
-| Generated code changed but spec did not (generator upgrade) | patch |
+| Breaking spec change (detected by [oasdiff](https://github.com/oasdiff/oasdiff)) | minor |
+| Any other change (new endpoints, fields, generator upgrade) | patch |
 | No change | nothing published |
 
-To force a specific version, set it in `package.json` and push — if it's higher than the
-latest on npm it is published as-is on the next run.
+Major versions are never bumped automatically. To cut one (or force any version), set it
+in `package.json` and push — if it's higher than the latest on npm it is published as-is
+on the next run.
 
 A scheduled run every 6 hours acts as a safety net if a dispatch is ever missed, and the
 workflow can be run manually from the Actions tab (optionally against another upstream ref).

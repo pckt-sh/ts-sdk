@@ -8,9 +8,11 @@
 //   - nothing published yet on npm         -> publish package.json version as-is
 //   - package.json bumped by hand above npm -> publish package.json version as-is
 //   - no changes in openapi/ or src/client/ -> skip
-//   - breaking spec change (oasdiff)        -> major
-//   - any other spec change                 -> minor
-//   - generated code changed, spec did not  -> patch (e.g. @hey-api/openapi-ts upgrade)
+//   - breaking spec change (oasdiff)        -> minor
+//   - any other change                      -> patch
+//
+// Majors are never automatic: the API evolves too often for strict semver to stay
+// meaningful. Bump package.json by hand to cut one.
 //
 // Writes the chosen version into package.json / package-lock.json and emits
 // `publish`, `version` and `level` to $GITHUB_OUTPUT (or stdout locally).
@@ -73,15 +75,13 @@ if (latest === null) {
   console.error(`No changes in generated SDK; ${pkg.name}@${latest} is up to date.`);
   output('publish', 'false');
   process.exit(0);
-} else if (!specChanged) {
+} else if (!specChanged || !hasBase) {
   level = 'patch';
-} else if (!hasBase) {
-  level = 'minor';
 } else {
   const res = oasdiffRun('breaking', '--fail-on', 'ERR');
   console.error(res.stdout + res.stderr);
-  if (res.status === 0) level = 'minor';
-  else if (res.status === 1) level = 'major';
+  if (res.status === 0) level = 'patch';
+  else if (res.status === 1) level = 'minor';
   else throw new Error(`oasdiff exited with ${res.status}`);
 }
 version ??= inc(latest, level);
