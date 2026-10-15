@@ -1,0 +1,103 @@
+name: Release SDK
+
+on:
+  # Fired by the upstream API repository whenever its OpenAPI spec changes on main.
+  repository_dispatch:
+    types: [openapi-updated]
+  # Safety net in case a dispatch is missed. No-op when nothing changed.
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Upstream ref to generate from'
+        default: main
+
+permissions:
+  contents: write # commit regenerated sources, push tags, create releases
+  id-token: write # npm trusted publishing + provenance
+
+concurrency:
+  group: release-sdk
+  cancel-in-progress: false
+
+env:
+  SOURCE_SPEC: openapi/openapi.json
+  OASDIFF_VERSION: 1.33.0
+  OASDIFF_SHA256: 43a4e328e2d13ba1552d760aa68d2485c75c5621f309f6ff64ae895188345247
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Always read the spec straight from GitHub (not api.pckt.sh, which lags deployments).
+      # Defaults to the tip of main so a queued run never publishes an older spec.
+      # The upstream repo is private: its name lives in a secret so it is masked in public logs.
+      - name: Checkout upstream spec
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ secrets.SPEC_REPO }}
+          ref: ${{ inputs.ref || 'main' }}
+          token: ${{ secrets.SPEC_REPO_TOKEN }}
+          path: .upstream
+          sparse-checkout: openapi
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - name: Install oasdiff
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/oasdiff.tgz" \
+            "https://github.com/oasdiff/oasdiff/releases/download/v${OASDIFF_VERSION}/oasdiff_${OASDIFF_VERSION}_linux_amd64.tar.gz"
+          echo "${OASDIFF_SHA256}  $RUNNER_TEMP/oasdiff.tgz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/oasdiff.tgz" -C "$RUNNER_TEMP" oasdiff
+          echo "OASDIFF_BIN=$RUNNER_TEMP/oasdiff" >> "$GITHUB_ENV"
+
+      - run: npm ci
+
+      - name: Sync spec and regenerate SDK
+        run: |
+          git show "HEAD:openapi/openapi.json" > "$RUNNER_TEMP/base.json" 2>/dev/null || rm -f "$RUNNER_TEMP/base.json"
+          cp ".upstream/${SOURCE_SPEC}" openapi/openapi.json
+          rm -rf .upstream
+          npm run generate
+
+      - name: Plan release
+        id: plan
+        run: node scripts/plan-release.mjs "$RUNNER_TEMP/base.json" "$RUNNER_TEMP/notes.md"
+
+      - name: Typecheck and build
+        if: steps.plan.outputs.publish == 'true'
+        run: |
+          npm run typecheck
+          npm run build
+
+      - name: Publish to npm
+        if: steps.plan.outputs.publish == 'true'
+        # npm trusted publishing (OIDC via id-token: write), no token needed.
+        # Provenance is attached automatically.
+        run: npm publish --access public
+
+      - name: Commit, tag and create GitHub release
+        if: steps.plan.outputs.publish == 'true'
+        env:
+          VERSION: ${{ steps.plan.outputs.version }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add openapi src/client package.json package-lock.json
+          git commit -m "chore(release): v${VERSION}"
+          git tag "v${VERSION}"
+          for attempt in 1 2 3; do
+            git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+          done
+          git push origin "v${VERSION}"
+          gh release create "v${VERSION}" --title "v${VERSION}" --notes-file "$RUNNER_TEMP/notes.md"
