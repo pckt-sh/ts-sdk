@@ -4,6 +4,341 @@ export type ClientOptions = {
     baseUrl: 'https://api.pckt.sh' | 'https://grpc.pckt.sh' | (string & {});
 };
 
+export type AliasServiceGetOffersResponse = {
+    product_offer_counts?: Array<{
+        price_cents?: string;
+        count?: string;
+    }>;
+};
+
+export type AliasServiceGetProductPricesResponse = {
+    availability?: Array<{
+        variant?: {
+            id?: string;
+            size?: number;
+            product_condition?: string;
+            packaging_condition?: string;
+        };
+        lowest_price_cents?: string;
+        last_sold_price_cents?: string;
+        last_sold_at?: string;
+        highest_offer_cents?: string;
+    }>;
+};
+
+export type AliasServiceGetProductResponse = {
+    product?: {
+        main_picture_url?: string;
+        season?: string;
+        standard_size_options?: Array<{
+            size_us?: number;
+            presentation?: string;
+            size?: number;
+        }>;
+        grid_picture_url?: string;
+        sku?: string;
+        type?: string;
+        has_picture?: boolean;
+        release_date?: string;
+        name?: string;
+        nickname?: string;
+        id?: string;
+        gender?: string;
+        colorway?: string;
+        brand?: string;
+        size_unit?: string;
+        presentation_sku?: {
+            name?: string;
+            value?: string;
+        };
+        eligible_fulfillment_methods?: Array<string>;
+        resellable?: boolean;
+        minimum_listing_price_cents?: string;
+        size_options?: Array<{
+            name?: string;
+            value?: number;
+        }>;
+        is_offerable?: boolean;
+        is_international?: boolean;
+        product_category?: string;
+        retail_price_cents?: string;
+        special_type?: string;
+        is_consignable?: boolean;
+        story?: string;
+    };
+};
+
+export type AliasServiceGetRecentOrdersResponse = {
+    recent_sales?: Array<{
+        purchased_at?: string;
+        price_cents?: string;
+        size?: number;
+        consigned?: boolean;
+    }>;
+};
+
+export type AliasServiceSearchResponse = {
+    params?: string;
+    exhaustiveNbHits?: boolean;
+    renderingContent?: {
+        [key: string]: unknown;
+    };
+    processingTimingsMS?: {
+        total?: number;
+        _request?: {
+            roundTrip?: number;
+        };
+        afterFetch?: {
+            format?: {
+                total?: number;
+            };
+        };
+        fetch?: {
+            scanning?: number;
+            total?: number;
+        };
+    };
+    serverTimeMS?: number;
+    nbHits?: number;
+    page?: number;
+    exhaustiveTypo?: boolean;
+    query?: string;
+    processingTimeMS?: number;
+    nbPages?: number;
+    hitsPerPage?: number;
+    exhaustive?: {
+        nbHits?: boolean;
+        typo?: boolean;
+    };
+    hits?: Array<{
+        size?: number;
+        instant_ship_lowest_price_cents_mxn?: number | null;
+        id?: number;
+        has_picture?: boolean;
+        retail_price_cents_php?: number;
+        instant_ship_lowest_price_cents_aud?: number | null;
+        size_eu_youth?: number | null;
+        instant_ship_lowest_price_cents_myr?: number | null;
+        season?: string;
+        size_fr_men?: number;
+        instant_ship_lowest_price_cents_eur?: number | null;
+        lowest_price_cents_krw?: number;
+        size_eu_women?: number;
+        product_template_id?: number;
+        brand_name?: string;
+        category?: Array<string>;
+        size_fr_youth?: number | null;
+        grid_glow_picture_url?: string;
+        size_brand?: string;
+        lowest_price_cents_aud?: number;
+        product_taxonomy?: {
+            [key: string]: unknown;
+        };
+        retail_price_cents_cad?: number;
+        instant_ship_lowest_price_cents_sgd?: number | null;
+        restricted_to_country_codes?: Array<unknown>;
+        size_range?: Array<number>;
+        size_us_women?: number;
+        color?: string;
+        number_of_related_listings?: string;
+        grid_picture_url?: string;
+        size_jp_women?: number;
+        instant_ship_lowest_price_cents_hkd?: number | null;
+        size_uk_men?: number;
+        lowest_price_cents_cny?: number;
+        collection_slugs?: Array<string>;
+        has_stock?: boolean;
+        size_us_men?: number;
+        lowest_price_cents?: number;
+        size_it_youth?: null;
+        resellable?: boolean;
+        retail_price_cents_eur?: number;
+        presentation_size?: string;
+        shoe_condition?: string;
+        release_year?: number | null;
+        retail_price_cents_usd?: number;
+        slug?: string;
+        has_under_retail_availability?: boolean;
+        upper_material?: string | null;
+        status?: string;
+        instant_ship_lowest_price_cents_cad?: number | null;
+        minimum_price_cents?: number;
+        retail_price_cents_myr?: number;
+        size_it_men?: null;
+        size_jp_youth?: number | null;
+        retail_price_cents?: number;
+        instant_ship_lowest_price_cents_php?: number | null;
+        nickname?: string;
+        story_html?: string | null;
+        retail_price_cents_gbp?: number;
+        instant_ship_lowest_price_cents_usd?: number | null;
+        size_us_infant?: null;
+        retail_price_cents_mxn?: number;
+        sku?: string;
+        size_uk_infant?: null;
+        lowest_price_cents_hkd?: number;
+        breadcrumb_path_url?: null;
+        lowest_price_cents_twd?: number;
+        size_jp_men?: number;
+        main_display_picture_url?: string;
+        special_type?: string;
+        lowest_price_cents_jpy?: number;
+        search_sku?: string;
+        size_fr_infant?: null;
+        lowest_price_cents_cad?: number;
+        special_display_price_cents?: number;
+        keywords?: Array<string>;
+        size_eu_men?: number;
+        size_it_women?: null;
+        instant_ship_lowest_price_cents_twd?: number | null;
+        objectID?: string;
+        is_wantable?: boolean;
+        original_picture_url?: string;
+        release_date_name?: string | null;
+        retail_price_cents_krw?: number;
+        instant_ship_lowest_price_cents_jpy?: number | null;
+        instant_ship_lowest_price_cents?: number | null;
+        is_fashion_product?: boolean;
+        _highlightResult?: {
+            details?: {
+                matchedWords?: Array<unknown>;
+                value?: string;
+                matchLevel?: string;
+            };
+            product_type?: {
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+                value?: string;
+            };
+            product_template_id?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            search_sku?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            silhouette?: {
+                matchLevel?: string;
+                fullyHighlighted?: boolean;
+                matchedWords?: Array<string>;
+                value?: string;
+            };
+            sku?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<string>;
+                fullyHighlighted?: boolean;
+            };
+            brand_name?: {
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+                value?: string;
+            };
+            color?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            gender?: Array<{
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            }>;
+            name?: {
+                fullyHighlighted?: boolean;
+                matchedWords?: Array<string>;
+                value?: string;
+                matchLevel?: string;
+            };
+            season_year?: {
+                matchedWords?: Array<unknown>;
+                value?: string;
+                matchLevel?: string;
+            };
+            release_date_name?: {
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+                value?: string;
+            };
+            keywords?: Array<{
+                value?: string;
+                matchLevel?: string;
+                fullyHighlighted?: boolean;
+                matchedWords?: Array<string>;
+            }>;
+            designer?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            midsole?: {
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+                value?: string;
+            };
+            activity?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+        };
+        retail_price_cents_aud?: number;
+        instant_ship_lowest_price_cents_gbp?: number | null;
+        size_it_infant?: null;
+        single_gender?: string;
+        box_condition?: string;
+        lowest_price_cents_sgd?: number;
+        main_glow_picture_url?: string;
+        size_uk_women?: number;
+        instant_ship_lowest_price_cents_krw?: number | null;
+        lowest_price_cents_php?: number;
+        instant_ship_lowest_price_cents_cny?: number | null;
+        size_unit?: string;
+        designer?: string | null;
+        retail_price_cents_twd?: number;
+        release_date?: string | null;
+        retail_price_cents_jpy?: number;
+        season_year?: string;
+        main_picture_url?: string;
+        lowest_price_cents_gbp?: number;
+        maximum_price_cents?: number;
+        lowest_price_cents_mxn?: number;
+        is_under_retail?: boolean;
+        size_us_youth?: number | null;
+        is_raffle_product?: boolean;
+        size_fr_women?: number;
+        direct_shipping?: boolean;
+        midsole?: string | null;
+        size_uk_youth?: number | null;
+        retail_price_cents_hkd?: number;
+        product_category?: string;
+        release_month?: number | null;
+        gender?: Array<string>;
+        lowest_price_cents_myr?: number;
+        maximum_offer_cents?: number;
+        product_type?: string;
+        silhouette?: string;
+        size_jp_infant?: null;
+        size_eu_infant?: null;
+        allowed_sizes?: Array<{
+            presentation?: string;
+            value?: number;
+            size_us?: number;
+        }>;
+        grid_display_picture_url?: string;
+        retail_price_cents_cny?: number;
+        activity?: string | null;
+        lowest_price_cents_eur?: number;
+        details?: string;
+        lowest_price_cents_usd?: number;
+        name?: string;
+        retail_price_cents_sgd?: number;
+    }>;
+};
+
 export type Chrono24ServiceGetProductResponse = {
     payload?: {
         showBuyerProtection?: boolean;
@@ -1594,6 +1929,323 @@ export type NikeServiceSearchResponse = {
     }>;
 };
 
+export type NovelshipServiceGetOffersResponse = {
+    results?: Array<{
+        price?: number;
+        express_deliver_estimate?: {
+            shippingTimeSlow?: number;
+            range?: string;
+            shippingTimeFast?: number;
+        };
+        id?: number;
+        express_courier_name?: string;
+        is_instant?: boolean;
+        buy_route_nature?: string;
+        size?: string;
+        buy_country?: null;
+        is_pre_order?: boolean;
+        local_currency_id?: number;
+        currency?: {
+            id?: number;
+            code?: string;
+            rate?: number;
+        };
+        local_price?: number;
+        product_id?: number;
+        price_without_markup?: number;
+        type?: string;
+        delivery_express_fee?: number;
+        is_gst_inclusive?: boolean;
+        standard_deliver_estimate?: {
+            range?: string;
+            shippingTimeFast?: number;
+            shippingTimeSlow?: number;
+        };
+        country_id?: number;
+        is_budget_ship?: boolean;
+        add_ons_disabled?: boolean;
+    }>;
+    total?: number;
+};
+
+export type NovelshipServiceGetProductResponse = {
+    created_at?: string;
+    recent_lowest_list_time?: string;
+    drop_date?: string;
+    celebrity?: {
+        [key: string]: unknown;
+    };
+    last_sale_price?: number;
+    sales_count_180?: number;
+    actual_weight?: number;
+    category_level_2?: string;
+    nickname_english?: string;
+    drop_dates_local?: {
+        [key: string]: unknown;
+    };
+    drop_year?: number;
+    country_lowest_list_prices?: {
+        1?: number;
+        2?: number;
+        3?: number;
+        4?: number;
+        5?: number;
+        6?: number;
+        7?: number;
+        9?: number;
+        10?: number;
+        11?: number;
+        13?: number;
+        14?: number;
+        15?: number;
+        16?: number;
+        18?: number;
+        19?: number;
+        20?: number;
+        21?: number;
+        22?: number;
+        23?: number;
+        27?: number;
+        28?: number;
+        29?: number;
+        30?: number;
+    };
+    category_level_1?: string;
+    airtable_ref?: null;
+    description?: string;
+    size_chart_url?: null;
+    sku?: string;
+    wishlist_active_count?: number;
+    upper_material?: string;
+    colorway?: string;
+    brand_2?: null;
+    badges?: Array<unknown>;
+    is_sneaker?: boolean;
+    season?: null;
+    is_instant_available?: boolean;
+    highest_offer_price?: number;
+    is_buy_now_only?: boolean;
+    category_tags?: Array<string>;
+    main_brand?: string;
+    delivers_from?: Array<string>;
+    hs_code_logistics?: string;
+    size_specific?: string;
+    name?: string;
+    last_day_view_count?: number;
+    popularity_local?: {
+        US?: number;
+        PH?: number;
+        JP?: number;
+        MY?: number;
+        CA?: number;
+        TW?: number;
+        SG?: number;
+        HK?: number;
+        KR?: number;
+        AU?: number;
+        GB?: number;
+        TH?: number;
+        VN?: number;
+        ID?: number;
+        NZ?: number;
+    };
+    category?: string;
+    image?: string;
+    collections?: Array<string>;
+    gtin_generated?: {
+        [key: string]: unknown;
+    };
+    nickname_zh?: null;
+    gender?: string;
+    fb_feed?: boolean;
+    is_collectible?: boolean;
+    silhouette?: string;
+    cost_retail?: number;
+    name_slug?: string;
+    wishlist_change_percentage?: number;
+    category_level_4?: string;
+    last_sale_price_2?: number;
+    sizes?: Array<string>;
+    designer?: null;
+    brand_3?: null;
+    is_apparel?: boolean;
+    sub_brand?: null;
+    popularity?: number;
+    gallery?: Array<string>;
+    category_level_3?: string;
+    airtable_table_name?: string;
+    cost?: number;
+    short_name?: string;
+    list_count?: number;
+    lowest_listing_price?: number;
+    gtin?: {
+        [key: string]: unknown;
+    };
+    midsole?: string;
+    age_rating?: string;
+    main_color?: string;
+    id?: number;
+    shorter_name?: string;
+    offer_count?: number;
+    dimensions?: Array<number>;
+    updated_at?: string;
+    hs_code?: null;
+    backup_gallery?: Array<string>;
+    active?: boolean;
+    class?: string;
+    gmc_feed?: boolean;
+    is_one_size?: boolean;
+    vol_weight?: number;
+};
+
+export type NovelshipServiceSearchResponse = {
+    facet_counts?: Array<unknown>;
+    found?: number;
+    hits?: Array<{
+        document?: {
+            negative_popularity?: number;
+            us_sizes?: Array<string>;
+            silhouette?: string;
+            translated_jp?: Array<string>;
+            '22_price'?: number;
+            '18_price'?: number;
+            id?: string;
+            sizes?: Array<string>;
+            short_name?: string;
+            '16_price'?: number;
+            category_level_1?: string;
+            popularity_CA?: number;
+            product_id?: number;
+            category_level_2?: string;
+            '23_price'?: number;
+            highest_list_price?: number;
+            highest_offer_price?: number;
+            name_slug?: string;
+            category_tags?: Array<string>;
+            has_price?: boolean;
+            cat_lvl_1?: string;
+            '1_price'?: number;
+            '30_price'?: number;
+            '28_price'?: number;
+            lowest_listing_price?: number;
+            class?: string;
+            translated_id?: Array<unknown>;
+            popularity_JP?: number;
+            translated_cn?: Array<string>;
+            image?: string;
+            '7_price'?: number;
+            name?: string;
+            popularity_SG?: number;
+            '21_price'?: number;
+            '20_price'?: number;
+            skus_cleaned?: Array<string>;
+            '9_price'?: number;
+            '10_price'?: number;
+            '13_price'?: number;
+            main_color?: string;
+            delivers_from?: Array<string>;
+            collections?: Array<string>;
+            '6_price'?: number;
+            jp_sizes?: Array<string>;
+            category_level_4?: string;
+            translated_tw?: Array<string>;
+            cat_lvl_3?: string;
+            '29_price'?: number;
+            '4_price'?: number;
+            cat_lvl_2?: string;
+            '27_price'?: number;
+            gender?: string;
+            popularity_AU?: number;
+            popularity_TW?: number;
+            category_level_3?: string;
+            popularity_HK?: number;
+            popularity_MY?: number;
+            sku?: string;
+            drop_year?: number;
+            eu_sizes?: Array<string>;
+            main_brand?: string;
+            popularity_US?: number;
+            '2_price'?: number;
+            category?: string;
+            popularity_GB?: number;
+            popularity_NZ?: number;
+            '5_price'?: number;
+            celebrity?: {
+                CN?: string;
+                EN?: string;
+            };
+            is_instant_available?: boolean;
+            '3_price'?: number;
+            uk_sizes?: Array<string>;
+            last_sale_price?: number;
+            drop_date?: string;
+            '14_price'?: number;
+            number_of_sizes_with_price?: number;
+            popularity?: number;
+            '19_price'?: number;
+            cost_retail?: number;
+            cat_lvl_4?: string;
+            drop_date_timestamp?: number;
+            '15_price'?: number;
+            nickname_english?: string;
+            '11_price'?: number;
+            season?: string;
+            drop_date_timestamp_JP?: number;
+            drop_date_timestamp_SG?: number;
+            '24_price'?: number;
+            drop_date_timestamp_TW?: number;
+            drop_date_timestamp_ID?: number;
+            drop_date_timestamp_CN?: number;
+            drop_date_timestamp_MY?: number;
+        };
+        highlight?: {
+            category?: {
+                matched_tokens?: Array<unknown>;
+                snippet?: string;
+            };
+            category_level_2?: {
+                snippet?: string;
+                matched_tokens?: Array<string>;
+            };
+            category_level_3?: {
+                matched_tokens?: Array<string>;
+                snippet?: string;
+            };
+            name?: {
+                matched_tokens?: Array<string>;
+                snippet?: string;
+            };
+            short_name?: {
+                matched_tokens?: Array<string>;
+                snippet?: string;
+            };
+            silhouette?: {
+                snippet?: string;
+                matched_tokens?: Array<string>;
+            };
+            nickname_english?: {
+                matched_tokens?: Array<string>;
+                snippet?: string;
+            };
+        };
+        highlights?: Array<{
+            field?: string;
+            matched_tokens?: Array<string>;
+            snippet?: string;
+        }>;
+    }>;
+    out_of?: number;
+    page?: number;
+    request_params?: {
+        per_page?: number;
+        q?: string;
+        collection_name?: string;
+        first_q?: string;
+    };
+    search_cutoff?: boolean;
+    search_time_ms?: number;
+};
+
 export type PoizonServiceGetProductResponse = {
     msg?: string;
     serviceTimeStamp?: number;
@@ -3074,6 +3726,397 @@ export type StockXServiceSearchResponse = {
     };
 };
 
+export type VintedServiceGetProductResponse = {
+    item?: {
+        disposal_conditions?: number;
+        is_draft?: boolean;
+        promoted?: boolean;
+        service_fee?: {
+            currency_code?: string;
+            amount?: string;
+        };
+        can_bundle?: boolean;
+        price?: {
+            amount?: string;
+            currency_code?: string;
+        };
+        can_edit?: boolean;
+        description?: string;
+        is_reserved?: boolean;
+        can_delete?: boolean;
+        title?: string;
+        item_closing_action?: null;
+        status_id?: number;
+        id?: number;
+        is_hidden?: boolean;
+        offline_verification?: boolean;
+        conversion?: {
+            fx_markup_rate?: string;
+            seller_price?: string;
+            seller_currency?: string;
+            buyer_currency?: string;
+            fx_rounded_rate?: string;
+            fx_base_amount?: string;
+        };
+        status?: string;
+        is_cross_currency_payment?: boolean;
+        favourite_count?: number;
+        item_alert?: null;
+        is_favourite?: boolean;
+        can_buy?: boolean;
+        catalog_id?: number;
+        brand_dto?: {
+            is_favourite?: boolean;
+            id?: number;
+            title?: string;
+            slug?: string;
+            path?: string;
+        };
+        offer_price?: null;
+        color1?: string;
+        photos?: Array<{
+            is_hidden?: boolean;
+            extra?: {
+                [key: string]: unknown;
+            };
+            image_no?: number;
+            dominant_color_opaque?: string;
+            is_main?: boolean;
+            thumbnails?: Array<{
+                type?: string;
+                url?: string;
+                width?: number;
+                height?: number;
+                original_size?: boolean | null;
+            }>;
+            is_suspicious?: boolean;
+            height?: number;
+            id?: number;
+            high_resolution?: {
+                orientation?: null;
+                id?: string;
+                timestamp?: number;
+            };
+            width?: number;
+            dominant_color?: string;
+            url?: string;
+            full_size_url?: string;
+        }>;
+        path?: string;
+        offline_verification_fee?: null;
+        total_item_price?: {
+            amount?: string;
+            currency_code?: string;
+        };
+        is_closed?: boolean;
+        outfit_styles?: null;
+        transaction_permitted?: boolean;
+        localization?: string;
+        reservation?: null;
+        url?: string;
+        user?: {
+            login?: string;
+            feedback_reputation?: number;
+            business_account?: null;
+            id?: number;
+            feedback_count?: number;
+            business?: boolean;
+            can_view_profile?: boolean;
+            country_id?: number;
+            expose_location?: boolean;
+            last_loged_on_ts?: string;
+            is_favourite?: boolean;
+            is_hated?: boolean;
+            is_on_holiday?: boolean;
+            moderator?: boolean;
+            last_logged_on_ts?: string;
+            item_count?: number;
+            photo?: {
+                is_hidden?: boolean;
+                orientation?: null;
+                id?: number;
+                height?: number;
+                thumbnails?: Array<{
+                    height?: number;
+                    original_size?: null;
+                    type?: string;
+                    url?: string;
+                    width?: number;
+                }>;
+                width?: number;
+                full_size_url?: string;
+                is_suspicious?: boolean;
+                extra?: {
+                    [key: string]: unknown;
+                };
+                temp_uuid?: null;
+                url?: string;
+                dominant_color?: string;
+                high_resolution?: {
+                    timestamp?: number;
+                    orientation?: null;
+                    id?: string;
+                };
+                dominant_color_opaque?: string;
+            };
+            city?: string;
+            hates_you?: boolean;
+            bundle_discount?: null;
+            followers_count?: number;
+            following_count?: number;
+            can_bundle?: boolean;
+            country_title_local?: string;
+            locale?: string;
+        };
+        currency?: string;
+        is_processing?: boolean;
+        can_reserve?: boolean;
+        instant_buy?: boolean;
+        can_push_up?: boolean;
+        stats_visible?: boolean;
+    };
+    plugins?: Array<{
+        data?: {
+            url?: string;
+            title?: string;
+            item_id?: number;
+            seller_id?: number;
+            photos?: Array<{
+                image_no?: number;
+                dominant_color?: string;
+                url?: string;
+                is_suspicious?: boolean;
+                id?: number;
+                high_resolution?: {
+                    id?: string;
+                    timestamp?: number;
+                    orientation?: null;
+                };
+                full_size_url?: string;
+                is_hidden?: boolean;
+                extra?: {
+                    [key: string]: unknown;
+                };
+                width?: number;
+                height?: number;
+                dominant_color_opaque?: string;
+                is_main?: boolean;
+                thumbnails?: Array<{
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                    original_size?: boolean | null;
+                    type?: string;
+                }>;
+            }>;
+            price?: {
+                amount?: string;
+                currency_code?: string;
+            };
+            offer_price?: null;
+            closet_countdown_end_date?: null;
+            business?: boolean;
+            accessibility_label?: string;
+            outfit_styles?: null;
+            favourite_button?: {
+                favourite_count?: number;
+                is_favourite?: boolean;
+            };
+            favourite_count?: number;
+            is_favourite?: boolean;
+            transaction_permitted?: boolean;
+            is_closed?: boolean;
+            item_alert?: null;
+            is_draft?: boolean;
+            is_hidden?: boolean;
+            item_closing_action?: null;
+            stats_visible?: boolean;
+            promoted?: boolean;
+            is_reserved?: boolean;
+            is_processing?: boolean;
+            lines?: Array<{
+                elements?: Array<{
+                    type?: string;
+                    value?: string;
+                    style?: string;
+                    uri?: string;
+                    url?: string;
+                    id?: number;
+                    code?: string;
+                }>;
+                max_lines?: number;
+            }>;
+            localization?: string;
+            is_localized?: boolean;
+            max_lines?: number;
+            is_expanded?: boolean;
+            section_title?: string;
+            description?: string;
+            attributes?: Array<{
+                code?: string;
+                data?: {
+                    uri?: string;
+                    title?: string;
+                    value?: string;
+                    id?: number;
+                    url?: string;
+                };
+                type?: string;
+            }>;
+            primary_attributes_count?: number;
+            name?: string;
+            feedback_count?: number;
+            feedback_reputation?: number;
+            photo?: {
+                id?: number;
+                height?: number;
+                full_size_url?: string;
+                extra?: {
+                    [key: string]: unknown;
+                };
+                dominant_color?: string;
+                dominant_color_opaque?: string;
+                thumbnails?: Array<{
+                    original_size?: null;
+                    type?: string;
+                    url?: string;
+                    width?: number;
+                    height?: number;
+                }>;
+                is_hidden?: boolean;
+                orientation?: null;
+                width?: number;
+                high_resolution?: {
+                    id?: string;
+                    timestamp?: number;
+                    orientation?: null;
+                };
+                temp_uuid?: null;
+                url?: string;
+                is_suspicious?: boolean;
+            };
+            badges?: Array<{
+                type?: string;
+            }>;
+            username?: string;
+            tabs?: Array<{
+                source?: string;
+                title?: string;
+            }>;
+        };
+        exposure?: null;
+        exposures?: Array<unknown>;
+        name?: string;
+        type?: string;
+        section?: string;
+    }>;
+    code?: number;
+};
+
+export type VintedServiceSearchResponse = {
+    search_tracking_params?: {
+        global_search_session_id?: string;
+        search_correlation_id?: string;
+        search_session_id?: string;
+    };
+    items?: Array<{
+        id?: number;
+        item_box?: {
+            second_line?: string;
+            accessibility_label?: string;
+            exposures?: Array<unknown>;
+            ff_exposures?: Array<unknown>;
+            first_line?: string;
+            item_id?: number;
+        };
+        url?: string;
+        is_favourite?: boolean;
+        search_tracking_params?: {
+            score?: number;
+        };
+        total_item_price?: {
+            amount?: string;
+            currency_code?: string;
+        };
+        photos?: Array<{
+            full_size_url?: string;
+            high_resolution?: {
+                id?: string;
+                orientation?: null;
+            };
+            is_main?: boolean;
+            thumbnails?: Array<{
+                original_size?: boolean | null;
+                type?: string;
+                url?: string;
+                width?: number;
+                height?: number;
+            }>;
+            width?: number;
+            dominant_color_opaque?: string;
+            height?: number;
+            image_no?: number;
+            url?: string;
+            extra?: {
+                [key: string]: unknown;
+            };
+            id?: number;
+            dominant_color?: string;
+        }>;
+        content_source?: string;
+        view_count?: number;
+        price?: {
+            amount?: string;
+            currency_code?: string;
+        };
+        title?: string;
+        user?: {
+            business?: boolean;
+            id?: number;
+            login?: string;
+        };
+        favourite_count?: number;
+        show_1st_time_seller_discount?: boolean;
+        photo?: {
+            dominant_color?: string;
+            dominant_color_opaque?: string;
+            high_resolution?: {
+                id?: string;
+                orientation?: null;
+            };
+            url?: string;
+            extra?: {
+                [key: string]: unknown;
+            };
+            height?: number;
+            thumbnails?: Array<{
+                type?: string;
+                url?: string;
+                width?: number;
+                height?: number;
+                original_size?: boolean | null;
+            }>;
+            full_size_url?: string;
+            id?: number;
+            image_no?: number;
+            width?: number;
+            is_main?: boolean;
+        };
+        service_fee?: {
+            amount?: string;
+            currency_code?: string;
+        };
+        promoted?: boolean;
+    }>;
+    pagination?: {
+        per_page?: number;
+        time?: number;
+        total_entries?: number;
+        total_pages?: number;
+        current_page?: number;
+    };
+};
+
 export type YahooFinanceServiceGetExchangeRateResponse = {
     chart?: {
         error?: {
@@ -4341,6 +5384,52 @@ export type PcktApiV1NikeSearchPayload = {
     locale?: string;
 };
 
+export type PcktApiV1NovelshipCurrency = 'NOVELSHIP_CURRENCY_UNSPECIFIED' | 'NOVELSHIP_CURRENCY_SGD' | 'NOVELSHIP_CURRENCY_USD' | 'NOVELSHIP_CURRENCY_MYR' | 'NOVELSHIP_CURRENCY_HKD' | 'NOVELSHIP_CURRENCY_AUD' | 'NOVELSHIP_CURRENCY_IDR' | 'NOVELSHIP_CURRENCY_JPY' | 'NOVELSHIP_CURRENCY_NZD' | 'NOVELSHIP_CURRENCY_EUR' | 'NOVELSHIP_CURRENCY_TWD' | 'NOVELSHIP_CURRENCY_CNY' | 'NOVELSHIP_CURRENCY_PHP' | 'NOVELSHIP_CURRENCY_CAD' | 'NOVELSHIP_CURRENCY_GBP' | 'NOVELSHIP_CURRENCY_KRW' | 'NOVELSHIP_CURRENCY_VND' | 'NOVELSHIP_CURRENCY_THB' | 'NOVELSHIP_CURRENCY_AED';
+
+export type PcktApiV1NovelshipRegion = 'NOVELSHIP_REGION_UNSPECIFIED' | 'NOVELSHIP_REGION_KR' | 'NOVELSHIP_REGION_JP' | 'NOVELSHIP_REGION_SG' | 'NOVELSHIP_REGION_US' | 'NOVELSHIP_REGION_MY' | 'NOVELSHIP_REGION_AU' | 'NOVELSHIP_REGION_GB' | 'NOVELSHIP_REGION_TW' | 'NOVELSHIP_REGION_CA' | 'NOVELSHIP_REGION_HK' | 'NOVELSHIP_REGION_ID' | 'NOVELSHIP_REGION_TH' | 'NOVELSHIP_REGION_CN' | 'NOVELSHIP_REGION_VN' | 'NOVELSHIP_REGION_PH' | 'NOVELSHIP_REGION_DE' | 'NOVELSHIP_REGION_FR' | 'NOVELSHIP_REGION_NL' | 'NOVELSHIP_REGION_AE' | 'NOVELSHIP_REGION_NZ' | 'NOVELSHIP_REGION_KW' | 'NOVELSHIP_REGION_SA' | 'NOVELSHIP_REGION_IT' | 'NOVELSHIP_REGION_IE';
+
+/**
+ * Request payload to fetch the list of offers for a product
+ */
+export type PcktApiV1NovelshipServiceGetOffersRequest = {
+    /**
+     * The product ID (required)
+     */
+    id: number;
+    /**
+     * The regional storefront to fetch offers from (default: US)
+     */
+    region?: PcktApiV1NovelshipRegion;
+    /**
+     * The currency to return prices in (default: USD)
+     */
+    currency?: PcktApiV1NovelshipCurrency;
+};
+
+/**
+ * Request payload to fetch a single product from Novelship
+ */
+export type PcktApiV1NovelshipServiceGetProductRequest = {
+    /**
+     * The product ID (required)
+     */
+    id: number;
+};
+
+/**
+ * Request payload to search for listings on Novelship
+ */
+export type PcktApiV1NovelshipServiceSearchRequest = {
+    /**
+     * The search query (required)
+     */
+    query: string;
+    /**
+     * The page to retrieve (default: 1)
+     */
+    page?: number;
+};
+
 export type PcktApiV1PoizonProductPayload = {
     /**
      * Poizon SPU Id (required)
@@ -4654,34 +5743,46 @@ export type PcktApiV1VintedLanguage = 'VINTED_LANGUAGE_EN' | 'VINTED_LANGUAGE_FR
 
 export type PcktApiV1VintedRegion = 'VINTED_REGION_US' | 'VINTED_REGION_AU' | 'VINTED_REGION_AT' | 'VINTED_REGION_BE' | 'VINTED_REGION_UK' | 'VINTED_REGION_CZ' | 'VINTED_REGION_DE' | 'VINTED_REGION_DK' | 'VINTED_REGION_EE' | 'VINTED_REGION_ES' | 'VINTED_REGION_FI' | 'VINTED_REGION_FR' | 'VINTED_REGION_GR' | 'VINTED_REGION_HR' | 'VINTED_REGION_HU' | 'VINTED_REGION_IE' | 'VINTED_REGION_IT' | 'VINTED_REGION_LT' | 'VINTED_REGION_LU' | 'VINTED_REGION_LV' | 'VINTED_REGION_NL' | 'VINTED_REGION_PL' | 'VINTED_REGION_PT' | 'VINTED_REGION_RO' | 'VINTED_REGION_SE' | 'VINTED_REGION_SI' | 'VINTED_REGION_SK';
 
+/**
+ * Request payload to fetch a single listing from Vinted
+ */
 export type PcktApiV1VintedServiceGetProductRequest = {
-    id?: string;
     /**
-     * Default: US
+     * The listing ID (required)
+     */
+    id: string;
+    /**
+     * The regional storefront to fetch the listing from (default: US)
      */
     region?: PcktApiV1VintedRegion;
     /**
-     * default: EN
+     * The language to localize the listing in (default: EN)
      */
     language?: PcktApiV1VintedLanguage;
 };
 
+/**
+ * Request payload to search for listings on Vinted
+ */
 export type PcktApiV1VintedServiceSearchRequest = {
-    query?: string;
     /**
-     * Default: US
+     * The search query (required)
+     */
+    query: string;
+    /**
+     * The regional storefront to search in (default: US)
      */
     region?: PcktApiV1VintedRegion;
     /**
-     * default: EN
+     * The language to localize listings in (default: EN)
      */
     language?: PcktApiV1VintedLanguage;
     /**
-     * default: 1
+     * The page to retrieve (default: 1)
      */
     page?: number;
     /**
-     * default: 20
+     * The number of results per page, up to 50 (default: 20)
      */
     perPage?: number;
 };
@@ -4750,10 +5851,10 @@ export type AliasServiceGetOffersResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: AliasServiceGetOffersResponse;
 };
 
-export type AliasServiceGetOffersResponse = AliasServiceGetOffersResponses[keyof AliasServiceGetOffersResponses];
+export type AliasServiceGetOffersResponse2 = AliasServiceGetOffersResponses[keyof AliasServiceGetOffersResponses];
 
 export type AliasServiceGetProductPricesData = {
     body?: never;
@@ -4788,10 +5889,10 @@ export type AliasServiceGetProductPricesResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: AliasServiceGetProductPricesResponse;
 };
 
-export type AliasServiceGetProductPricesResponse = AliasServiceGetProductPricesResponses[keyof AliasServiceGetProductPricesResponses];
+export type AliasServiceGetProductPricesResponse2 = AliasServiceGetProductPricesResponses[keyof AliasServiceGetProductPricesResponses];
 
 export type AliasServiceGetProductData = {
     body?: never;
@@ -4818,10 +5919,10 @@ export type AliasServiceGetProductResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: AliasServiceGetProductResponse;
 };
 
-export type AliasServiceGetProductResponse = AliasServiceGetProductResponses[keyof AliasServiceGetProductResponses];
+export type AliasServiceGetProductResponse2 = AliasServiceGetProductResponses[keyof AliasServiceGetProductResponses];
 
 export type AliasServiceGetRecentOrdersData = {
     body?: never;
@@ -4848,10 +5949,10 @@ export type AliasServiceGetRecentOrdersResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: AliasServiceGetRecentOrdersResponse;
 };
 
-export type AliasServiceGetRecentOrdersResponse = AliasServiceGetRecentOrdersResponses[keyof AliasServiceGetRecentOrdersResponses];
+export type AliasServiceGetRecentOrdersResponse2 = AliasServiceGetRecentOrdersResponses[keyof AliasServiceGetRecentOrdersResponses];
 
 export type AliasServiceSearchData = {
     body?: never;
@@ -4890,10 +5991,10 @@ export type AliasServiceSearchResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: AliasServiceSearchResponse;
 };
 
-export type AliasServiceSearchResponse = AliasServiceSearchResponses[keyof AliasServiceSearchResponses];
+export type AliasServiceSearchResponse2 = AliasServiceSearchResponses[keyof AliasServiceSearchResponses];
 
 export type CatalogGoatServiceGetPricesData = {
     body?: never;
@@ -5839,6 +6940,108 @@ export type NikeServiceGetProductResponses = {
 
 export type NikeServiceGetProductResponse2 = NikeServiceGetProductResponses[keyof NikeServiceGetProductResponses];
 
+export type NovelshipServiceGetOffersData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The product ID (required)
+         */
+        id: number;
+        /**
+         * The regional storefront to fetch offers from (default: US)
+         */
+        region?: PcktApiV1NovelshipRegion;
+        /**
+         * The currency to return prices in (default: USD)
+         */
+        currency?: PcktApiV1NovelshipCurrency;
+    };
+    url: '/v1/novelship/offers';
+};
+
+export type NovelshipServiceGetOffersErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type NovelshipServiceGetOffersError = NovelshipServiceGetOffersErrors[keyof NovelshipServiceGetOffersErrors];
+
+export type NovelshipServiceGetOffersResponses = {
+    /**
+     * A successful response.
+     */
+    200: NovelshipServiceGetOffersResponse;
+};
+
+export type NovelshipServiceGetOffersResponse2 = NovelshipServiceGetOffersResponses[keyof NovelshipServiceGetOffersResponses];
+
+export type NovelshipServiceGetProductData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The product ID (required)
+         */
+        id: number;
+    };
+    url: '/v1/novelship/product';
+};
+
+export type NovelshipServiceGetProductErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type NovelshipServiceGetProductError = NovelshipServiceGetProductErrors[keyof NovelshipServiceGetProductErrors];
+
+export type NovelshipServiceGetProductResponses = {
+    /**
+     * A successful response.
+     */
+    200: NovelshipServiceGetProductResponse;
+};
+
+export type NovelshipServiceGetProductResponse2 = NovelshipServiceGetProductResponses[keyof NovelshipServiceGetProductResponses];
+
+export type NovelshipServiceSearchData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The search query (required)
+         */
+        query: string;
+        /**
+         * The page to retrieve (default: 1)
+         */
+        page?: number;
+    };
+    url: '/v1/novelship/search';
+};
+
+export type NovelshipServiceSearchErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type NovelshipServiceSearchError = NovelshipServiceSearchErrors[keyof NovelshipServiceSearchErrors];
+
+export type NovelshipServiceSearchResponses = {
+    /**
+     * A successful response.
+     */
+    200: NovelshipServiceSearchResponse;
+};
+
+export type NovelshipServiceSearchResponse2 = NovelshipServiceSearchResponses[keyof NovelshipServiceSearchResponses];
+
 export type PoizonServiceGetSalesHistoryData = {
     body?: never;
     path?: never;
@@ -6442,14 +7645,17 @@ export type StockXServiceGetSubtotalResponse2 = StockXServiceGetSubtotalResponse
 export type VintedServiceGetProductData = {
     body?: never;
     path?: never;
-    query?: {
-        id?: string;
+    query: {
         /**
-         * Default: US
+         * The listing ID (required)
+         */
+        id: string;
+        /**
+         * The regional storefront to fetch the listing from (default: US)
          */
         region?: PcktApiV1VintedRegion;
         /**
-         * default: EN
+         * The language to localize the listing in (default: EN)
          */
         language?: PcktApiV1VintedLanguage;
     };
@@ -6469,30 +7675,33 @@ export type VintedServiceGetProductResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: VintedServiceGetProductResponse;
 };
 
-export type VintedServiceGetProductResponse = VintedServiceGetProductResponses[keyof VintedServiceGetProductResponses];
+export type VintedServiceGetProductResponse2 = VintedServiceGetProductResponses[keyof VintedServiceGetProductResponses];
 
 export type VintedServiceSearchData = {
     body?: never;
     path?: never;
-    query?: {
-        query?: string;
+    query: {
         /**
-         * Default: US
+         * The search query (required)
+         */
+        query: string;
+        /**
+         * The regional storefront to search in (default: US)
          */
         region?: PcktApiV1VintedRegion;
         /**
-         * default: EN
+         * The language to localize listings in (default: EN)
          */
         language?: PcktApiV1VintedLanguage;
         /**
-         * default: 1
+         * The page to retrieve (default: 1)
          */
         page?: number;
         /**
-         * default: 20
+         * The number of results per page, up to 50 (default: 20)
          */
         perPage?: number;
     };
@@ -6512,10 +7721,10 @@ export type VintedServiceSearchResponses = {
     /**
      * A successful response.
      */
-    200: PcktApiV1RawResponse;
+    200: VintedServiceSearchResponse;
 };
 
-export type VintedServiceSearchResponse = VintedServiceSearchResponses[keyof VintedServiceSearchResponses];
+export type VintedServiceSearchResponse2 = VintedServiceSearchResponses[keyof VintedServiceSearchResponses];
 
 export type YahooFinanceServiceGetExchangeRateData = {
     body?: never;
