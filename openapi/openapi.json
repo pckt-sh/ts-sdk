@@ -356,7 +356,10 @@
             "description": "Search keywords",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "iphone"
+              ]
             }
           },
           {
@@ -24441,7 +24444,10 @@
         "properties": {
           "query": {
             "description": "Search keywords",
-            "type": "string"
+            "type": "string",
+            "examples": [
+              "iphone"
+            ]
           },
           "domain": {
             "$ref": "#/components/schemas/pckt.api.v1.AmazonDomain",
