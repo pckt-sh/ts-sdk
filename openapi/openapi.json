@@ -341,6 +341,61 @@
         "x-request-cost": 100
       }
     },
+    "/v1/amazon/search": {
+      "get": {
+        "tags": [
+          "Amazon"
+        ],
+        "summary": "Search products",
+        "description": "Search products on Amazon by keyword, as shown on the search results page.\nReturns each product's ASIN, title, price, rating, review count, badges, sponsored status and delivery info.",
+        "operationId": "AmazonService_Search",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search keywords",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Storefront to search (default: amazon.com)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AmazonDomain",
+              "examples": [
+                "AMAZON_DOMAIN_COM"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.AmazonServiceSearchResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 200
+      }
+    },
     "/v1/catalog/goat/prices": {
       "get": {
         "tags": [
@@ -24209,6 +24264,212 @@
           "query"
         ]
       },
+      "pckt.api.v1.AmazonDomain": {
+        "description": "Amazon storefront to search.",
+        "type": "string",
+        "enum": [
+          "AMAZON_DOMAIN_UNSPECIFIED",
+          "AMAZON_DOMAIN_COM",
+          "AMAZON_DOMAIN_CA",
+          "AMAZON_DOMAIN_MX",
+          "AMAZON_DOMAIN_BR",
+          "AMAZON_DOMAIN_UK",
+          "AMAZON_DOMAIN_DE",
+          "AMAZON_DOMAIN_FR",
+          "AMAZON_DOMAIN_IT",
+          "AMAZON_DOMAIN_ES",
+          "AMAZON_DOMAIN_NL",
+          "AMAZON_DOMAIN_BE",
+          "AMAZON_DOMAIN_SE",
+          "AMAZON_DOMAIN_PL",
+          "AMAZON_DOMAIN_TR",
+          "AMAZON_DOMAIN_IE",
+          "AMAZON_DOMAIN_JP",
+          "AMAZON_DOMAIN_IN",
+          "AMAZON_DOMAIN_AU",
+          "AMAZON_DOMAIN_SG",
+          "AMAZON_DOMAIN_AE",
+          "AMAZON_DOMAIN_SA",
+          "AMAZON_DOMAIN_EG"
+        ]
+      },
+      "pckt.api.v1.AmazonProduct": {
+        "description": "A product from an Amazon search results page.",
+        "type": "object",
+        "properties": {
+          "asin": {
+            "description": "Amazon Standard Identification Number, unique per product and storefront.",
+            "type": "string",
+            "examples": [
+              "B09BWFX1L6"
+            ]
+          },
+          "title": {
+            "description": "Full product title, including brand and the secondary title line when shown.",
+            "type": "string",
+            "examples": [
+              "Amazon Basics 2-Ply Flex-Sheets Paper Towels, 12 Basics Rolls = 32 Regular Rolls, Everyday Value with 150 Sheets per Roll"
+            ]
+          },
+          "link": {
+            "description": "Canonical product page URL on the searched storefront.",
+            "type": "string",
+            "examples": [
+              "https://www.amazon.com/dp/B09BWFX1L6/"
+            ]
+          },
+          "thumbnail": {
+            "description": "Product image URL from the results page.",
+            "type": "string",
+            "examples": [
+              "https://m.media-amazon.com/images/I/61POocZniqL._AC_UL320_.jpg"
+            ]
+          },
+          "price": {
+            "description": "Current price as a number (0 when the card shows no price, e.g. \"See options\").",
+            "type": "number",
+            "format": "double",
+            "examples": [
+              22.86
+            ]
+          },
+          "currency": {
+            "description": "Currency symbol or code as displayed. Depends on the shopper's location, not the storefront.",
+            "type": "string",
+            "examples": [
+              "USD"
+            ]
+          },
+          "priceRaw": {
+            "description": "Price as displayed, currency included.",
+            "type": "string",
+            "examples": [
+              "USD 22.86"
+            ]
+          },
+          "tags": {
+            "description": "Badges and attributes shown on the card, such as \"Amazon's Choice\", sizes, colours or materials.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "150 sheet (Pack of 12)"
+              ]
+            ]
+          },
+          "position": {
+            "description": "1-based rank on the results page, sponsored results included.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "sponsored": {
+            "description": "Whether the result is a paid placement.",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "prime": {
+            "description": "Whether the product is Prime eligible.",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "amazonBrand": {
+            "description": "Whether the product is from an Amazon-owned brand.",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "rating": {
+            "description": "Average star rating out of 5.",
+            "type": "number",
+            "format": "double",
+            "examples": [
+              4.2
+            ]
+          },
+          "reviews": {
+            "description": "Number of ratings.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              54417
+            ]
+          },
+          "boughtLastMonth": {
+            "description": "Sales indicator as displayed, e.g. \"100K+ bought in past month\".",
+            "type": "string",
+            "examples": [
+              "100K+ bought in past month"
+            ]
+          },
+          "offers": {
+            "description": "Extra deals shown under the price, such as coupons or bundles.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "$21.72 with Subscribe \u0026 Save discount"
+              ]
+            ]
+          },
+          "delivery": {
+            "description": "Delivery messages and stock warnings as displayed.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "Free delivery Tue, Apr 29 on $35 of items shipped by Amazon",
+                "Or fastest delivery Sat, Apr 26"
+              ]
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.AmazonServiceSearchRequest": {
+        "description": "Request payload to search products on Amazon",
+        "type": "object",
+        "properties": {
+          "query": {
+            "description": "Search keywords",
+            "type": "string"
+          },
+          "domain": {
+            "$ref": "#/components/schemas/pckt.api.v1.AmazonDomain",
+            "description": "Storefront to search (default: amazon.com)",
+            "examples": [
+              "AMAZON_DOMAIN_COM"
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "pckt.api.v1.AmazonServiceSearchResponse": {
+        "type": "object",
+        "properties": {
+          "products": {
+            "description": "Products in the order Amazon shows them.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.AmazonProduct"
+            }
+          }
+        }
+      },
       "pckt.api.v1.CatalogGOATPricePayload": {
         "type": "object",
         "properties": {
@@ -28337,6 +28598,13 @@
       "description": "Peer-to-peer sneaker and streetwear resale marketplace. Access real-time\nlistings, size-specific pricing, and live offers directly from Alias.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/alias"
+      }
+    },
+    {
+      "name": "Amazon",
+      "description": "The world's largest online marketplace. Search products across 22 regional storefronts\nand get structured results with prices, ratings, reviews, Prime eligibility and delivery estimates.",
+      "externalDocs": {
+        "url": "https://pckt.sh/docs/amazon"
       }
     },
     {

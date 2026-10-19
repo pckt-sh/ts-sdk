@@ -4421,6 +4421,106 @@ export type PcktApiV1AliasServiceSearchRequest = {
     index?: PcktApiV1AliasSearchIndex;
 };
 
+/**
+ * Amazon storefront to search.
+ */
+export type PcktApiV1AmazonDomain = 'AMAZON_DOMAIN_UNSPECIFIED' | 'AMAZON_DOMAIN_COM' | 'AMAZON_DOMAIN_CA' | 'AMAZON_DOMAIN_MX' | 'AMAZON_DOMAIN_BR' | 'AMAZON_DOMAIN_UK' | 'AMAZON_DOMAIN_DE' | 'AMAZON_DOMAIN_FR' | 'AMAZON_DOMAIN_IT' | 'AMAZON_DOMAIN_ES' | 'AMAZON_DOMAIN_NL' | 'AMAZON_DOMAIN_BE' | 'AMAZON_DOMAIN_SE' | 'AMAZON_DOMAIN_PL' | 'AMAZON_DOMAIN_TR' | 'AMAZON_DOMAIN_IE' | 'AMAZON_DOMAIN_JP' | 'AMAZON_DOMAIN_IN' | 'AMAZON_DOMAIN_AU' | 'AMAZON_DOMAIN_SG' | 'AMAZON_DOMAIN_AE' | 'AMAZON_DOMAIN_SA' | 'AMAZON_DOMAIN_EG';
+
+/**
+ * A product from an Amazon search results page.
+ */
+export type PcktApiV1AmazonProduct = {
+    /**
+     * Amazon Standard Identification Number, unique per product and storefront.
+     */
+    asin?: string;
+    /**
+     * Full product title, including brand and the secondary title line when shown.
+     */
+    title?: string;
+    /**
+     * Canonical product page URL on the searched storefront.
+     */
+    link?: string;
+    /**
+     * Product image URL from the results page.
+     */
+    thumbnail?: string;
+    /**
+     * Current price as a number (0 when the card shows no price, e.g. "See options").
+     */
+    price?: number;
+    /**
+     * Currency symbol or code as displayed. Depends on the shopper's location, not the storefront.
+     */
+    currency?: string;
+    /**
+     * Price as displayed, currency included.
+     */
+    priceRaw?: string;
+    /**
+     * Badges and attributes shown on the card, such as "Amazon's Choice", sizes, colours or materials.
+     */
+    tags?: Array<string>;
+    /**
+     * 1-based rank on the results page, sponsored results included.
+     */
+    position?: number;
+    /**
+     * Whether the result is a paid placement.
+     */
+    sponsored?: boolean;
+    /**
+     * Whether the product is Prime eligible.
+     */
+    prime?: boolean;
+    /**
+     * Whether the product is from an Amazon-owned brand.
+     */
+    amazonBrand?: boolean;
+    /**
+     * Average star rating out of 5.
+     */
+    rating?: number;
+    /**
+     * Number of ratings.
+     */
+    reviews?: number;
+    /**
+     * Sales indicator as displayed, e.g. "100K+ bought in past month".
+     */
+    boughtLastMonth?: string;
+    /**
+     * Extra deals shown under the price, such as coupons or bundles.
+     */
+    offers?: Array<string>;
+    /**
+     * Delivery messages and stock warnings as displayed.
+     */
+    delivery?: Array<string>;
+};
+
+/**
+ * Request payload to search products on Amazon
+ */
+export type PcktApiV1AmazonServiceSearchRequest = {
+    /**
+     * Search keywords
+     */
+    query: string;
+    /**
+     * Storefront to search (default: amazon.com)
+     */
+    domain?: PcktApiV1AmazonDomain;
+};
+
+export type PcktApiV1AmazonServiceSearchResponse = {
+    /**
+     * Products in the order Amazon shows them.
+     */
+    products?: Array<PcktApiV1AmazonProduct>;
+};
+
 export type PcktApiV1CatalogGoatPricePayload = {
     /**
      * A comma-separated list of GOAT product ID. Maximum 20.
@@ -5995,6 +6095,40 @@ export type AliasServiceSearchResponses = {
 };
 
 export type AliasServiceSearchResponse2 = AliasServiceSearchResponses[keyof AliasServiceSearchResponses];
+
+export type AmazonServiceSearchData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Search keywords
+         */
+        query: string;
+        /**
+         * Storefront to search (default: amazon.com)
+         */
+        domain?: PcktApiV1AmazonDomain;
+    };
+    url: '/v1/amazon/search';
+};
+
+export type AmazonServiceSearchErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type AmazonServiceSearchError = AmazonServiceSearchErrors[keyof AmazonServiceSearchErrors];
+
+export type AmazonServiceSearchResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1AmazonServiceSearchResponse;
+};
+
+export type AmazonServiceSearchResponse = AmazonServiceSearchResponses[keyof AmazonServiceSearchResponses];
 
 export type CatalogGoatServiceGetPricesData = {
     body?: never;
