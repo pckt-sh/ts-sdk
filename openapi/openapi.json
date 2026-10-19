@@ -1556,10 +1556,7 @@
             "in": "query",
             "description": "A pagination token to keep fetching sales data",
             "schema": {
-              "type": "string",
-              "examples": [
-                "eyJwYWdlIjoyfQ=="
-              ]
+              "type": "string"
             }
           }
         ],
@@ -27413,10 +27410,7 @@
           },
           "paginationToken": {
             "description": "A pagination token to keep fetching sales data",
-            "type": "string",
-            "examples": [
-              "eyJwYWdlIjoyfQ=="
-            ]
+            "type": "string"
           }
         },
         "required": [
