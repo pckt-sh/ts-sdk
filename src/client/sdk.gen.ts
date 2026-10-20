@@ -97,7 +97,7 @@ export const catalogGoatServiceSearch = <ThrowOnError extends boolean = false>(o
  * Get a cached Shopify product by ID, with every variant, its price and availability.
  * Only Kicks Crew products are cached for now; use the Shopify endpoints to query other stores.
  */
-export const catalogShopifyServiceGetProduct = <ThrowOnError extends boolean = false>(options?: Options<CatalogShopifyServiceGetProductData, ThrowOnError>): RequestResult<CatalogShopifyServiceGetProductResponses, CatalogShopifyServiceGetProductErrors, ThrowOnError> => (options?.client ?? client).get<CatalogShopifyServiceGetProductResponses, CatalogShopifyServiceGetProductErrors, ThrowOnError>({ url: '/v1/catalog/shopify/product', ...options });
+export const catalogShopifyServiceGetProduct = <ThrowOnError extends boolean = false>(options: Options<CatalogShopifyServiceGetProductData, ThrowOnError>): RequestResult<CatalogShopifyServiceGetProductResponses, CatalogShopifyServiceGetProductErrors, ThrowOnError> => (options.client ?? client).get<CatalogShopifyServiceGetProductResponses, CatalogShopifyServiceGetProductErrors, ThrowOnError>({ url: '/v1/catalog/shopify/product', ...options });
 
 /**
  * Search products

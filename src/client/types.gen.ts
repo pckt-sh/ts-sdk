@@ -4644,7 +4644,7 @@ export type PcktApiV1CatalogShopifyServiceGetProductRequest = {
     /**
      * Shopify product ID, from the `id` of a search result.
      */
-    id?: string;
+    id: string;
 };
 
 export type PcktApiV1CatalogShopifyServiceSearchRequest = {
@@ -5718,7 +5718,7 @@ export type PcktApiV1ShopifySearchPayload = {
     /**
      * A search query (required)
      */
-    query?: string;
+    query: string;
 };
 
 export type PcktApiV1StockXaskBidPayload = {
@@ -6273,11 +6273,11 @@ export type CatalogGoatServiceSearchResponse = CatalogGoatServiceSearchResponses
 export type CatalogShopifyServiceGetProductData = {
     body?: never;
     path?: never;
-    query?: {
+    query: {
         /**
          * Shopify product ID, from the `id` of a search result.
          */
-        id?: string;
+        id: string;
     };
     url: '/v1/catalog/shopify/product';
 };
@@ -7353,7 +7353,7 @@ export type ShopifyServiceSearchData = {
         /**
          * A search query (required)
          */
-        query?: string;
+        query: string;
     };
     url: '/v1/shopify/search';
 };

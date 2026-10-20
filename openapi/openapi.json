@@ -662,6 +662,7 @@
             "name": "id",
             "in": "query",
             "description": "Shopify product ID, from the `id` of a search result.",
+            "required": true,
             "schema": {
               "type": "string",
               "examples": [
@@ -2794,6 +2795,7 @@
             "name": "query",
             "in": "query",
             "description": "A search query (required)",
+            "required": true,
             "schema": {
               "type": "string",
               "examples": [
@@ -24928,7 +24930,10 @@
               "14904949833923"
             ]
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "pckt.api.v1.CatalogShopifyServiceSearchRequest": {
         "type": "object",
@@ -28176,7 +28181,8 @@
           }
         },
         "required": [
-          "url"
+          "url",
+          "query"
         ]
       },
       "pckt.api.v1.StockXAskBidPayload": {
