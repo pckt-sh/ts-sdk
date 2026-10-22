@@ -3279,7 +3279,7 @@
             }
           }
         },
-        "x-request-cost": 200
+        "x-request-cost": 100
       }
     },
     "/v1/stockx/product": {
