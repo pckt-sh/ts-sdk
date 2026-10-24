@@ -232,6 +232,39 @@
                 "bluetile-x-nike-sb-dunk-black-marina-white-iq1323-001"
               ]
             }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size to fetch recent orders for (optional)",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "10.5"
+              ]
+            }
+          },
+          {
+            "name": "productCondition",
+            "in": "query",
+            "description": "The product condition to filter by (default: new)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AliasProductCondition",
+              "examples": [
+                "ALIAS_PRODUCT_CONDITION_NEW"
+              ]
+            }
+          },
+          {
+            "name": "packagingCondition",
+            "in": "query",
+            "description": "The packaging condition to filter by (default: good condition)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
+              "examples": [
+                "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
+              ]
+            }
           }
         ],
         "responses": {
@@ -24220,6 +24253,27 @@
             "type": "string",
             "examples": [
               "bluetile-x-nike-sb-dunk-black-marina-white-iq1323-001"
+            ]
+          },
+          "size": {
+            "description": "The size to fetch recent orders for (optional)",
+            "type": "string",
+            "examples": [
+              "10.5"
+            ]
+          },
+          "productCondition": {
+            "$ref": "#/components/schemas/pckt.api.v1.AliasProductCondition",
+            "description": "The product condition to filter by (default: new)",
+            "examples": [
+              "ALIAS_PRODUCT_CONDITION_NEW"
+            ]
+          },
+          "packagingCondition": {
+            "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
+            "description": "The packaging condition to filter by (default: good condition)",
+            "examples": [
+              "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
             ]
           }
         },

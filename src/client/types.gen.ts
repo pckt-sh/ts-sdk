@@ -4397,6 +4397,18 @@ export type PcktApiV1AliasServiceGetRecentOrdersRequest = {
      * The product slug (required)
      */
     slug: string;
+    /**
+     * The size to fetch recent orders for (optional)
+     */
+    size?: string;
+    /**
+     * The product condition to filter by (default: new)
+     */
+    productCondition?: PcktApiV1AliasProductCondition;
+    /**
+     * The packaging condition to filter by (default: good condition)
+     */
+    packagingCondition?: PcktApiV1AliasPackagingCondition;
 };
 
 /**
@@ -6032,6 +6044,18 @@ export type AliasServiceGetRecentOrdersData = {
          * The product slug (required)
          */
         slug: string;
+        /**
+         * The size to fetch recent orders for (optional)
+         */
+        size?: string;
+        /**
+         * The product condition to filter by (default: new)
+         */
+        productCondition?: PcktApiV1AliasProductCondition;
+        /**
+         * The packaging condition to filter by (default: good condition)
+         */
+        packagingCondition?: PcktApiV1AliasPackagingCondition;
     };
     url: '/v1/alias/recent-orders';
 };
