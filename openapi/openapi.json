@@ -28704,7 +28704,7 @@
     },
     {
       "name": "GOAT",
-      "description": "Granular visibility into global secondary footwear and apparel markets. Extract variant-specific\npricing, regional ask/bid spreads, and localized inventory metadata through a unified stream that\nbypasses complex security layers.",
+      "description": "Product and market data from GOAT, the sneaker and apparel resale marketplace. Search the catalog,\nget product details, list asks by size and region, and read sales history.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/goat"
       }
@@ -28746,7 +28746,7 @@
     },
     {
       "name": "Shopify",
-      "description": "High-velocity orchestration for decentralized commerce data. A unified bridge for real-time\ninventory tracking, multi-store product synchronization, and storefront metadata, bypassing standard\nrate limits via a private gateway.",
+      "description": "Product data from public Shopify storefronts. Search a store's catalog and get product details\nwith variants, prices and availability.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/shopify"
       }
@@ -28774,7 +28774,7 @@
     },
     {
       "name": "Yahoo Finance",
-      "description": "Institutional-grade financial data delivery. Query, filter, and stream real-time equities, ETFs,\nindices, and currency pairs directly from Yahoo Finance with zero-lag execution.",
+      "description": "Market data from Yahoo Finance. Search equities, ETFs, indices and currencies, get a security\nquote, or look up an exchange rate.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/yahoo-finance"
       }
