@@ -69,6 +69,17 @@
                 "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
               ]
             }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "description": "The region to get prices from (default: global)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+              "examples": [
+                "ALIAS_REGION_GLOBAL"
+              ]
+            }
           }
         ],
         "responses": {
@@ -136,6 +147,17 @@
               "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
               "examples": [
                 "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
+              ]
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "description": "The region to get prices from (default: global)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+              "examples": [
+                "ALIAS_REGION_GLOBAL"
               ]
             }
           }
@@ -263,6 +285,17 @@
               "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
               "examples": [
                 "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
+              ]
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "description": "The region to get prices from (default: global)",
+            "schema": {
+              "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+              "examples": [
+                "ALIAS_REGION_GLOBAL"
               ]
             }
           }
@@ -24150,6 +24183,16 @@
           "ALIAS_PRODUCT_CONDITION_NEW_WITH_DEFECTS"
         ]
       },
+      "pckt.api.v1.AliasRegion": {
+        "description": "Alias Region",
+        "type": "string",
+        "enum": [
+          "ALIAS_REGION_UNSPECIFIED",
+          "ALIAS_REGION_GLOBAL",
+          "ALIAS_REGION_US",
+          "ALIAS_REGION_EU"
+        ]
+      },
       "pckt.api.v1.AliasSearchIndex": {
         "description": "- `ALIAS_SEARCH_INDEX_DEFAULT`: Default index (product_variants_v2)\n- `ALIAS_SEARCH_INDEX_TRENDING`: Trending products (product_variants_v2_trending_purchase)\n- `ALIAS_SEARCH_INDEX_JUST_DROPPED`: Just dropped/announced products (product_variants_v2_by_newest_desc)\n- `ALIAS_SEARCH_INDEX_UPCOMING`: Upcoming products (product_variants_v2_by_newest_asc)",
         "type": "string",
@@ -24191,6 +24234,13 @@
             "examples": [
               "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
             ]
+          },
+          "region": {
+            "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+            "description": "The region to get prices from (default: global)",
+            "examples": [
+              "ALIAS_REGION_GLOBAL"
+            ]
           }
         },
         "required": [
@@ -24221,6 +24271,13 @@
             "description": "The packaging condition to filter by (default: good condition)",
             "examples": [
               "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
+            ]
+          },
+          "region": {
+            "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+            "description": "The region to get prices from (default: global)",
+            "examples": [
+              "ALIAS_REGION_GLOBAL"
             ]
           }
         },
@@ -24274,6 +24331,13 @@
             "description": "The packaging condition to filter by (default: good condition)",
             "examples": [
               "ALIAS_PACKAGING_CONDITION_GOOD_CONDITION"
+            ]
+          },
+          "region": {
+            "$ref": "#/components/schemas/pckt.api.v1.AliasRegion",
+            "description": "The region to get prices from (default: global)",
+            "examples": [
+              "ALIAS_REGION_GLOBAL"
             ]
           }
         },

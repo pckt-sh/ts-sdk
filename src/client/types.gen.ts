@@ -4332,6 +4332,11 @@ export type PcktApiV1AliasPackagingCondition = 'ALIAS_PACKAGING_CONDITION_GOOD_C
 export type PcktApiV1AliasProductCondition = 'ALIAS_PRODUCT_CONDITION_NEW' | 'ALIAS_PRODUCT_CONDITION_USED' | 'ALIAS_PRODUCT_CONDITION_NEW_WITH_DEFECTS';
 
 /**
+ * Alias Region
+ */
+export type PcktApiV1AliasRegion = 'ALIAS_REGION_UNSPECIFIED' | 'ALIAS_REGION_GLOBAL' | 'ALIAS_REGION_US' | 'ALIAS_REGION_EU';
+
+/**
  * - `ALIAS_SEARCH_INDEX_DEFAULT`: Default index (product_variants_v2)
  * - `ALIAS_SEARCH_INDEX_TRENDING`: Trending products (product_variants_v2_trending_purchase)
  * - `ALIAS_SEARCH_INDEX_JUST_DROPPED`: Just dropped/announced products (product_variants_v2_by_newest_desc)
@@ -4359,6 +4364,10 @@ export type PcktApiV1AliasServiceGetOffersRequest = {
      * The packaging condition to filter by (default: good condition)
      */
     packagingCondition?: PcktApiV1AliasPackagingCondition;
+    /**
+     * The region to get prices from (default: global)
+     */
+    region?: PcktApiV1AliasRegion;
 };
 
 /**
@@ -4377,6 +4386,10 @@ export type PcktApiV1AliasServiceGetProductPricesRequest = {
      * The packaging condition to filter by (default: good condition)
      */
     packagingCondition?: PcktApiV1AliasPackagingCondition;
+    /**
+     * The region to get prices from (default: global)
+     */
+    region?: PcktApiV1AliasRegion;
 };
 
 /**
@@ -4409,6 +4422,10 @@ export type PcktApiV1AliasServiceGetRecentOrdersRequest = {
      * The packaging condition to filter by (default: good condition)
      */
     packagingCondition?: PcktApiV1AliasPackagingCondition;
+    /**
+     * The region to get prices from (default: global)
+     */
+    region?: PcktApiV1AliasRegion;
 };
 
 /**
@@ -5946,6 +5963,10 @@ export type AliasServiceGetOffersData = {
          * The packaging condition to filter by (default: good condition)
          */
         packagingCondition?: PcktApiV1AliasPackagingCondition;
+        /**
+         * The region to get prices from (default: global)
+         */
+        region?: PcktApiV1AliasRegion;
     };
     url: '/v1/alias/offers';
 };
@@ -5984,6 +6005,10 @@ export type AliasServiceGetProductPricesData = {
          * The packaging condition to filter by (default: good condition)
          */
         packagingCondition?: PcktApiV1AliasPackagingCondition;
+        /**
+         * The region to get prices from (default: global)
+         */
+        region?: PcktApiV1AliasRegion;
     };
     url: '/v1/alias/prices';
 };
@@ -6056,6 +6081,10 @@ export type AliasServiceGetRecentOrdersData = {
          * The packaging condition to filter by (default: good condition)
          */
         packagingCondition?: PcktApiV1AliasPackagingCondition;
+        /**
+         * The region to get prices from (default: global)
+         */
+        region?: PcktApiV1AliasRegion;
     };
     url: '/v1/alias/recent-orders';
 };
