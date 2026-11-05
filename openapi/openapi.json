@@ -2052,7 +2052,7 @@
     "/v1/kdb/stockx/prices": {
       "post": {
         "tags": [
-          "StockX (KicksDB-Compatibility)"
+          "StockX (KicksDB-Compat)"
         ],
         "summary": "Get prices in batch from StockX",
         "description": "Get the prices of up to 50 StockX products at once, by product UUIDs or SKUs.\n\n**Variants without a price are omitted from the response.**\nSwitch to *Catalog StockX* for cheaper use and same features.",
@@ -2096,7 +2096,7 @@
     "/v1/kdb/stockx/products": {
       "get": {
         "tags": [
-          "StockX (KicksDB-Compatibility)"
+          "StockX (KicksDB-Compat)"
         ],
         "summary": "Get products from StockX",
         "description": "Search and browse StockX products. Use `display[*]` to include relations in the response.\n\n**`filters` cannot be combined with the deprecated individual filters (`ids`, `slug`, `sku`...).**\nSwitch to *Catalog StockX* for cheaper use and same features.",
@@ -2253,10 +2253,7 @@
             "description": "Comma-separated list of product IDs.\nIgnored when `filters` is set, use `id IN [...]` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "019cdec1-bfba-7a89-96c5-5dc57934a096"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2265,10 +2262,7 @@
             "description": "Comma-separated list of product slugs.\nIgnored when `filters` is set, use `slug IN [...]` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "air-jordan-4-retro-white-cement-2025"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2277,10 +2271,7 @@
             "description": "Product SKU.\nIgnored when `filters` is set, use `sku = '...'` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "FV5029-100"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2289,10 +2280,7 @@
             "description": "Comma-separated list of barcodes (GTIN, EAN, UPC).\nIgnored when `filters` is set, use `barcodes IN [...]` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "197862948651"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2301,10 +2289,7 @@
             "description": "Product brand.\nIgnored when `filters` is set, use `brand = '...'` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "Jordan"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2313,10 +2298,7 @@
             "description": "Product type, such as `sneakers` or `streetwear`.\nIgnored when `filters` is set, use `product_type = '...'` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "sneakers"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2325,10 +2307,7 @@
             "description": "Primary category.\nIgnored when `filters` is set, use `category = '...'` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "sneakers"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2337,10 +2316,7 @@
             "description": "Secondary category.\nIgnored when `filters` is set, use `secondary_category = '...'` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "Jordan"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2349,10 +2325,7 @@
             "description": "Comma-separated list of genders.\nIgnored when `filters` is set, use `gender IN [...]` instead.",
             "deprecated": true,
             "schema": {
-              "type": "string",
-              "examples": [
-                "men,unisex"
-              ]
+              "type": "string"
             }
           },
           {
@@ -2362,10 +2335,7 @@
             "deprecated": true,
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "examples": [
-                100
-              ]
+              "format": "int32"
             }
           }
         ],
@@ -2398,7 +2368,7 @@
     "/v1/kdb/stockx/products/{id}": {
       "get": {
         "tags": [
-          "StockX (KicksDB-Compatibility)"
+          "StockX (KicksDB-Compat)"
         ],
         "summary": "Get a product from StockX",
         "description": "Get a StockX product by UUID or slug. Use `display[*]` to include relations in the response.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
@@ -2526,7 +2496,7 @@
     "/v1/kdb/stockx/products/{id}/sales": {
       "get": {
         "tags": [
-          "StockX (KicksDB-Compatibility)"
+          "StockX (KicksDB-Compat)"
         ],
         "summary": "Get sales history for a product from StockX",
         "description": "Get the individual sales of a StockX product, the most recent first.\nUse `cursor` to paginate through older sales.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
@@ -2626,7 +2596,7 @@
     "/v1/kdb/stockx/products/{id}/sales/daily": {
       "get": {
         "tags": [
-          "StockX (KicksDB-Compatibility)"
+          "StockX (KicksDB-Compat)"
         ],
         "summary": "Get daily sales data for a product from StockX",
         "description": "Get the daily sales (count and average amount) of a StockX product, the most recent day first.\nUse `cursor` to paginate through older days.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
@@ -28549,83 +28519,53 @@
           "ids": {
             "description": "Comma-separated list of product IDs.\nIgnored when `filters` is set, use `id IN [...]` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "019cdec1-bfba-7a89-96c5-5dc57934a096"
-            ]
+            "deprecated": true
           },
           "slug": {
             "description": "Comma-separated list of product slugs.\nIgnored when `filters` is set, use `slug IN [...]` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "air-jordan-4-retro-white-cement-2025"
-            ]
+            "deprecated": true
           },
           "sku": {
             "description": "Product SKU.\nIgnored when `filters` is set, use `sku = '...'` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "FV5029-100"
-            ]
+            "deprecated": true
           },
           "gtin": {
             "description": "Comma-separated list of barcodes (GTIN, EAN, UPC).\nIgnored when `filters` is set, use `barcodes IN [...]` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "197862948651"
-            ]
+            "deprecated": true
           },
           "brand": {
             "description": "Product brand.\nIgnored when `filters` is set, use `brand = '...'` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "Jordan"
-            ]
+            "deprecated": true
           },
           "product_type": {
             "description": "Product type, such as `sneakers` or `streetwear`.\nIgnored when `filters` is set, use `product_type = '...'` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "sneakers"
-            ]
+            "deprecated": true
           },
           "category": {
             "description": "Primary category.\nIgnored when `filters` is set, use `category = '...'` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "sneakers"
-            ]
+            "deprecated": true
           },
           "subcategory": {
             "description": "Secondary category.\nIgnored when `filters` is set, use `secondary_category = '...'` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "Jordan"
-            ]
+            "deprecated": true
           },
           "gender": {
             "description": "Comma-separated list of genders.\nIgnored when `filters` is set, use `gender IN [...]` instead.",
             "type": "string",
-            "deprecated": true,
-            "examples": [
-              "men,unisex"
-            ]
+            "deprecated": true
           },
           "after_rank": {
             "description": "Only return products with a rank greater than this value, usable as a cursor.\nIgnored when `filters` is set, use `rank \u003e ...` instead.",
             "type": "integer",
             "format": "int32",
-            "deprecated": true,
-            "examples": [
-              100
-            ]
+            "deprecated": true
           }
         }
       },
@@ -29998,10 +29938,10 @@
       }
     },
     {
-      "name": "StockX (KicksDB-Compatibility)",
+      "name": "StockX (KicksDB-Compat)",
       "description": "Drop-in replacement for the StockX endpoints of the KicksDB API (`https://api.kicks.dev/v3/stockx/*`).\nRequests and responses follow the KicksDB format, so existing integrations only need to swap the base URL to `https://api.pckt.sh/v1/kdb`.",
       "externalDocs": {
-        "url": "https://pckt.sh/docs/kicksdb-stockx"
+        "url": "https://pckt.sh/docs/kdb/stockx/products"
       }
     },
     {
