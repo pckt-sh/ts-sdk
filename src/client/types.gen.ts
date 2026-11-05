@@ -4359,11 +4359,11 @@ export type PcktApiV1AliasServiceGetOffersRequest = {
     /**
      * The product condition to filter by (default: new)
      */
-    productCondition?: PcktApiV1AliasProductCondition;
+    product_condition?: PcktApiV1AliasProductCondition;
     /**
      * The packaging condition to filter by (default: good condition)
      */
-    packagingCondition?: PcktApiV1AliasPackagingCondition;
+    packaging_condition?: PcktApiV1AliasPackagingCondition;
     /**
      * The region to get prices from (default: global)
      */
@@ -4381,11 +4381,11 @@ export type PcktApiV1AliasServiceGetProductPricesRequest = {
     /**
      * The product condition to filter by (default: new)
      */
-    productCondition?: PcktApiV1AliasProductCondition;
+    product_condition?: PcktApiV1AliasProductCondition;
     /**
      * The packaging condition to filter by (default: good condition)
      */
-    packagingCondition?: PcktApiV1AliasPackagingCondition;
+    packaging_condition?: PcktApiV1AliasPackagingCondition;
     /**
      * The region to get prices from (default: global)
      */
@@ -4417,11 +4417,11 @@ export type PcktApiV1AliasServiceGetRecentOrdersRequest = {
     /**
      * The product condition to filter by (default: new)
      */
-    productCondition?: PcktApiV1AliasProductCondition;
+    product_condition?: PcktApiV1AliasProductCondition;
     /**
      * The packaging condition to filter by (default: good condition)
      */
-    packagingCondition?: PcktApiV1AliasPackagingCondition;
+    packaging_condition?: PcktApiV1AliasPackagingCondition;
     /**
      * The region to get prices from (default: global)
      */
@@ -4486,7 +4486,7 @@ export type PcktApiV1AmazonProduct = {
     /**
      * Price as displayed, currency included.
      */
-    priceRaw?: string;
+    price_raw?: string;
     /**
      * Badges and attributes shown on the card, such as "Amazon's Choice", sizes, colours or materials.
      */
@@ -4506,7 +4506,7 @@ export type PcktApiV1AmazonProduct = {
     /**
      * Whether the product is from an Amazon-owned brand.
      */
-    amazonBrand?: boolean;
+    amazon_brand?: boolean;
     /**
      * Average star rating out of 5.
      */
@@ -4518,7 +4518,7 @@ export type PcktApiV1AmazonProduct = {
     /**
      * Sales indicator as displayed, e.g. "100K+ bought in past month".
      */
-    boughtLastMonth?: string;
+    bought_last_month?: string;
     /**
      * Extra deals shown under the price, such as coupons or bundles.
      */
@@ -4862,7 +4862,7 @@ export type PcktApiV1CatalogStockXSalesDailyPayload = {
     /**
      * The page size (default: 100).
      */
-    pageSize?: number;
+    page_size?: number;
 };
 
 export type PcktApiV1CatalogStockXSalesDailyResponse = {
@@ -4886,7 +4886,7 @@ export type PcktApiV1CatalogStockXSalesPayload = {
     /**
      * A optional variant UUID for filtering by a variant.
      */
-    variantId?: string;
+    variant_id?: string;
     /**
      * A cursor for advancing in sales history
      */
@@ -4898,7 +4898,7 @@ export type PcktApiV1CatalogStockXSalesPayload = {
     /**
      * The page size (default: 100).
      */
-    pageSize?: number;
+    page_size?: number;
 };
 
 export type PcktApiV1CatalogStockXSalesResponse = {
@@ -5006,7 +5006,7 @@ export type PcktApiV1CompatGoatPricesBatchVariant = {
 
 export type PcktApiV1CompatGoatPricesPayload = {
     ids?: Array<string>;
-    isSku?: boolean;
+    is_sku?: boolean;
     market?: string;
 };
 
@@ -5073,7 +5073,7 @@ export type PcktApiV1CompatGoatProductsPayload = {
     /**
      * Show variants in the response
      */
-    showVariants?: boolean;
+    show_variants?: boolean;
     /**
      * The market to search in (default: US).
      */
@@ -5130,7 +5130,7 @@ export type PcktApiV1CompatGoatSalesResponseItem = {
     amount?: number;
     product_id?: number;
     purchased_at?: string;
-    sizeUs?: string;
+    size_us?: string;
 };
 
 /**
@@ -5198,8 +5198,8 @@ export type PcktApiV1CompatStockXPricesBatch = {
 
 export type PcktApiV1CompatStockXPricesPayload = {
     ids: Array<string>;
-    isSku?: boolean;
-    showSizes?: boolean;
+    is_sku?: boolean;
+    show_sizes?: boolean;
     market?: string;
 };
 
@@ -5368,11 +5368,11 @@ export type PcktApiV1FcProductPayload = {
     /**
      * The currency code (default: USD)
      */
-    currencyCode?: string;
+    currency_code?: string;
     /**
      * The country code (default: US)
      */
-    countryCode?: string;
+    country_code?: string;
 };
 
 export type PcktApiV1FcSearchPayload = {
@@ -5383,15 +5383,15 @@ export type PcktApiV1FcSearchPayload = {
     /**
      * The number of pages to fetch (optional, default: 1)
      */
-    pageNumber?: string;
+    page_number?: string;
     /**
      * The currency code (default: USD)
      */
-    currencyCode?: string;
+    currency_code?: string;
     /**
      * The country code (default: US)
      */
-    countryCode?: string;
+    country_code?: string;
 };
 
 export type PcktApiV1GoatOfferPayload = {
@@ -5402,15 +5402,15 @@ export type PcktApiV1GoatOfferPayload = {
     /**
      * The country code to fetch sales history (optional, default: US)
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code to fetch sales history (optional, default: USD)
      */
-    currencyCode?: string;
+    currency_code?: string;
     /**
      * A pagination token to keep fetching sales data
      */
-    paginationToken?: string;
+    pagination_token?: string;
 };
 
 export type PcktApiV1GoatPricePayload = {
@@ -5421,11 +5421,11 @@ export type PcktApiV1GoatPricePayload = {
     /**
      * The country code to fetch prices (optional, default: US)
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code to fetch prices (optional, default: USD)
      */
-    currencyCode?: string;
+    currency_code?: string;
 };
 
 export type PcktApiV1GoatProductPayload = {
@@ -5443,16 +5443,334 @@ export type PcktApiV1GoatSearchPayload = {
     /**
      * The number of items to fetch (optional, default: 20)
      */
-    pageLimit?: string;
+    page_limit?: string;
     /**
      * The number of pages to fetch (optional, default: 1)
      */
-    pageNumber?: string;
+    page_number?: string;
 };
 
 export type PcktApiV1HealthResponse = {
     message?: string;
     code?: number;
+};
+
+/**
+ * Relations to include in the product response, sent as `display[<relation>]=true` query parameters.
+ */
+export type PcktApiV1KicksDbDisplayOptions = {
+    /**
+     * Include the product `traits` (release date, retail price, colorway...).
+     */
+    traits?: boolean;
+    /**
+     * Include the product `variants` (sizes).
+     */
+    variants?: boolean;
+    /**
+     * Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.
+     */
+    identifiers?: boolean;
+    /**
+     * Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.
+     */
+    prices?: boolean;
+    /**
+     * Include the product sales `statistics` (annual and last 90 days).
+     */
+    statistics?: boolean;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetPricesRequest = {
+    /**
+     * Product UUIDs to get prices for, up to 50.
+     * At least one of `product_ids` or `skus` is required.
+     */
+    product_ids?: Array<string>;
+    /**
+     * Product SKUs to get prices for, up to 50. Takes precedence over `product_ids`.
+     * At least one of `product_ids` or `skus` is required.
+     */
+    skus?: Array<string>;
+    /**
+     * Include the size conversion table of each variant, as `sizes`.
+     */
+    show_sizes?: boolean;
+    /**
+     * Market used for prices and currency, defaults to `US`.
+     */
+    market?: 'CH' | 'DE' | 'DK' | 'FI' | 'FR' | 'UK' | 'IT' | 'NL' | 'US' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+};
+
+export type PcktApiV1KicksDbStockXServiceGetPricesResponse = {
+    /**
+     * Prices of each product found, products not found are omitted.
+     */
+    data?: Array<PcktApiV1CompatStockXPriceBatch>;
+    /**
+     * Always empty, kept for compatibility.
+     */
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
+export type PcktApiV1KicksDbStockXServiceGetProductRequest = {
+    /**
+     * Product UUID or slug.
+     */
+    id: string;
+    /**
+     * Market used for prices and currency, defaults to `US`.
+     */
+    market?: 'CH' | 'DE' | 'DK' | 'FI' | 'FR' | 'UK' | 'IT' | 'NL' | 'US' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+    /**
+     * Relations to include in the response.
+     */
+    display?: PcktApiV1KicksDbDisplayOptions;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetProductResponse = {
+    /**
+     * The product.
+     */
+    data?: PcktApiV1CompatStockXProduct;
+    /**
+     * Always empty, kept for compatibility.
+     */
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
+export type PcktApiV1KicksDbStockXServiceGetProductsRequest = {
+    /**
+     * Full-text search query.
+     */
+    query?: string;
+    /**
+     * Filters in the Meilisearch filter syntax.
+     * When set, the deprecated individual filters (`ids`, `slug`, `sku`...) are ignored.
+     */
+    filters?: string;
+    /**
+     * Sort order, defaults to `rank`.
+     */
+    sort?: 'id' | 'release_date' | 'rank';
+    /**
+     * Page number, starting from 1. Defaults to 1.
+     * For deep pagination, sorting by `id` and filtering with `id > <last id>` is recommended.
+     */
+    page?: number;
+    /**
+     * Number of products per page, from 1 to 100. Defaults to 20.
+     */
+    limit?: number;
+    /**
+     * Market used for prices and currency, defaults to `US`.
+     */
+    market?: 'CH' | 'DE' | 'DK' | 'FI' | 'FR' | 'UK' | 'IT' | 'NL' | 'US' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+    /**
+     * Relations to include in the response.
+     */
+    display?: PcktApiV1KicksDbDisplayOptions;
+    /**
+     * Comma-separated list of product IDs.
+     * Ignored when `filters` is set, use `id IN [...]` instead.
+     *
+     * @deprecated
+     */
+    ids?: string;
+    /**
+     * Comma-separated list of product slugs.
+     * Ignored when `filters` is set, use `slug IN [...]` instead.
+     *
+     * @deprecated
+     */
+    slug?: string;
+    /**
+     * Product SKU.
+     * Ignored when `filters` is set, use `sku = '...'` instead.
+     *
+     * @deprecated
+     */
+    sku?: string;
+    /**
+     * Comma-separated list of barcodes (GTIN, EAN, UPC).
+     * Ignored when `filters` is set, use `barcodes IN [...]` instead.
+     *
+     * @deprecated
+     */
+    gtin?: string;
+    /**
+     * Product brand.
+     * Ignored when `filters` is set, use `brand = '...'` instead.
+     *
+     * @deprecated
+     */
+    brand?: string;
+    /**
+     * Product type, such as `sneakers` or `streetwear`.
+     * Ignored when `filters` is set, use `product_type = '...'` instead.
+     *
+     * @deprecated
+     */
+    product_type?: string;
+    /**
+     * Primary category.
+     * Ignored when `filters` is set, use `category = '...'` instead.
+     *
+     * @deprecated
+     */
+    category?: string;
+    /**
+     * Secondary category.
+     * Ignored when `filters` is set, use `secondary_category = '...'` instead.
+     *
+     * @deprecated
+     */
+    subcategory?: string;
+    /**
+     * Comma-separated list of genders.
+     * Ignored when `filters` is set, use `gender IN [...]` instead.
+     *
+     * @deprecated
+     */
+    gender?: string;
+    /**
+     * Only return products with a rank greater than this value, usable as a cursor.
+     * Ignored when `filters` is set, use `rank > ...` instead.
+     *
+     * @deprecated
+     */
+    after_rank?: number;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetProductsResponse = {
+    /**
+     * Matching products.
+     */
+    data?: Array<PcktApiV1CompatStockXProduct>;
+    /**
+     * Pagination details: `current_page`, `per_page`, `total` and `index_ms`.
+     */
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryDailyRequest = {
+    /**
+     * Product UUID.
+     */
+    id: string;
+    /**
+     * Only return days before this date (`YYYY-MM-DD`).
+     * Pass the `date` of the last day to get the next page.
+     */
+    cursor?: string;
+    /**
+     * Market of the sales, defaults to `US`. Only `US` and `DE` are available.
+     */
+    market?: 'US' | 'DE';
+    /**
+     * Number of days to return, from 1 to 150. Defaults to 100.
+     */
+    limit?: number;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryDailyResponse = {
+    /**
+     * Daily sales, the most recent first.
+     */
+    data?: Array<PcktApiV1KicksDbStockXServiceGetSalesHistoryDailyResponseItem>;
+    /**
+     * Always empty, kept for compatibility.
+     */
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * Aggregated sales of a product over one day.
+ */
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryDailyResponseItem = {
+    /**
+     * Product UUID.
+     */
+    product_id?: string;
+    /**
+     * Average sale amount of the day, in the currency of the market.
+     */
+    avg_amount?: number;
+    /**
+     * Number of sales of the day.
+     */
+    orders?: number;
+    /**
+     * Day of the sales (`YYYY-MM-DD`).
+     */
+    date?: string;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryRequest = {
+    /**
+     * Product UUID.
+     */
+    id: string;
+    /**
+     * Only return the sales of this variant UUID.
+     */
+    variant_id?: string;
+    /**
+     * Only return sales older than this datetime.
+     * Pass the `created_at` of the last sale to get the next page.
+     */
+    cursor?: string;
+    /**
+     * Market of the sales, defaults to `US`. Only `US` and `DE` are available.
+     */
+    market?: 'US' | 'DE';
+    /**
+     * Number of sales to return, from 1 to 150. Defaults to 100.
+     */
+    limit?: number;
+};
+
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryResponse = {
+    /**
+     * Sales, the most recent first.
+     */
+    data?: Array<PcktApiV1KicksDbStockXServiceGetSalesHistoryResponseItem>;
+    /**
+     * Always empty, kept for compatibility.
+     */
+    meta?: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * A single sale of a product variant.
+ */
+export type PcktApiV1KicksDbStockXServiceGetSalesHistoryResponseItem = {
+    /**
+     * Product UUID.
+     */
+    product_id?: string;
+    /**
+     * Variant UUID.
+     */
+    variant_id?: string;
+    /**
+     * Sale amount, in the currency of the market.
+     */
+    amount?: number;
+    /**
+     * Datetime of the sale.
+     */
+    created_at?: string;
 };
 
 export type PcktApiV1KickscrewProductPayload = {
@@ -5487,7 +5805,7 @@ export type PcktApiV1NikeProductPayload = {
     /**
      * The group key (not the product id!) (required)
      */
-    groupKey: string;
+    group_key: string;
     /**
      * The country code to fetch data (default: "US")
      */
@@ -5563,22 +5881,22 @@ export type PcktApiV1PoizonProductPayload = {
     /**
      * Poizon SPU Id (required)
      */
-    spuId: string;
+    spu_id: string;
 };
 
 export type PcktApiV1PoizonSalesHistoryPayload = {
     /**
      * Poizon SPU Id (required)
      */
-    spuId: string;
+    spu_id: string;
     /**
      * Last order ID for pagination
      */
-    lastOrderId?: string;
+    last_order_id?: string;
     /**
      * Tab Index (default: CN)
      */
-    tabIndex?: string;
+    tab_index?: string;
 };
 
 export type PcktApiV1PoizonSearchPayload = {
@@ -5636,7 +5954,7 @@ export type PcktApiV1SnkrsThreadPayload = {
     /**
      * The thread ID (not product ID!) (required)
      */
-    threadId: string;
+    thread_id: string;
     /**
      * A country in 2 characters (default: US, example: US, KR, FR)
      */
@@ -5758,11 +6076,11 @@ export type PcktApiV1StockXaskBidPayload = {
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
     /**
      * The type of listing to fetch, either ASK or BID (optional, default: "ASK")
      */
@@ -5770,7 +6088,7 @@ export type PcktApiV1StockXaskBidPayload = {
     /**
      * If the ID provided is a variant ID, this should be true (optional, default: "false")
      */
-    isVariant?: boolean;
+    is_variant?: boolean;
 };
 
 export type PcktApiV1StockXProductPayload = {
@@ -5781,11 +6099,11 @@ export type PcktApiV1StockXProductPayload = {
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
 };
 
 export type PcktApiV1StockXRelatedProductsPayload = {
@@ -5796,7 +6114,7 @@ export type PcktApiV1StockXRelatedProductsPayload = {
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The market, most of the time, it should be same as country code (optional, default: "US")
      */
@@ -5804,7 +6122,7 @@ export type PcktApiV1StockXRelatedProductsPayload = {
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
 };
 
 export type PcktApiV1StockXSalesHistoryPayload = {
@@ -5815,15 +6133,15 @@ export type PcktApiV1StockXSalesHistoryPayload = {
     /**
      * If the ID provided is a variant ID, this should be true (optional, default: "false")
      */
-    isVariant?: boolean;
+    is_variant?: boolean;
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
     /**
      * A pagination token to fetch more sales data (optional)
      */
@@ -5831,7 +6149,7 @@ export type PcktApiV1StockXSalesHistoryPayload = {
     /**
      * The viewer context to fetch sales data, either BUYER or SELLER (optional, default: "BUYER")
      */
-    viewerContext?: string;
+    viewer_context?: string;
 };
 
 export type PcktApiV1StockXSearchPayload = {
@@ -5846,11 +6164,11 @@ export type PcktApiV1StockXSearchPayload = {
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
 };
 
 export type PcktApiV1StockXSubtotalPayload = {
@@ -5861,11 +6179,11 @@ export type PcktApiV1StockXSubtotalPayload = {
     /**
      * The country code (optional, default: "US")
      */
-    countryCode?: string;
+    country_code?: string;
     /**
      * The currency code (optional, default: "USD")
      */
-    currencyCode?: string;
+    currency_code?: string;
 };
 
 export type PcktApiV1VintedLanguage = 'VINTED_LANGUAGE_EN' | 'VINTED_LANGUAGE_FR' | 'VINTED_LANGUAGE_DE' | 'VINTED_LANGUAGE_NL' | 'VINTED_LANGUAGE_IT' | 'VINTED_LANGUAGE_ES' | 'VINTED_LANGUAGE_PT' | 'VINTED_LANGUAGE_PL' | 'VINTED_LANGUAGE_CS' | 'VINTED_LANGUAGE_SK' | 'VINTED_LANGUAGE_LT' | 'VINTED_LANGUAGE_LV' | 'VINTED_LANGUAGE_HU' | 'VINTED_LANGUAGE_RO' | 'VINTED_LANGUAGE_FI';
@@ -5913,7 +6231,7 @@ export type PcktApiV1VintedServiceSearchRequest = {
     /**
      * The number of results per page, up to 50 (default: 20)
      */
-    perPage?: number;
+    per_page?: number;
 };
 
 export type PcktApiV1YahooFinanceExchangeRatePayload = {
@@ -5958,11 +6276,11 @@ export type AliasServiceGetOffersData = {
         /**
          * The product condition to filter by (default: new)
          */
-        productCondition?: PcktApiV1AliasProductCondition;
+        product_condition?: PcktApiV1AliasProductCondition;
         /**
          * The packaging condition to filter by (default: good condition)
          */
-        packagingCondition?: PcktApiV1AliasPackagingCondition;
+        packaging_condition?: PcktApiV1AliasPackagingCondition;
         /**
          * The region to get prices from (default: global)
          */
@@ -6000,11 +6318,11 @@ export type AliasServiceGetProductPricesData = {
         /**
          * The product condition to filter by (default: new)
          */
-        productCondition?: PcktApiV1AliasProductCondition;
+        product_condition?: PcktApiV1AliasProductCondition;
         /**
          * The packaging condition to filter by (default: good condition)
          */
-        packagingCondition?: PcktApiV1AliasPackagingCondition;
+        packaging_condition?: PcktApiV1AliasPackagingCondition;
         /**
          * The region to get prices from (default: global)
          */
@@ -6076,11 +6394,11 @@ export type AliasServiceGetRecentOrdersData = {
         /**
          * The product condition to filter by (default: new)
          */
-        productCondition?: PcktApiV1AliasProductCondition;
+        product_condition?: PcktApiV1AliasProductCondition;
         /**
          * The packaging condition to filter by (default: good condition)
          */
-        packagingCondition?: PcktApiV1AliasPackagingCondition;
+        packaging_condition?: PcktApiV1AliasPackagingCondition;
         /**
          * The region to get prices from (default: global)
          */
@@ -6504,7 +6822,7 @@ export type CatalogStockXServiceGetSalesHistoryData = {
         /**
          * A optional variant UUID for filtering by a variant.
          */
-        variantId?: string;
+        variant_id?: string;
         /**
          * A cursor for advancing in sales history
          */
@@ -6516,7 +6834,7 @@ export type CatalogStockXServiceGetSalesHistoryData = {
         /**
          * The page size (default: 100).
          */
-        pageSize?: number;
+        page_size?: number;
     };
     url: '/v1/catalog/stockx/sales';
 };
@@ -6558,7 +6876,7 @@ export type CatalogStockXServiceGetSalesHistoryDailyData = {
         /**
          * The page size (default: 100).
          */
-        pageSize?: number;
+        page_size?: number;
     };
     url: '/v1/catalog/stockx/sales/daily';
 };
@@ -6714,11 +7032,11 @@ export type FlightclubServiceGetProductData = {
         /**
          * The currency code (default: USD)
          */
-        currencyCode?: string;
+        currency_code?: string;
         /**
          * The country code (default: US)
          */
-        countryCode?: string;
+        country_code?: string;
     };
     url: '/v1/flightclub/product';
 };
@@ -6752,15 +7070,15 @@ export type FlightclubServiceSearchData = {
         /**
          * The number of pages to fetch (optional, default: 1)
          */
-        pageNumber?: string;
+        page_number?: string;
         /**
          * The currency code (default: USD)
          */
-        currencyCode?: string;
+        currency_code?: string;
         /**
          * The country code (default: US)
          */
-        countryCode?: string;
+        country_code?: string;
     };
     url: '/v1/flightclub/search';
 };
@@ -6794,15 +7112,15 @@ export type GoatServiceGetOffersData = {
         /**
          * The country code to fetch sales history (optional, default: US)
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code to fetch sales history (optional, default: USD)
          */
-        currencyCode?: string;
+        currency_code?: string;
         /**
          * A pagination token to keep fetching sales data
          */
-        paginationToken?: string;
+        pagination_token?: string;
     };
     url: '/v1/goat/history';
 };
@@ -6836,11 +7154,11 @@ export type GoatServiceGetPriceData = {
         /**
          * The country code to fetch prices (optional, default: US)
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code to fetch prices (optional, default: USD)
          */
-        currencyCode?: string;
+        currency_code?: string;
     };
     url: '/v1/goat/price';
 };
@@ -6904,11 +7222,11 @@ export type GoatServiceSearchData = {
         /**
          * The number of items to fetch (optional, default: 20)
          */
-        pageLimit?: string;
+        page_limit?: string;
         /**
          * The number of pages to fetch (optional, default: 1)
          */
-        pageNumber?: string;
+        page_number?: string;
     };
     url: '/v1/goat/search';
 };
@@ -6930,6 +7248,320 @@ export type GoatServiceSearchResponses = {
 };
 
 export type GoatServiceSearchResponse = GoatServiceSearchResponses[keyof GoatServiceSearchResponses];
+
+export type KicksDbStockXServiceGetPricesData = {
+    body: PcktApiV1KicksDbStockXServiceGetPricesRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/kdb/stockx/prices';
+};
+
+export type KicksDbStockXServiceGetPricesErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type KicksDbStockXServiceGetPricesError = KicksDbStockXServiceGetPricesErrors[keyof KicksDbStockXServiceGetPricesErrors];
+
+export type KicksDbStockXServiceGetPricesResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1KicksDbStockXServiceGetPricesResponse;
+};
+
+export type KicksDbStockXServiceGetPricesResponse = KicksDbStockXServiceGetPricesResponses[keyof KicksDbStockXServiceGetPricesResponses];
+
+export type KicksDbStockXServiceGetProductsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Full-text search query.
+         */
+        query?: string;
+        /**
+         * Filters in the Meilisearch filter syntax.
+         * When set, the deprecated individual filters (`ids`, `slug`, `sku`...) are ignored.
+         */
+        filters?: string;
+        /**
+         * Sort order, defaults to `rank`.
+         */
+        sort?: 'id' | 'release_date' | 'rank';
+        /**
+         * Page number, starting from 1. Defaults to 1.
+         * For deep pagination, sorting by `id` and filtering with `id > <last id>` is recommended.
+         */
+        page?: number;
+        /**
+         * Number of products per page, from 1 to 100. Defaults to 20.
+         */
+        limit?: number;
+        /**
+         * Market used for prices and currency, defaults to `US`.
+         */
+        market?: 'CH' | 'DE' | 'DK' | 'FI' | 'FR' | 'UK' | 'IT' | 'NL' | 'US' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+        /**
+         * Include the product `traits` (release date, retail price, colorway...).
+         */
+        'display[traits]'?: boolean;
+        /**
+         * Include the product `variants` (sizes).
+         */
+        'display[variants]'?: boolean;
+        /**
+         * Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.
+         */
+        'display[identifiers]'?: boolean;
+        /**
+         * Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.
+         */
+        'display[prices]'?: boolean;
+        /**
+         * Include the product sales `statistics` (annual and last 90 days).
+         */
+        'display[statistics]'?: boolean;
+        /**
+         * Comma-separated list of product IDs.
+         * Ignored when `filters` is set, use `id IN [...]` instead.
+         *
+         * @deprecated
+         */
+        ids?: string;
+        /**
+         * Comma-separated list of product slugs.
+         * Ignored when `filters` is set, use `slug IN [...]` instead.
+         *
+         * @deprecated
+         */
+        slug?: string;
+        /**
+         * Product SKU.
+         * Ignored when `filters` is set, use `sku = '...'` instead.
+         *
+         * @deprecated
+         */
+        sku?: string;
+        /**
+         * Comma-separated list of barcodes (GTIN, EAN, UPC).
+         * Ignored when `filters` is set, use `barcodes IN [...]` instead.
+         *
+         * @deprecated
+         */
+        gtin?: string;
+        /**
+         * Product brand.
+         * Ignored when `filters` is set, use `brand = '...'` instead.
+         *
+         * @deprecated
+         */
+        brand?: string;
+        /**
+         * Product type, such as `sneakers` or `streetwear`.
+         * Ignored when `filters` is set, use `product_type = '...'` instead.
+         *
+         * @deprecated
+         */
+        product_type?: string;
+        /**
+         * Primary category.
+         * Ignored when `filters` is set, use `category = '...'` instead.
+         *
+         * @deprecated
+         */
+        category?: string;
+        /**
+         * Secondary category.
+         * Ignored when `filters` is set, use `secondary_category = '...'` instead.
+         *
+         * @deprecated
+         */
+        subcategory?: string;
+        /**
+         * Comma-separated list of genders.
+         * Ignored when `filters` is set, use `gender IN [...]` instead.
+         *
+         * @deprecated
+         */
+        gender?: string;
+        /**
+         * Only return products with a rank greater than this value, usable as a cursor.
+         * Ignored when `filters` is set, use `rank > ...` instead.
+         *
+         * @deprecated
+         */
+        after_rank?: number;
+    };
+    url: '/v1/kdb/stockx/products';
+};
+
+export type KicksDbStockXServiceGetProductsErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type KicksDbStockXServiceGetProductsError = KicksDbStockXServiceGetProductsErrors[keyof KicksDbStockXServiceGetProductsErrors];
+
+export type KicksDbStockXServiceGetProductsResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1KicksDbStockXServiceGetProductsResponse;
+};
+
+export type KicksDbStockXServiceGetProductsResponse = KicksDbStockXServiceGetProductsResponses[keyof KicksDbStockXServiceGetProductsResponses];
+
+export type KicksDbStockXServiceGetProductData = {
+    body?: never;
+    path: {
+        /**
+         * Product UUID or slug.
+         */
+        id: string;
+    };
+    query?: {
+        /**
+         * Market used for prices and currency, defaults to `US`.
+         */
+        market?: 'CH' | 'DE' | 'DK' | 'FI' | 'FR' | 'UK' | 'IT' | 'NL' | 'US' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+        /**
+         * Include the product `traits` (release date, retail price, colorway...).
+         */
+        'display[traits]'?: boolean;
+        /**
+         * Include the product `variants` (sizes).
+         */
+        'display[variants]'?: boolean;
+        /**
+         * Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.
+         */
+        'display[identifiers]'?: boolean;
+        /**
+         * Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.
+         */
+        'display[prices]'?: boolean;
+        /**
+         * Include the product sales `statistics` (annual and last 90 days).
+         */
+        'display[statistics]'?: boolean;
+    };
+    url: '/v1/kdb/stockx/products/{id}';
+};
+
+export type KicksDbStockXServiceGetProductErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type KicksDbStockXServiceGetProductError = KicksDbStockXServiceGetProductErrors[keyof KicksDbStockXServiceGetProductErrors];
+
+export type KicksDbStockXServiceGetProductResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1KicksDbStockXServiceGetProductResponse;
+};
+
+export type KicksDbStockXServiceGetProductResponse = KicksDbStockXServiceGetProductResponses[keyof KicksDbStockXServiceGetProductResponses];
+
+export type KicksDbStockXServiceGetSalesHistoryData = {
+    body?: never;
+    path: {
+        /**
+         * Product UUID.
+         */
+        id: string;
+    };
+    query?: {
+        /**
+         * Only return the sales of this variant UUID.
+         */
+        variant_id?: string;
+        /**
+         * Only return sales older than this datetime.
+         * Pass the `created_at` of the last sale to get the next page.
+         */
+        cursor?: string;
+        /**
+         * Market of the sales, defaults to `US`. Only `US` and `DE` are available.
+         */
+        market?: 'US' | 'DE';
+        /**
+         * Number of sales to return, from 1 to 150. Defaults to 100.
+         */
+        limit?: number;
+    };
+    url: '/v1/kdb/stockx/products/{id}/sales';
+};
+
+export type KicksDbStockXServiceGetSalesHistoryErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type KicksDbStockXServiceGetSalesHistoryError = KicksDbStockXServiceGetSalesHistoryErrors[keyof KicksDbStockXServiceGetSalesHistoryErrors];
+
+export type KicksDbStockXServiceGetSalesHistoryResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1KicksDbStockXServiceGetSalesHistoryResponse;
+};
+
+export type KicksDbStockXServiceGetSalesHistoryResponse = KicksDbStockXServiceGetSalesHistoryResponses[keyof KicksDbStockXServiceGetSalesHistoryResponses];
+
+export type KicksDbStockXServiceGetSalesHistoryDailyData = {
+    body?: never;
+    path: {
+        /**
+         * Product UUID.
+         */
+        id: string;
+    };
+    query?: {
+        /**
+         * Only return days before this date (`YYYY-MM-DD`).
+         * Pass the `date` of the last day to get the next page.
+         */
+        cursor?: string;
+        /**
+         * Market of the sales, defaults to `US`. Only `US` and `DE` are available.
+         */
+        market?: 'US' | 'DE';
+        /**
+         * Number of days to return, from 1 to 150. Defaults to 100.
+         */
+        limit?: number;
+    };
+    url: '/v1/kdb/stockx/products/{id}/sales/daily';
+};
+
+export type KicksDbStockXServiceGetSalesHistoryDailyErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type KicksDbStockXServiceGetSalesHistoryDailyError = KicksDbStockXServiceGetSalesHistoryDailyErrors[keyof KicksDbStockXServiceGetSalesHistoryDailyErrors];
+
+export type KicksDbStockXServiceGetSalesHistoryDailyResponses = {
+    /**
+     * A successful response.
+     */
+    200: PcktApiV1KicksDbStockXServiceGetSalesHistoryDailyResponse;
+};
+
+export type KicksDbStockXServiceGetSalesHistoryDailyResponse = KicksDbStockXServiceGetSalesHistoryDailyResponses[keyof KicksDbStockXServiceGetSalesHistoryDailyResponses];
 
 export type KickscrewServiceGetProductData = {
     body?: never;
@@ -7096,7 +7728,7 @@ export type NikeServiceGetProductData = {
         /**
          * The group key (not the product id!) (required)
          */
-        groupKey: string;
+        group_key: string;
         /**
          * The country code to fetch data (default: "US")
          */
@@ -7236,15 +7868,15 @@ export type PoizonServiceGetSalesHistoryData = {
         /**
          * Poizon SPU Id (required)
          */
-        spuId: string;
+        spu_id: string;
         /**
          * Last order ID for pagination
          */
-        lastOrderId?: string;
+        last_order_id?: string;
         /**
          * Tab Index (default: CN)
          */
-        tabIndex?: string;
+        tab_index?: string;
     };
     url: '/v1/poizon/history';
 };
@@ -7274,7 +7906,7 @@ export type PoizonServiceGetProductData = {
         /**
          * Poizon SPU Id (required)
          */
-        spuId: string;
+        spu_id: string;
     };
     url: '/v1/poizon/product';
 };
@@ -7342,7 +7974,7 @@ export type PoizonServiceGetVariantsData = {
         /**
          * Poizon SPU Id (required)
          */
-        spuId: string;
+        spu_id: string;
     };
     url: '/v1/poizon/variants';
 };
@@ -7508,7 +8140,7 @@ export type SnkrsServiceGetThreadData = {
         /**
          * The thread ID (not product ID!) (required)
          */
-        threadId: string;
+        thread_id: string;
         /**
          * A country in 2 characters (default: US, example: US, KR, FR)
          */
@@ -7584,11 +8216,11 @@ export type StockXServiceGetAskBidData = {
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
         /**
          * The type of listing to fetch, either ASK or BID (optional, default: "ASK")
          */
@@ -7596,7 +8228,7 @@ export type StockXServiceGetAskBidData = {
         /**
          * If the ID provided is a variant ID, this should be true (optional, default: "false")
          */
-        isVariant?: boolean;
+        is_variant?: boolean;
     };
     url: '/v1/stockx/asks';
 };
@@ -7630,15 +8262,15 @@ export type StockXServiceGetSalesHistoryData = {
         /**
          * If the ID provided is a variant ID, this should be true (optional, default: "false")
          */
-        isVariant?: boolean;
+        is_variant?: boolean;
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
         /**
          * A pagination token to fetch more sales data (optional)
          */
@@ -7646,7 +8278,7 @@ export type StockXServiceGetSalesHistoryData = {
         /**
          * The viewer context to fetch sales data, either BUYER or SELLER (optional, default: "BUYER")
          */
-        viewerContext?: string;
+        viewer_context?: string;
     };
     url: '/v1/stockx/history';
 };
@@ -7680,11 +8312,11 @@ export type StockXServiceGetProductData = {
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
     };
     url: '/v1/stockx/product';
 };
@@ -7718,7 +8350,7 @@ export type StockXServiceGetRelatedProductsData = {
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The market, most of the time, it should be same as country code (optional, default: "US")
          */
@@ -7726,7 +8358,7 @@ export type StockXServiceGetRelatedProductsData = {
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
     };
     url: '/v1/stockx/related';
 };
@@ -7764,11 +8396,11 @@ export type StockXServiceSearchData = {
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
     };
     url: '/v1/stockx/search';
 };
@@ -7802,11 +8434,11 @@ export type StockXServiceGetSubtotalData = {
         /**
          * The country code (optional, default: "US")
          */
-        countryCode?: string;
+        country_code?: string;
         /**
          * The currency code (optional, default: "USD")
          */
-        currencyCode?: string;
+        currency_code?: string;
     };
     url: '/v1/stockx/subtotal';
 };
@@ -7890,7 +8522,7 @@ export type VintedServiceSearchData = {
         /**
          * The number of results per page, up to 50 (default: 20)
          */
-        perPage?: number;
+        per_page?: number;
     };
     url: '/v1/vinted/search';
 };

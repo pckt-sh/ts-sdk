@@ -49,7 +49,7 @@
             }
           },
           {
-            "name": "productCondition",
+            "name": "product_condition",
             "in": "query",
             "description": "The product condition to filter by (default: new)",
             "schema": {
@@ -60,7 +60,7 @@
             }
           },
           {
-            "name": "packagingCondition",
+            "name": "packaging_condition",
             "in": "query",
             "description": "The packaging condition to filter by (default: good condition)",
             "schema": {
@@ -129,7 +129,7 @@
             }
           },
           {
-            "name": "productCondition",
+            "name": "product_condition",
             "in": "query",
             "description": "The product condition to filter by (default: new)",
             "schema": {
@@ -140,7 +140,7 @@
             }
           },
           {
-            "name": "packagingCondition",
+            "name": "packaging_condition",
             "in": "query",
             "description": "The packaging condition to filter by (default: good condition)",
             "schema": {
@@ -267,7 +267,7 @@
             }
           },
           {
-            "name": "productCondition",
+            "name": "product_condition",
             "in": "query",
             "description": "The product condition to filter by (default: new)",
             "schema": {
@@ -278,7 +278,7 @@
             }
           },
           {
-            "name": "packagingCondition",
+            "name": "packaging_condition",
             "in": "query",
             "description": "The packaging condition to filter by (default: good condition)",
             "schema": {
@@ -1034,7 +1034,7 @@
             }
           },
           {
-            "name": "variantId",
+            "name": "variant_id",
             "in": "query",
             "description": "A optional variant UUID for filtering by a variant.",
             "schema": {
@@ -1068,7 +1068,7 @@
             }
           },
           {
-            "name": "pageSize",
+            "name": "page_size",
             "in": "query",
             "description": "The page size (default: 100).",
             "schema": {
@@ -1152,7 +1152,7 @@
             }
           },
           {
-            "name": "pageSize",
+            "name": "page_size",
             "in": "query",
             "description": "The page size (default: 100).",
             "schema": {
@@ -1450,7 +1450,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (default: USD)",
             "schema": {
@@ -1461,7 +1461,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (default: US)",
             "schema": {
@@ -1519,7 +1519,7 @@
             }
           },
           {
-            "name": "pageNumber",
+            "name": "page_number",
             "in": "query",
             "description": "The number of pages to fetch (optional, default: 1)",
             "schema": {
@@ -1531,7 +1531,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (default: USD)",
             "schema": {
@@ -1542,7 +1542,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (default: US)",
             "schema": {
@@ -1600,7 +1600,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code to fetch sales history (optional, default: US)",
             "schema": {
@@ -1611,7 +1611,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code to fetch sales history (optional, default: USD)",
             "schema": {
@@ -1622,7 +1622,7 @@
             }
           },
           {
-            "name": "paginationToken",
+            "name": "pagination_token",
             "in": "query",
             "description": "A pagination token to keep fetching sales data",
             "schema": {
@@ -1677,7 +1677,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code to fetch prices (optional, default: US)",
             "schema": {
@@ -1688,7 +1688,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code to fetch prices (optional, default: USD)",
             "schema": {
@@ -1929,7 +1929,7 @@
             }
           },
           {
-            "name": "pageLimit",
+            "name": "page_limit",
             "in": "query",
             "description": "The number of items to fetch (optional, default: 20)",
             "schema": {
@@ -1941,7 +1941,7 @@
             }
           },
           {
-            "name": "pageNumber",
+            "name": "page_number",
             "in": "query",
             "description": "The number of pages to fetch (optional, default: 1)",
             "schema": {
@@ -2047,6 +2047,669 @@
           }
         },
         "x-request-cost": 100
+      }
+    },
+    "/v1/kdb/stockx/prices": {
+      "post": {
+        "tags": [
+          "StockX (KicksDB-Compatibility)"
+        ],
+        "summary": "Get prices in batch from StockX",
+        "description": "Get the prices of up to 50 StockX products at once, by product UUIDs or SKUs.\n\n**Variants without a price are omitted from the response.**\nSwitch to *Catalog StockX* for cheaper use and same features.",
+        "operationId": "KicksDBStockXService_GetPrices",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetPricesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetPricesResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-request-cost": 60
+      }
+    },
+    "/v1/kdb/stockx/products": {
+      "get": {
+        "tags": [
+          "StockX (KicksDB-Compatibility)"
+        ],
+        "summary": "Get products from StockX",
+        "description": "Search and browse StockX products. Use `display[*]` to include relations in the response.\n\n**`filters` cannot be combined with the deprecated individual filters (`ids`, `slug`, `sku`...).**\nSwitch to *Catalog StockX* for cheaper use and same features.",
+        "operationId": "KicksDBStockXService_GetProducts",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Full-text search query.",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "air jordan 1"
+              ]
+            }
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Filters in the Meilisearch filter syntax.\nWhen set, the deprecated individual filters (`ids`, `slug`, `sku`...) are ignored.",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "brand = 'Nike' AND product_type = 'sneakers'"
+              ]
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order, defaults to `rank`.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "release_date",
+                "rank"
+              ],
+              "examples": [
+                "rank"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number, starting from 1. Defaults to 1.\nFor deep pagination, sorting by `id` and filtering with `id \u003e \u003clast id\u003e` is recommended.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "examples": [
+                1
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of products per page, from 1 to 100. Defaults to 20.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "maximum": 100,
+              "examples": [
+                20
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "Market used for prices and currency, defaults to `US`.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CH",
+                "DE",
+                "DK",
+                "FI",
+                "FR",
+                "UK",
+                "IT",
+                "NL",
+                "US",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "display[traits]",
+            "in": "query",
+            "description": "Include the product `traits` (release date, retail price, colorway...).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[variants]",
+            "in": "query",
+            "description": "Include the product `variants` (sizes).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[identifiers]",
+            "in": "query",
+            "description": "Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "display[prices]",
+            "in": "query",
+            "description": "Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[statistics]",
+            "in": "query",
+            "description": "Include the product sales `statistics` (annual and last 90 days).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "Comma-separated list of product IDs.\nIgnored when `filters` is set, use `id IN [...]` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
+              ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "description": "Comma-separated list of product slugs.\nIgnored when `filters` is set, use `slug IN [...]` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "air-jordan-4-retro-white-cement-2025"
+              ]
+            }
+          },
+          {
+            "name": "sku",
+            "in": "query",
+            "description": "Product SKU.\nIgnored when `filters` is set, use `sku = '...'` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "FV5029-100"
+              ]
+            }
+          },
+          {
+            "name": "gtin",
+            "in": "query",
+            "description": "Comma-separated list of barcodes (GTIN, EAN, UPC).\nIgnored when `filters` is set, use `barcodes IN [...]` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "197862948651"
+              ]
+            }
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "description": "Product brand.\nIgnored when `filters` is set, use `brand = '...'` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "Jordan"
+              ]
+            }
+          },
+          {
+            "name": "product_type",
+            "in": "query",
+            "description": "Product type, such as `sneakers` or `streetwear`.\nIgnored when `filters` is set, use `product_type = '...'` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "sneakers"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Primary category.\nIgnored when `filters` is set, use `category = '...'` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "sneakers"
+              ]
+            }
+          },
+          {
+            "name": "subcategory",
+            "in": "query",
+            "description": "Secondary category.\nIgnored when `filters` is set, use `secondary_category = '...'` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "Jordan"
+              ]
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Comma-separated list of genders.\nIgnored when `filters` is set, use `gender IN [...]` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "men,unisex"
+              ]
+            }
+          },
+          {
+            "name": "after_rank",
+            "in": "query",
+            "description": "Only return products with a rank greater than this value, usable as a cursor.\nIgnored when `filters` is set, use `rank \u003e ...` instead.",
+            "deprecated": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                100
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetProductsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-request-cost": 60
+      }
+    },
+    "/v1/kdb/stockx/products/{id}": {
+      "get": {
+        "tags": [
+          "StockX (KicksDB-Compatibility)"
+        ],
+        "summary": "Get a product from StockX",
+        "description": "Get a StockX product by UUID or slug. Use `display[*]` to include relations in the response.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
+        "operationId": "KicksDBStockXService_GetProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product UUID or slug.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "Market used for prices and currency, defaults to `US`.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CH",
+                "DE",
+                "DK",
+                "FI",
+                "FR",
+                "UK",
+                "IT",
+                "NL",
+                "US",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "display[traits]",
+            "in": "query",
+            "description": "Include the product `traits` (release date, retail price, colorway...).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[variants]",
+            "in": "query",
+            "description": "Include the product `variants` (sizes).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[identifiers]",
+            "in": "query",
+            "description": "Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "display[prices]",
+            "in": "query",
+            "description": "Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                true
+              ]
+            }
+          },
+          {
+            "name": "display[statistics]",
+            "in": "query",
+            "description": "Include the product sales `statistics` (annual and last 90 days).",
+            "schema": {
+              "type": "boolean",
+              "examples": [
+                false
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetProductResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-request-cost": 60
+      }
+    },
+    "/v1/kdb/stockx/products/{id}/sales": {
+      "get": {
+        "tags": [
+          "StockX (KicksDB-Compatibility)"
+        ],
+        "summary": "Get sales history for a product from StockX",
+        "description": "Get the individual sales of a StockX product, the most recent first.\nUse `cursor` to paginate through older sales.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
+        "operationId": "KicksDBStockXService_GetSalesHistory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product UUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
+              ]
+            }
+          },
+          {
+            "name": "variant_id",
+            "in": "query",
+            "description": "Only return the sales of this variant UUID.",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "0d4c2b0a-6b1e-4a43-9f1b-3c7f7d2e8a51"
+              ]
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Only return sales older than this datetime.\nPass the `created_at` of the last sale to get the next page.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "examples": [
+                "2026-10-01T12:00:00Z"
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "Market of the sales, defaults to `US`. Only `US` and `DE` are available.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "US",
+                "DE"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of sales to return, from 1 to 150. Defaults to 100.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "maximum": 150,
+              "examples": [
+                100
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetSalesHistoryResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-request-cost": 60
+      }
+    },
+    "/v1/kdb/stockx/products/{id}/sales/daily": {
+      "get": {
+        "tags": [
+          "StockX (KicksDB-Compatibility)"
+        ],
+        "summary": "Get daily sales data for a product from StockX",
+        "description": "Get the daily sales (count and average amount) of a StockX product, the most recent day first.\nUse `cursor` to paginate through older days.\n\nSwitch to *Catalog StockX* for cheaper use and same features.",
+        "operationId": "KicksDBStockXService_GetSalesHistoryDaily",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product UUID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
+              ]
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Only return days before this date (`YYYY-MM-DD`).\nPass the `date` of the last day to get the next page.",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "examples": [
+                "2026-10-01"
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "Market of the sales, defaults to `US`. Only `US` and `DE` are available.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "US",
+                "DE"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of days to return, from 1 to 150. Defaults to 100.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "maximum": 150,
+              "examples": [
+                100
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetSalesHistoryDailyResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true,
+        "x-request-cost": 60
       }
     },
     "/v1/kickscrew/product": {
@@ -2317,7 +2980,7 @@
         "operationId": "NikeService_GetProduct",
         "parameters": [
           {
-            "name": "groupKey",
+            "name": "group_key",
             "in": "query",
             "description": "The group key (not the product id!) (required)",
             "required": true,
@@ -2563,7 +3226,7 @@
         "operationId": "PoizonService_GetSalesHistory",
         "parameters": [
           {
-            "name": "spuId",
+            "name": "spu_id",
             "in": "query",
             "description": "Poizon SPU Id (required)",
             "required": true,
@@ -2576,7 +3239,7 @@
             }
           },
           {
-            "name": "lastOrderId",
+            "name": "last_order_id",
             "in": "query",
             "description": "Last order ID for pagination",
             "schema": {
@@ -2587,7 +3250,7 @@
             }
           },
           {
-            "name": "tabIndex",
+            "name": "tab_index",
             "in": "query",
             "description": "Tab Index (default: CN)",
             "schema": {
@@ -2633,7 +3296,7 @@
         "operationId": "PoizonService_GetProduct",
         "parameters": [
           {
-            "name": "spuId",
+            "name": "spu_id",
             "in": "query",
             "description": "Poizon SPU Id (required)",
             "required": true,
@@ -2751,7 +3414,7 @@
         "operationId": "PoizonService_GetVariants",
         "parameters": [
           {
-            "name": "spuId",
+            "name": "spu_id",
             "in": "query",
             "description": "Poizon SPU Id (required)",
             "required": true,
@@ -3035,7 +3698,7 @@
         "operationId": "SNKRSService_GetThread",
         "parameters": [
           {
-            "name": "threadId",
+            "name": "thread_id",
             "in": "query",
             "description": "The thread ID (not product ID!) (required)",
             "required": true,
@@ -3177,7 +3840,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3188,7 +3851,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3210,7 +3873,7 @@
             }
           },
           {
-            "name": "isVariant",
+            "name": "is_variant",
             "in": "query",
             "description": "If the ID provided is a variant ID, this should be true (optional, default: \"false\")",
             "schema": {
@@ -3268,7 +3931,7 @@
             }
           },
           {
-            "name": "isVariant",
+            "name": "is_variant",
             "in": "query",
             "description": "If the ID provided is a variant ID, this should be true (optional, default: \"false\")",
             "schema": {
@@ -3279,7 +3942,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3290,7 +3953,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3312,7 +3975,7 @@
             }
           },
           {
-            "name": "viewerContext",
+            "name": "viewer_context",
             "in": "query",
             "description": "The viewer context to fetch sales data, either BUYER or SELLER (optional, default: \"BUYER\")",
             "schema": {
@@ -3370,7 +4033,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3381,7 +4044,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3439,7 +4102,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3461,7 +4124,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3531,7 +4194,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3542,7 +4205,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3600,7 +4263,7 @@
             }
           },
           {
-            "name": "countryCode",
+            "name": "country_code",
             "in": "query",
             "description": "The country code (optional, default: \"US\")",
             "schema": {
@@ -3611,7 +4274,7 @@
             }
           },
           {
-            "name": "currencyCode",
+            "name": "currency_code",
             "in": "query",
             "description": "The currency code (optional, default: \"USD\")",
             "schema": {
@@ -3772,7 +4435,7 @@
             }
           },
           {
-            "name": "perPage",
+            "name": "per_page",
             "in": "query",
             "description": "The number of results per page, up to 50 (default: 20)",
             "schema": {
@@ -24221,14 +24884,14 @@
               "10.5"
             ]
           },
-          "productCondition": {
+          "product_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasProductCondition",
             "description": "The product condition to filter by (default: new)",
             "examples": [
               "ALIAS_PRODUCT_CONDITION_NEW"
             ]
           },
-          "packagingCondition": {
+          "packaging_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
             "description": "The packaging condition to filter by (default: good condition)",
             "examples": [
@@ -24259,14 +24922,14 @@
               "bluetile-x-nike-sb-dunk-black-marina-white-iq1323-001"
             ]
           },
-          "productCondition": {
+          "product_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasProductCondition",
             "description": "The product condition to filter by (default: new)",
             "examples": [
               "ALIAS_PRODUCT_CONDITION_NEW"
             ]
           },
-          "packagingCondition": {
+          "packaging_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
             "description": "The packaging condition to filter by (default: good condition)",
             "examples": [
@@ -24319,14 +24982,14 @@
               "10.5"
             ]
           },
-          "productCondition": {
+          "product_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasProductCondition",
             "description": "The product condition to filter by (default: new)",
             "examples": [
               "ALIAS_PRODUCT_CONDITION_NEW"
             ]
           },
-          "packagingCondition": {
+          "packaging_condition": {
             "$ref": "#/components/schemas/pckt.api.v1.AliasPackagingCondition",
             "description": "The packaging condition to filter by (default: good condition)",
             "examples": [
@@ -24460,7 +25123,7 @@
               "USD"
             ]
           },
-          "priceRaw": {
+          "price_raw": {
             "description": "Price as displayed, currency included.",
             "type": "string",
             "examples": [
@@ -24501,7 +25164,7 @@
               true
             ]
           },
-          "amazonBrand": {
+          "amazon_brand": {
             "description": "Whether the product is from an Amazon-owned brand.",
             "type": "boolean",
             "examples": [
@@ -24524,7 +25187,7 @@
               54417
             ]
           },
-          "boughtLastMonth": {
+          "bought_last_month": {
             "description": "Sales indicator as displayed, e.g. \"100K+ bought in past month\".",
             "type": "string",
             "examples": [
@@ -25761,7 +26424,7 @@
               "US"
             ]
           },
-          "pageSize": {
+          "page_size": {
             "description": "The page size (default: 100).",
             "type": "integer",
             "format": "int32",
@@ -25838,7 +26501,7 @@
               "019cdec1-bfba-7a89-96c5-5dc57934a096"
             ]
           },
-          "variantId": {
+          "variant_id": {
             "description": "A optional variant UUID for filtering by a variant.",
             "type": "string",
             "examples": [
@@ -25860,7 +26523,7 @@
               "US"
             ]
           },
-          "pageSize": {
+          "page_size": {
             "description": "The page size (default: 100).",
             "type": "integer",
             "format": "int32",
@@ -26208,7 +26871,7 @@
               ]
             ]
           },
-          "isSku": {
+          "is_sku": {
             "type": "boolean",
             "examples": [
               false
@@ -26484,7 +27147,7 @@
               ]
             ]
           },
-          "showVariants": {
+          "show_variants": {
             "description": "Show variants in the response",
             "type": "boolean",
             "examples": [
@@ -26652,7 +27315,7 @@
               "2026-10-01T12:00:00Z"
             ]
           },
-          "sizeUs": {
+          "size_us": {
             "type": "string",
             "examples": [
               "10"
@@ -26880,13 +27543,13 @@
               ]
             ]
           },
-          "isSku": {
+          "is_sku": {
             "type": "boolean",
             "examples": [
               false
             ]
           },
-          "showSizes": {
+          "show_sizes": {
             "type": "boolean",
             "examples": [
               true
@@ -27457,14 +28120,14 @@
               "air-jordan-1-low-og-last-dance-at-the-garden-ir0088-001"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (default: USD)",
             "type": "string",
             "examples": [
               "USD"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (default: US)",
             "type": "string",
             "examples": [
@@ -27486,7 +28149,7 @@
               "air jordan"
             ]
           },
-          "pageNumber": {
+          "page_number": {
             "description": "The number of pages to fetch (optional, default: 1)",
             "type": "string",
             "format": "int64",
@@ -27494,14 +28157,14 @@
               "1"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (default: USD)",
             "type": "string",
             "examples": [
               "USD"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (default: US)",
             "type": "string",
             "examples": [
@@ -27523,21 +28186,21 @@
               "1731794"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code to fetch sales history (optional, default: US)",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code to fetch sales history (optional, default: USD)",
             "type": "string",
             "examples": [
               "USD"
             ]
           },
-          "paginationToken": {
+          "pagination_token": {
             "description": "A pagination token to keep fetching sales data",
             "type": "string"
           }
@@ -27556,14 +28219,14 @@
               "1731794"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code to fetch prices (optional, default: US)",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code to fetch prices (optional, default: USD)",
             "type": "string",
             "examples": [
@@ -27600,7 +28263,7 @@
               "air jordan"
             ]
           },
-          "pageLimit": {
+          "page_limit": {
             "description": "The number of items to fetch (optional, default: 20)",
             "type": "string",
             "format": "int64",
@@ -27608,7 +28271,7 @@
               "20"
             ]
           },
-          "pageNumber": {
+          "page_number": {
             "description": "The number of pages to fetch (optional, default: 1)",
             "type": "string",
             "format": "int64",
@@ -27635,6 +28298,560 @@
             "format": "int32",
             "examples": [
               200
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBDisplayOptions": {
+        "description": "Relations to include in the product response, sent as `display[\u003crelation\u003e]=true` query parameters.",
+        "type": "object",
+        "properties": {
+          "traits": {
+            "description": "Include the product `traits` (release date, retail price, colorway...).",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "variants": {
+            "description": "Include the product `variants` (sizes).",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "identifiers": {
+            "description": "Include the barcodes (GTIN, EAN, UPC) of each variant, as `identifiers`. Requires `display[variants]`.",
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "prices": {
+            "description": "Include the prices of each variant, per delivery type, as `prices`. Requires `display[variants]`.",
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "statistics": {
+            "description": "Include the product sales `statistics` (annual and last 90 days).",
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetPricesRequest": {
+        "type": "object",
+        "properties": {
+          "product_ids": {
+            "description": "Product UUIDs to get prices for, up to 50.\nAt least one of `product_ids` or `skus` is required.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 50,
+            "examples": [
+              [
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
+              ]
+            ]
+          },
+          "skus": {
+            "description": "Product SKUs to get prices for, up to 50. Takes precedence over `product_ids`.\nAt least one of `product_ids` or `skus` is required.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 50,
+            "examples": [
+              [
+                "1183C468-700"
+              ]
+            ]
+          },
+          "show_sizes": {
+            "description": "Include the size conversion table of each variant, as `sizes`.",
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "market": {
+            "description": "Market used for prices and currency, defaults to `US`.",
+            "type": "string",
+            "enum": [
+              "CH",
+              "DE",
+              "DK",
+              "FI",
+              "FR",
+              "UK",
+              "IT",
+              "NL",
+              "US",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
+            "examples": [
+              "US"
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetPricesResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Prices of each product found, products not found are omitted.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.CompatStockXPriceBatch"
+            }
+          },
+          "meta": {
+            "description": "Always empty, kept for compatibility.",
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetProductRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Product UUID or slug.",
+            "type": "string",
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "market": {
+            "description": "Market used for prices and currency, defaults to `US`.",
+            "type": "string",
+            "enum": [
+              "CH",
+              "DE",
+              "DK",
+              "FI",
+              "FR",
+              "UK",
+              "IT",
+              "NL",
+              "US",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "display": {
+            "$ref": "#/components/schemas/pckt.api.v1.KicksDBDisplayOptions",
+            "description": "Relations to include in the response."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetProductResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/pckt.api.v1.CompatStockXProduct",
+            "description": "The product."
+          },
+          "meta": {
+            "description": "Always empty, kept for compatibility.",
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetProductsRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "description": "Full-text search query.",
+            "type": "string",
+            "examples": [
+              "air jordan 1"
+            ]
+          },
+          "filters": {
+            "description": "Filters in the Meilisearch filter syntax.\nWhen set, the deprecated individual filters (`ids`, `slug`, `sku`...) are ignored.",
+            "type": "string",
+            "examples": [
+              "brand = 'Nike' AND product_type = 'sneakers'"
+            ]
+          },
+          "sort": {
+            "description": "Sort order, defaults to `rank`.",
+            "type": "string",
+            "enum": [
+              "id",
+              "release_date",
+              "rank"
+            ],
+            "examples": [
+              "rank"
+            ]
+          },
+          "page": {
+            "description": "Page number, starting from 1. Defaults to 1.\nFor deep pagination, sorting by `id` and filtering with `id \u003e \u003clast id\u003e` is recommended.",
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "examples": [
+              1
+            ]
+          },
+          "limit": {
+            "description": "Number of products per page, from 1 to 100. Defaults to 20.",
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 100,
+            "examples": [
+              20
+            ]
+          },
+          "market": {
+            "description": "Market used for prices and currency, defaults to `US`.",
+            "type": "string",
+            "enum": [
+              "CH",
+              "DE",
+              "DK",
+              "FI",
+              "FR",
+              "UK",
+              "IT",
+              "NL",
+              "US",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "display": {
+            "$ref": "#/components/schemas/pckt.api.v1.KicksDBDisplayOptions",
+            "description": "Relations to include in the response."
+          },
+          "ids": {
+            "description": "Comma-separated list of product IDs.\nIgnored when `filters` is set, use `id IN [...]` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "slug": {
+            "description": "Comma-separated list of product slugs.\nIgnored when `filters` is set, use `slug IN [...]` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "air-jordan-4-retro-white-cement-2025"
+            ]
+          },
+          "sku": {
+            "description": "Product SKU.\nIgnored when `filters` is set, use `sku = '...'` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "FV5029-100"
+            ]
+          },
+          "gtin": {
+            "description": "Comma-separated list of barcodes (GTIN, EAN, UPC).\nIgnored when `filters` is set, use `barcodes IN [...]` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "197862948651"
+            ]
+          },
+          "brand": {
+            "description": "Product brand.\nIgnored when `filters` is set, use `brand = '...'` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "Jordan"
+            ]
+          },
+          "product_type": {
+            "description": "Product type, such as `sneakers` or `streetwear`.\nIgnored when `filters` is set, use `product_type = '...'` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "sneakers"
+            ]
+          },
+          "category": {
+            "description": "Primary category.\nIgnored when `filters` is set, use `category = '...'` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "sneakers"
+            ]
+          },
+          "subcategory": {
+            "description": "Secondary category.\nIgnored when `filters` is set, use `secondary_category = '...'` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "Jordan"
+            ]
+          },
+          "gender": {
+            "description": "Comma-separated list of genders.\nIgnored when `filters` is set, use `gender IN [...]` instead.",
+            "type": "string",
+            "deprecated": true,
+            "examples": [
+              "men,unisex"
+            ]
+          },
+          "after_rank": {
+            "description": "Only return products with a rank greater than this value, usable as a cursor.\nIgnored when `filters` is set, use `rank \u003e ...` instead.",
+            "type": "integer",
+            "format": "int32",
+            "deprecated": true,
+            "examples": [
+              100
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetProductsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Matching products.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.CompatStockXProduct"
+            }
+          },
+          "meta": {
+            "description": "Pagination details: `current_page`, `per_page`, `total` and `index_ms`.",
+            "type": "object",
+            "additionalProperties": {},
+            "examples": [
+              {
+                "current_page": 1,
+                "per_page": 20,
+                "total": 1450,
+                "index_ms": 3
+              }
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryDailyRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Product UUID.",
+            "type": "string",
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "cursor": {
+            "description": "Only return days before this date (`YYYY-MM-DD`).\nPass the `date` of the last day to get the next page.",
+            "type": "string",
+            "format": "date",
+            "examples": [
+              "2026-10-01"
+            ]
+          },
+          "market": {
+            "description": "Market of the sales, defaults to `US`. Only `US` and `DE` are available.",
+            "type": "string",
+            "enum": [
+              "US",
+              "DE"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "limit": {
+            "description": "Number of days to return, from 1 to 150. Defaults to 100.",
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 150,
+            "examples": [
+              100
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryDailyResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Daily sales, the most recent first.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetSalesHistoryDailyResponse.Item"
+            }
+          },
+          "meta": {
+            "description": "Always empty, kept for compatibility.",
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryDailyResponse.Item": {
+        "description": "Aggregated sales of a product over one day.",
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "description": "Product UUID.",
+            "type": "string",
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "avg_amount": {
+            "description": "Average sale amount of the day, in the currency of the market.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              221
+            ]
+          },
+          "orders": {
+            "description": "Number of sales of the day.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              10
+            ]
+          },
+          "date": {
+            "description": "Day of the sales (`YYYY-MM-DD`).",
+            "type": "string",
+            "format": "date",
+            "examples": [
+              "2026-10-01"
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Product UUID.",
+            "type": "string",
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "variant_id": {
+            "description": "Only return the sales of this variant UUID.",
+            "type": "string",
+            "examples": [
+              "0d4c2b0a-6b1e-4a43-9f1b-3c7f7d2e8a51"
+            ]
+          },
+          "cursor": {
+            "description": "Only return sales older than this datetime.\nPass the `created_at` of the last sale to get the next page.",
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-10-01T12:00:00Z"
+            ]
+          },
+          "market": {
+            "description": "Market of the sales, defaults to `US`. Only `US` and `DE` are available.",
+            "type": "string",
+            "enum": [
+              "US",
+              "DE"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "limit": {
+            "description": "Number of sales to return, from 1 to 150. Defaults to 100.",
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 150,
+            "examples": [
+              100
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Sales, the most recent first.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.KicksDBStockXServiceGetSalesHistoryResponse.Item"
+            }
+          },
+          "meta": {
+            "description": "Always empty, kept for compatibility.",
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "pckt.api.v1.KicksDBStockXServiceGetSalesHistoryResponse.Item": {
+        "description": "A single sale of a product variant.",
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "description": "Product UUID.",
+            "type": "string",
+            "examples": [
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
+            ]
+          },
+          "variant_id": {
+            "description": "Variant UUID.",
+            "type": "string",
+            "examples": [
+              "ca457acc-df77-41fd-85de-7a7208dd25db"
+            ]
+          },
+          "amount": {
+            "description": "Sale amount, in the currency of the market.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              221
+            ]
+          },
+          "created_at": {
+            "description": "Datetime of the sale.",
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-10-01T12:00:00Z"
             ]
           }
         }
@@ -27703,7 +28920,7 @@
       "pckt.api.v1.NikeProductPayload": {
         "type": "object",
         "properties": {
-          "groupKey": {
+          "group_key": {
             "description": "The group key (not the product id!) (required)",
             "type": "string",
             "examples": [
@@ -27726,7 +28943,7 @@
           }
         },
         "required": [
-          "groupKey"
+          "group_key"
         ]
       },
       "pckt.api.v1.NikeSearchPayload": {
@@ -27887,7 +29104,7 @@
       "pckt.api.v1.PoizonProductPayload": {
         "type": "object",
         "properties": {
-          "spuId": {
+          "spu_id": {
             "description": "Poizon SPU Id (required)",
             "type": "string",
             "format": "int64",
@@ -27897,13 +29114,13 @@
           }
         },
         "required": [
-          "spuId"
+          "spu_id"
         ]
       },
       "pckt.api.v1.PoizonSalesHistoryPayload": {
         "type": "object",
         "properties": {
-          "spuId": {
+          "spu_id": {
             "description": "Poizon SPU Id (required)",
             "type": "string",
             "format": "int64",
@@ -27911,14 +29128,14 @@
               "10001362140"
             ]
           },
-          "lastOrderId": {
+          "last_order_id": {
             "description": "Last order ID for pagination",
             "type": "string",
             "examples": [
               "1203948572"
             ]
           },
-          "tabIndex": {
+          "tab_index": {
             "description": "Tab Index (default: CN)",
             "type": "string",
             "examples": [
@@ -27927,7 +29144,7 @@
           }
         },
         "required": [
-          "spuId"
+          "spu_id"
         ]
       },
       "pckt.api.v1.PoizonSearchPayload": {
@@ -28035,7 +29252,7 @@
       "pckt.api.v1.SNKRSThreadPayload": {
         "type": "object",
         "properties": {
-          "threadId": {
+          "thread_id": {
             "description": "The thread ID (not product ID!) (required)",
             "type": "string",
             "examples": [
@@ -28058,7 +29275,7 @@
           }
         },
         "required": [
-          "threadId",
+          "thread_id",
           "country",
           "locale"
         ]
@@ -28313,14 +29530,14 @@
               "12db0831-7ca6-47f1-943a-a2a09352b720"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28334,7 +29551,7 @@
               "ASK"
             ]
           },
-          "isVariant": {
+          "is_variant": {
             "description": "If the ID provided is a variant ID, this should be true (optional, default: \"false\")",
             "type": "boolean",
             "examples": [
@@ -28356,14 +29573,14 @@
               "12db0831-7ca6-47f1-943a-a2a09352b720"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28385,7 +29602,7 @@
               "12db0831-7ca6-47f1-943a-a2a09352b720"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
@@ -28399,7 +29616,7 @@
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28421,21 +29638,21 @@
               "12db0831-7ca6-47f1-943a-a2a09352b720"
             ]
           },
-          "isVariant": {
+          "is_variant": {
             "description": "If the ID provided is a variant ID, this should be true (optional, default: \"false\")",
             "type": "boolean",
             "examples": [
               false
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28449,7 +29666,7 @@
               "eyJjdXJzb3IiOjUwfQ=="
             ]
           },
-          "viewerContext": {
+          "viewer_context": {
             "description": "The viewer context to fetch sales data, either BUYER or SELLER (optional, default: \"BUYER\")",
             "type": "string",
             "examples": [
@@ -28479,14 +29696,14 @@
               1
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28508,14 +29725,14 @@
               "12db0831-7ca6-47f1-943a-a2a09352b720"
             ]
           },
-          "countryCode": {
+          "country_code": {
             "description": "The country code (optional, default: \"US\")",
             "type": "string",
             "examples": [
               "US"
             ]
           },
-          "currencyCode": {
+          "currency_code": {
             "description": "The currency code (optional, default: \"USD\")",
             "type": "string",
             "examples": [
@@ -28642,7 +29859,7 @@
               1
             ]
           },
-          "perPage": {
+          "per_page": {
             "description": "The number of results per page, up to 50 (default: 20)",
             "type": "integer",
             "format": "int32",
@@ -28778,6 +29995,13 @@
       "description": "Direct access to Kicks Crew's storefront. Real-time product search, pricing and availability across\nits catalog of new and resale sneakers.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/kickscrew"
+      }
+    },
+    {
+      "name": "StockX (KicksDB-Compatibility)",
+      "description": "Drop-in replacement for the StockX endpoints of the KicksDB API (`https://api.kicks.dev/v3/stockx/*`).\nRequests and responses follow the KicksDB format, so existing integrations only need to swap the base URL to `https://api.pckt.sh/v1/kdb`.",
+      "externalDocs": {
+        "url": "https://pckt.sh/docs/kicksdb-stockx"
       }
     },
     {
