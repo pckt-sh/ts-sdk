@@ -2123,7 +2123,7 @@
             "operation_id": "CatalogStockXService_GetPrices"
           },
           "message": "This KicksDB-compatible endpoint is kept for migration only and won't receive new features. **Cached StockX** returns the same data in a richer format, at the same or lower cost.",
-          "title": "Deprecated: switch to Cached StockX",
+          "title": "Switch to Cached StockX",
           "type": "deprecated"
         },
         "x-request-cost": 60
@@ -2404,7 +2404,7 @@
             "operation_id": "CatalogStockXService_GetProducts"
           },
           "message": "This KicksDB-compatible endpoint is kept for migration only and won't receive new features. **Cached StockX** returns the same data in a richer format, at the same or lower cost.",
-          "title": "Deprecated: switch to Cached StockX",
+          "title": "Switch to Cached StockX",
           "type": "deprecated"
         },
         "x-request-cost": 60
@@ -2541,7 +2541,7 @@
             "operation_id": "CatalogStockXService_GetProduct"
           },
           "message": "This KicksDB-compatible endpoint is kept for migration only and won't receive new features. **Cached StockX** returns the same data in a richer format, at the same or lower cost.",
-          "title": "Deprecated: switch to Cached StockX",
+          "title": "Switch to Cached StockX",
           "type": "deprecated"
         },
         "x-request-cost": 60
@@ -2650,7 +2650,7 @@
             "operation_id": "CatalogStockXService_GetSalesHistory"
           },
           "message": "This KicksDB-compatible endpoint is kept for migration only and won't receive new features. **Cached StockX** returns the same data in a richer format, at the same or lower cost.",
-          "title": "Deprecated: switch to Cached StockX",
+          "title": "Switch to Cached StockX",
           "type": "deprecated"
         },
         "x-request-cost": 60
@@ -2748,7 +2748,7 @@
             "operation_id": "CatalogStockXService_GetSalesHistoryDaily"
           },
           "message": "This KicksDB-compatible endpoint is kept for migration only and won't receive new features. **Cached StockX** returns the same data in a richer format, at the same or lower cost.",
-          "title": "Deprecated: switch to Cached StockX",
+          "title": "Switch to Cached StockX",
           "type": "deprecated"
         },
         "x-request-cost": 60
