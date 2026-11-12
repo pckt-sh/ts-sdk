@@ -1,6 +1,6 @@
 {
   "name": "@pckt-sh/sdk",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "TypeScript SDK for the PCKT API, generated from its OpenAPI spec.",
   "license": "MIT",
   "repository": {

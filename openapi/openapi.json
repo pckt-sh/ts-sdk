@@ -2076,6 +2076,125 @@
         "x-request-cost": 100
       }
     },
+    "/v1/grailed/listing": {
+      "get": {
+        "tags": [
+          "Grailed"
+        ],
+        "summary": "Get a listing",
+        "description": "Get a listing with its metadata, pricing, photos and seller information by ID",
+        "operationId": "GrailedService_GetListing",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The listing ID (required)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "int64",
+              "examples": [
+                "112042280"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrailedService_GetListingResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 100
+      }
+    },
+    "/v1/grailed/search": {
+      "get": {
+        "tags": [
+          "Grailed"
+        ],
+        "summary": "Search listings",
+        "description": "Search listings on Grailed by name, designer or category",
+        "operationId": "GrailedService_Search",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The search query, matched against title, designer and category (required)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "examples": [
+                "Rick Owens"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The zero-based page to retrieve (default: 0)",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                0
+              ]
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "The number of results per page, up to 100 (default: 20)",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                20
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrailedService_SearchResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 100
+      }
+    },
     "/v1/kdb/stockx/prices": {
       "post": {
         "tags": [
@@ -10733,6 +10852,1774 @@
             "type": "integer",
             "examples": [
               0
+            ]
+          }
+        }
+      },
+      "GrailedService_GetListingResponse": {
+        "type": "object",
+        "properties": {
+          "designer_names": {
+            "type": "string",
+            "examples": [
+              "Nike"
+            ]
+          },
+          "needs_feedback": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "true_created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-11-09T23:42:46.281Z"
+            ]
+          },
+          "published": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "reposts": {
+            "type": "integer",
+            "examples": [
+              1
+            ]
+          },
+          "repost_id": {
+            "type": "null"
+          },
+          "shipping_label": {
+            "type": "object",
+            "properties": {
+              "seller_price": {
+                "type": "string",
+                "examples": [
+                  "15.99"
+                ]
+              },
+              "signature_confirmation_type": {
+                "type": "string",
+                "examples": [
+                  ""
+                ]
+              },
+              "free_shipping": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "generated_at": {
+                "type": "null"
+              },
+              "id": {
+                "type": "integer",
+                "examples": [
+                  25922640
+                ]
+              },
+              "label_type": {
+                "type": "string",
+                "examples": [
+                  "medium"
+                ]
+              }
+            }
+          },
+          "seller_rating": {
+            "type": "null"
+          },
+          "photos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "examples": [
+                    834779205
+                  ]
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "https://media-assets.grailed.com/prd/listing/temp/da863e81ae304c668ea48f1b57a9238c"
+                  ]
+                },
+                "width": {
+                  "type": "null"
+                },
+                "height": {
+                  "type": "null"
+                },
+                "rotate": {
+                  "type": "integer",
+                  "examples": [
+                    0
+                  ]
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "examples": [
+                    "2026-11-09T23:42:45.612Z"
+                  ]
+                }
+              }
+            }
+          },
+          "expired": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "exact_size": {
+            "type": "string",
+            "examples": [
+              ""
+            ]
+          },
+          "sold_shipping_price": {
+            "type": "null"
+          },
+          "pretty_path": {
+            "type": "string",
+            "examples": [
+              "/listings/111850434-nike-nike-sb-dunk-low-nicole-hause"
+            ]
+          },
+          "deleted": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "title": {
+            "type": "string",
+            "examples": [
+              "Nike sb dunk low Nicole Hause"
+            ]
+          },
+          "shipping": {
+            "type": "object",
+            "properties": {
+              "eu": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              },
+              "asia": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              },
+              "au": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              },
+              "other": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              },
+              "us": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number",
+                    "examples": [
+                      12.99
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      true
+                    ]
+                  }
+                }
+              },
+              "ca": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              },
+              "uk": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "type": "integer",
+            "examples": [
+              111850434
+            ]
+          },
+          "badges": {
+            "type": "array",
+            "items": {}
+          },
+          "category": {
+            "type": "string",
+            "examples": [
+              "footwear"
+            ]
+          },
+          "payment_destination": {
+            "type": "null"
+          },
+          "department": {
+            "type": "string",
+            "examples": [
+              "menswear"
+            ]
+          },
+          "hidden_from_algolia": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "purchased_via": {
+            "type": "null"
+          },
+          "return_address_country_code": {
+            "type": "string",
+            "examples": [
+              "US"
+            ]
+          },
+          "price_drops": {
+            "type": "array",
+            "items": {}
+          },
+          "condition": {
+            "type": "string",
+            "examples": [
+              "is_gently_used"
+            ]
+          },
+          "external_seller_reference": {
+            "type": "null"
+          },
+          "category_path": {
+            "type": "string",
+            "examples": [
+              "footwear.lowtop_sneakers"
+            ]
+          },
+          "last_relist_path": {
+            "type": "null"
+          },
+          "make_offer": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "sold_price": {
+            "type": "integer",
+            "examples": [
+              0
+            ]
+          },
+          "pretty_size": {
+            "type": "string",
+            "examples": [
+              "US 10 / EU 43"
+            ]
+          },
+          "in_saved_list": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "hidden": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "price": {
+            "type": "integer",
+            "examples": [
+              80
+            ]
+          },
+          "collaboration": {
+            "type": "null"
+          },
+          "needs_tracking": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "styles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "sportswear"
+              ]
+            }
+          },
+          "seller": {
+            "type": "object",
+            "properties": {
+              "listings_for_sale_count": {
+                "type": "integer",
+                "examples": [
+                  6
+                ]
+              },
+              "is_followed": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "following_count": {
+                "type": "integer",
+                "examples": [
+                  5
+                ]
+              },
+              "location_abbreviation": {
+                "type": "string",
+                "examples": [
+                  "us"
+                ]
+              },
+              "buyer_score": {
+                "type": "object",
+                "properties": {
+                  "purchase_count": {
+                    "type": "integer",
+                    "examples": [
+                      53
+                    ]
+                  },
+                  "would_sell_to_again_count": {
+                    "type": "integer",
+                    "examples": [
+                      53
+                    ]
+                  }
+                }
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "examples": [
+                  "2025-03-14T04:28:07.134Z"
+                ]
+              },
+              "followed_listings": {
+                "type": "array",
+                "items": {}
+              },
+              "id": {
+                "type": "integer",
+                "examples": [
+                  16336335
+                ]
+              },
+              "country_code": {
+                "type": "string",
+                "examples": [
+                  "US"
+                ]
+              },
+              "seller_badges_revoked": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "follower_count": {
+                "type": "integer",
+                "examples": [
+                  10
+                ]
+              },
+              "duties_covered_by_seller": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "account_preferences": {
+                "type": "object",
+                "properties": {
+                  "label_print_size": {
+                    "type": "string",
+                    "examples": [
+                      "standard"
+                    ]
+                  },
+                  "expedited_shipping": {
+                    "type": "boolean",
+                    "examples": [
+                      false
+                    ]
+                  },
+                  "departments": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "menswear"
+                      ]
+                    }
+                  }
+                }
+              },
+              "is_verified": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "power_seller_group": {
+                "type": "null"
+              },
+              "needs_to_connect_paypal_merchant_account": {
+                "type": "boolean",
+                "examples": [
+                  true
+                ]
+              },
+              "is_quick_responder": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "is_ops_agent": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "is_trusted_seller": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "group": {
+                "type": "string",
+                "examples": [
+                  "users"
+                ]
+              },
+              "total_bought_and_sold": {
+                "type": "integer",
+                "examples": [
+                  67
+                ]
+              },
+              "is_admin": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "username": {
+                "type": "string",
+                "examples": [
+                  "nmx02"
+                ]
+              },
+              "location": {
+                "type": "string",
+                "examples": [
+                  "United States"
+                ]
+              },
+              "seller_score": {
+                "type": "object",
+                "properties": {
+                  "rating_average": {
+                    "type": "integer",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "rating_count": {
+                    "type": "integer",
+                    "examples": [
+                      8
+                    ]
+                  },
+                  "tag_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "item-as-described"
+                      ]
+                    }
+                  },
+                  "sold_count": {
+                    "type": "integer",
+                    "examples": [
+                      14
+                    ]
+                  }
+                }
+              },
+              "is_trusted_partner": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "is_speedy_shipper": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "paypal_merchant_id": {
+                "type": "null"
+              },
+              "is_blocked": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "avatar_url": {
+                "type": "string",
+                "format": "uri",
+                "examples": [
+                  "https://media-assets.grailed.com/prd/avatar/16336335/1604b9de1ff941a3add0e7d3bde02e3b"
+                ]
+              },
+              "is_confirmed": {
+                "type": "boolean",
+                "examples": [
+                  true
+                ]
+              },
+              "vacation": {
+                "type": "null"
+              },
+              "is_deleted": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "is_managed_seller": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "is_banned": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              }
+            }
+          },
+          "designers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "examples": [
+                    30
+                  ]
+                },
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "Nike"
+                  ]
+                },
+                "departments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": [
+                      "menswear"
+                    ]
+                  }
+                },
+                "slug": {
+                  "type": "string",
+                  "examples": [
+                    "nike"
+                  ]
+                },
+                "logo_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "examples": [
+                    "https://media-assets.grailed.com/prd/detail-page/57c2a7cc871c4246b7b8da69ec0ba555"
+                  ]
+                }
+              }
+            }
+          },
+          "deleted_via_refund": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "dropped": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "sold": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "measurements": {
+            "type": "array",
+            "items": {}
+          },
+          "follower_count": {
+            "type": "integer",
+            "examples": [
+              15
+            ]
+          },
+          "price_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-11-09T23:42:57.218Z"
+            ]
+          },
+          "sold_price_includes_shipping": {
+            "type": "null"
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Worn one time in great condition still barely any signs of wear any flaws are showing comes will all accessories and box, if you have any questions feel free to message me, always open to offers"
+            ]
+          },
+          "sold_at": {
+            "type": "null"
+          },
+          "sold_with_label": {
+            "type": "null"
+          },
+          "size": {
+            "type": "string",
+            "examples": [
+              "10"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-11-09T23:42:57.218Z"
+            ]
+          },
+          "subcategory": {
+            "type": "string",
+            "examples": [
+              "Low-Top Sneakers"
+            ]
+          },
+          "traits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "color"
+                  ]
+                },
+                "value": {
+                  "type": "string",
+                  "examples": [
+                    "white"
+                  ]
+                }
+              }
+            }
+          },
+          "followed": {
+            "type": "null"
+          },
+          "was_digitally_authenticated": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "buy_now": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "minimum_price": {
+            "type": "null"
+          },
+          "strata": {
+            "type": "string",
+            "examples": [
+              "hype"
+            ]
+          },
+          "payment_status": {
+            "type": "null"
+          },
+          "buyer_id": {
+            "type": "null"
+          }
+        }
+      },
+      "GrailedService_SearchResponse": {
+        "type": "object",
+        "properties": {
+          "hits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "badges": {
+                  "type": "array",
+                  "items": {}
+                },
+                "bumped_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "examples": [
+                    "2026-11-11T20:51:05.752Z"
+                  ]
+                },
+                "buynow": {
+                  "type": "boolean",
+                  "examples": [
+                    true
+                  ]
+                },
+                "category_path_size": {
+                  "type": "string",
+                  "examples": [
+                    "footwear.lowtop_sneakers.12"
+                  ]
+                },
+                "category_path": {
+                  "type": "string",
+                  "examples": [
+                    "footwear.lowtop_sneakers"
+                  ]
+                },
+                "category_size": {
+                  "type": "string",
+                  "examples": [
+                    "footwear.12"
+                  ]
+                },
+                "category": {
+                  "type": "string",
+                  "examples": [
+                    "footwear"
+                  ]
+                },
+                "color": {
+                  "type": "string",
+                  "examples": [
+                    "black"
+                  ]
+                },
+                "condition": {
+                  "type": "string",
+                  "examples": [
+                    "is_used"
+                  ]
+                },
+                "cover_photo": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "examples": [
+                        836255621
+                      ]
+                    },
+                    "listing_id": {
+                      "type": "integer",
+                      "examples": [
+                        112042280
+                      ]
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "examples": [
+                        "2026-11-11T20:51:05.630Z"
+                      ]
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "examples": [
+                        "2026-11-11T20:51:05.771Z"
+                      ]
+                    },
+                    "width": {
+                      "type": "null"
+                    },
+                    "height": {
+                      "type": "null"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "https://media-assets.grailed.com/prd/listing/temp/b3af87e3959243ebb97427eaa09ebee7"
+                      ]
+                    },
+                    "position": {
+                      "type": "integer",
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "rotate": {
+                      "type": "integer",
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "image_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "https://media-assets.grailed.com/prd/listing/temp/b3af87e3959243ebb97427eaa09ebee7"
+                      ]
+                    }
+                  }
+                },
+                "created_at_i": {
+                  "type": "integer",
+                  "examples": [
+                    1794430273
+                  ]
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "examples": [
+                    "2026-11-11T20:51:13.193Z"
+                  ]
+                },
+                "deleted": {
+                  "type": "boolean",
+                  "examples": [
+                    false
+                  ]
+                },
+                "department": {
+                  "type": "string",
+                  "examples": [
+                    "menswear"
+                  ]
+                },
+                "designer_names": {
+                  "type": "string",
+                  "examples": [
+                    "Rick Owens"
+                  ]
+                },
+                "designers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "examples": [
+                          32
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "examples": [
+                          "Rick Owens"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "dropped": {
+                  "type": "boolean",
+                  "examples": [
+                    false
+                  ]
+                },
+                "followerno": {
+                  "type": "integer",
+                  "examples": [
+                    14
+                  ]
+                },
+                "heat_f": {
+                  "type": "number",
+                  "examples": [
+                    4720.74971603317
+                  ]
+                },
+                "id": {
+                  "type": "integer",
+                  "examples": [
+                    112042280
+                  ]
+                },
+                "location": {
+                  "type": "string",
+                  "examples": [
+                    "United States"
+                  ]
+                },
+                "makeoffer": {
+                  "type": "boolean",
+                  "examples": [
+                    true
+                  ]
+                },
+                "marketplace": {
+                  "type": "string",
+                  "examples": [
+                    "grailed"
+                  ]
+                },
+                "price_drops": {
+                  "type": "array",
+                  "items": {}
+                },
+                "price_i": {
+                  "type": "integer",
+                  "examples": [
+                    475
+                  ]
+                },
+                "price_updated_at_i": {
+                  "type": "integer",
+                  "examples": [
+                    1794430273
+                  ]
+                },
+                "price_updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "examples": [
+                    "2026-11-11T20:51:13.193Z"
+                  ]
+                },
+                "price": {
+                  "type": "integer",
+                  "examples": [
+                    475
+                  ]
+                },
+                "repost_id": {
+                  "type": "null"
+                },
+                "size": {
+                  "type": "string",
+                  "examples": [
+                    "12"
+                  ]
+                },
+                "sold_at": {
+                  "type": "null"
+                },
+                "sold": {
+                  "type": "boolean",
+                  "examples": [
+                    false
+                  ]
+                },
+                "strata": {
+                  "type": "string",
+                  "examples": [
+                    "grailed"
+                  ]
+                },
+                "styles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": [
+                      "basics"
+                    ]
+                  }
+                },
+                "title": {
+                  "type": "string",
+                  "examples": [
+                    "Rick Owens Porterville DRKSHDW vintage low ‘Black Milk’"
+                  ]
+                },
+                "traits": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "examples": [
+                          "color"
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "examples": [
+                          "black"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "examples": [
+                        5140568
+                      ]
+                    },
+                    "username": {
+                      "type": "string",
+                      "examples": [
+                        "Chrisxrob"
+                      ]
+                    },
+                    "total_bought_and_sold": {
+                      "type": "integer",
+                      "examples": [
+                        177
+                      ]
+                    },
+                    "avatar_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "examples": [
+                        "https://media-assets.grailed.com/prd/avatar/5140568/c0382704be644e14a4504b1d8bca4d37"
+                      ]
+                    },
+                    "seller_score": {
+                      "type": "object",
+                      "properties": {
+                        "rating_average": {
+                          "type": "number",
+                          "examples": [
+                            4.975
+                          ]
+                        },
+                        "rating_count": {
+                          "type": "integer",
+                          "examples": [
+                            40
+                          ]
+                        }
+                      }
+                    },
+                    "trusted_seller": {
+                      "type": "boolean",
+                      "examples": [
+                        true
+                      ]
+                    }
+                  }
+                },
+                "sold_price": {
+                  "type": "integer",
+                  "examples": [
+                    0
+                  ]
+                },
+                "sold_price_includes_shipping": {
+                  "type": "null"
+                },
+                "sold_shipping_price": {
+                  "type": "null"
+                },
+                "sold_at_i": {
+                  "type": "integer",
+                  "examples": [
+                    0
+                  ]
+                },
+                "shipping": {
+                  "type": "object",
+                  "properties": {
+                    "us": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "number",
+                          "examples": [
+                            15.99
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            true
+                          ]
+                        }
+                      }
+                    },
+                    "ca": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    },
+                    "uk": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    },
+                    "eu": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    },
+                    "asia": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    },
+                    "au": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    },
+                    "other": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer",
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "enabled": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "heat_recency": {
+                  "type": "number",
+                  "examples": [
+                    9437.69207714428
+                  ]
+                },
+                "photo_count": {
+                  "type": "integer",
+                  "examples": [
+                    7
+                  ]
+                },
+                "measurement_count": {
+                  "type": "integer",
+                  "examples": [
+                    0
+                  ]
+                },
+                "DZ_AH_enriched": {
+                  "type": "boolean",
+                  "examples": [
+                    true
+                  ]
+                },
+                "DZ_AH_enriched_at_i": {
+                  "type": "integer",
+                  "examples": [
+                    1794430567
+                  ]
+                },
+                "DZ_AH_tier": {
+                  "type": "integer",
+                  "examples": [
+                    200
+                  ]
+                },
+                "DZ_cl_ntiles_0_A": {
+                  "type": "integer",
+                  "examples": [
+                    1
+                  ]
+                },
+                "DZ_cl_ntiles_1_A": {
+                  "type": "integer",
+                  "examples": [
+                    3
+                  ]
+                },
+                "DZ_cl_ntiles_2_A": {
+                  "type": "integer",
+                  "examples": [
+                    7
+                  ]
+                },
+                "DZ_cl_ntiles_3_A": {
+                  "type": "integer",
+                  "examples": [
+                    15
+                  ]
+                },
+                "DZ_cl_ntiles_4_A": {
+                  "type": "integer",
+                  "examples": [
+                    31
+                  ]
+                },
+                "DZ_enriched_A": {
+                  "type": "boolean",
+                  "examples": [
+                    true
+                  ]
+                },
+                "DZ_enriched_at_i_A": {
+                  "type": "integer",
+                  "examples": [
+                    1794430601
+                  ]
+                },
+                "DZ_score_ntiles_0_A": {
+                  "type": "integer",
+                  "examples": [
+                    1
+                  ]
+                },
+                "DZ_score_ntiles_1_A": {
+                  "type": "integer",
+                  "examples": [
+                    3
+                  ]
+                },
+                "DZ_score_ntiles_2_A": {
+                  "type": "integer",
+                  "examples": [
+                    7
+                  ]
+                },
+                "DZ_score_ntiles_3_A": {
+                  "type": "integer",
+                  "examples": [
+                    15
+                  ]
+                },
+                "DZ_score_ntiles_4_A": {
+                  "type": "integer",
+                  "examples": [
+                    30
+                  ]
+                },
+                "objectID": {
+                  "type": "string",
+                  "examples": [
+                    "112042280"
+                  ]
+                },
+                "_highlightResult": {
+                  "type": "object",
+                  "properties": {
+                    "category_path": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "examples": [
+                            "footwear.lowtop_sneakers"
+                          ]
+                        },
+                        "matchLevel": {
+                          "type": "string",
+                          "examples": [
+                            "none"
+                          ]
+                        },
+                        "matchedWords": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "color": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "examples": [
+                            "black"
+                          ]
+                        },
+                        "matchLevel": {
+                          "type": "string",
+                          "examples": [
+                            "none"
+                          ]
+                        },
+                        "matchedWords": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "department": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "examples": [
+                            "menswear"
+                          ]
+                        },
+                        "matchLevel": {
+                          "type": "string",
+                          "examples": [
+                            "none"
+                          ]
+                        },
+                        "matchedWords": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "designers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "string",
+                                "examples": [
+                                  "\u003cem\u003eRick\u003c/em\u003e \u003cem\u003eOwens\u003c/em\u003e"
+                                ]
+                              },
+                              "matchLevel": {
+                                "type": "string",
+                                "examples": [
+                                  "full"
+                                ]
+                              },
+                              "fullyHighlighted": {
+                                "type": "boolean",
+                                "examples": [
+                                  true
+                                ]
+                              },
+                              "matchedWords": {
+                                "type": "array",
+                                "items": {}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "examples": [
+                            "12"
+                          ]
+                        },
+                        "matchLevel": {
+                          "type": "string",
+                          "examples": [
+                            "none"
+                          ]
+                        },
+                        "matchedWords": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "styles": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "string",
+                            "examples": [
+                              "basics"
+                            ]
+                          },
+                          "matchLevel": {
+                            "type": "string",
+                            "examples": [
+                              "none"
+                            ]
+                          },
+                          "matchedWords": {
+                            "type": "array",
+                            "items": {}
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "examples": [
+                            "\u003cem\u003eRick\u003c/em\u003e \u003cem\u003eOwens\u003c/em\u003e Porterville DRKSHDW vintage low ‘Black Milk’"
+                          ]
+                        },
+                        "matchLevel": {
+                          "type": "string",
+                          "examples": [
+                            "full"
+                          ]
+                        },
+                        "fullyHighlighted": {
+                          "type": "boolean",
+                          "examples": [
+                            false
+                          ]
+                        },
+                        "matchedWords": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "examples": [
+                                "Chrisxrob"
+                              ]
+                            },
+                            "matchLevel": {
+                              "type": "string",
+                              "examples": [
+                                "none"
+                              ]
+                            },
+                            "matchedWords": {
+                              "type": "array",
+                              "items": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "nbHits": {
+            "type": "integer",
+            "examples": [
+              82297
+            ]
+          },
+          "nbSortedHits": {
+            "type": "integer",
+            "examples": [
+              2000
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "examples": [
+              0
+            ]
+          },
+          "nbPages": {
+            "type": "integer",
+            "examples": [
+              500
+            ]
+          },
+          "hitsPerPage": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "exhaustiveNbHits": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "exhaustiveTypo": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "exhaustive": {
+            "type": "object",
+            "properties": {
+              "nbHits": {
+                "type": "boolean",
+                "examples": [
+                  false
+                ]
+              },
+              "typo": {
+                "type": "boolean",
+                "examples": [
+                  true
+                ]
+              }
+            }
+          },
+          "query": {
+            "type": "string",
+            "examples": [
+              " "
+            ]
+          },
+          "params": {
+            "type": "string",
+            "examples": [
+              "query=rick%20owens\u0026hitsPerPage=2\u0026page=0\u0026filters=designers.id%3A32+OR+designers.id%3A583\u0026query=+"
+            ]
+          },
+          "appliedRelevancyStrictness": {
+            "type": "integer",
+            "examples": [
+              0
+            ]
+          },
+          "renderingContent": {
+            "type": "object"
+          },
+          "processingTimeMS": {
+            "type": "integer",
+            "examples": [
+              5
+            ]
+          },
+          "processingTimingsMS": {
+            "type": "object",
+            "properties": {
+              "_request": {
+                "type": "object",
+                "properties": {
+                  "roundTrip": {
+                    "type": "integer",
+                    "examples": [
+                      179
+                    ]
+                  }
+                }
+              },
+              "fetch": {
+                "type": "object",
+                "properties": {
+                  "scanning": {
+                    "type": "integer",
+                    "examples": [
+                      3
+                    ]
+                  },
+                  "total": {
+                    "type": "integer",
+                    "examples": [
+                      4
+                    ]
+                  }
+                }
+              },
+              "total": {
+                "type": "integer",
+                "examples": [
+                  5
+                ]
+              }
+            }
+          },
+          "serverTimeMS": {
+            "type": "integer",
+            "examples": [
+              6
             ]
           }
         }
@@ -28380,6 +30267,55 @@
           "query"
         ]
       },
+      "pckt.api.v1.GrailedServiceGetListingRequest": {
+        "description": "Request payload to fetch a single listing from Grailed",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The listing ID (required)",
+            "type": "string",
+            "format": "int64",
+            "examples": [
+              "112042280"
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.GrailedServiceSearchRequest": {
+        "description": "Request payload to search for listings on Grailed",
+        "type": "object",
+        "properties": {
+          "query": {
+            "description": "The search query, matched against title, designer and category (required)",
+            "type": "string",
+            "examples": [
+              "Rick Owens"
+            ]
+          },
+          "page": {
+            "description": "The zero-based page to retrieve (default: 0)",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "per_page": {
+            "description": "The number of results per page, up to 100 (default: 20)",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              20
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
       "pckt.api.v1.HealthResponse": {
         "type": "object",
         "properties": {
@@ -30054,6 +31990,13 @@
       "description": "Product and market data from GOAT, the sneaker and apparel resale marketplace. Search the catalog,\nget product details, list asks by size and region, and read sales history.",
       "externalDocs": {
         "url": "https://pckt.sh/docs/goat"
+      }
+    },
+    {
+      "name": "Grailed",
+      "description": "Peer-to-peer marketplace for menswear, streetwear and designer fashion.\nSearch listings ranked by popularity and fetch full listing details.",
+      "externalDocs": {
+        "url": "https://pckt.sh/docs/grailed"
       }
     },
     {

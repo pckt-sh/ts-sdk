@@ -1155,6 +1155,369 @@ export type GoatServiceGetOffersResponse = {
     recommendedAverageOfferMultiplier?: number;
 };
 
+export type GrailedServiceGetListingResponse = {
+    designer_names?: string;
+    needs_feedback?: boolean;
+    true_created_at?: string;
+    published?: boolean;
+    reposts?: number;
+    repost_id?: null;
+    shipping_label?: {
+        seller_price?: string;
+        signature_confirmation_type?: string;
+        free_shipping?: boolean;
+        generated_at?: null;
+        id?: number;
+        label_type?: string;
+    };
+    seller_rating?: null;
+    photos?: Array<{
+        id?: number;
+        url?: string;
+        width?: null;
+        height?: null;
+        rotate?: number;
+        created_at?: string;
+    }>;
+    expired?: boolean;
+    exact_size?: string;
+    sold_shipping_price?: null;
+    pretty_path?: string;
+    deleted?: boolean;
+    title?: string;
+    shipping?: {
+        eu?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        asia?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        au?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        other?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        us?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        ca?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+        uk?: {
+            amount?: number;
+            enabled?: boolean;
+        };
+    };
+    id?: number;
+    badges?: Array<unknown>;
+    category?: string;
+    payment_destination?: null;
+    department?: string;
+    hidden_from_algolia?: boolean;
+    purchased_via?: null;
+    return_address_country_code?: string;
+    price_drops?: Array<unknown>;
+    condition?: string;
+    external_seller_reference?: null;
+    category_path?: string;
+    last_relist_path?: null;
+    make_offer?: boolean;
+    sold_price?: number;
+    pretty_size?: string;
+    in_saved_list?: boolean;
+    hidden?: boolean;
+    price?: number;
+    collaboration?: null;
+    needs_tracking?: boolean;
+    styles?: Array<string>;
+    seller?: {
+        listings_for_sale_count?: number;
+        is_followed?: boolean;
+        following_count?: number;
+        location_abbreviation?: string;
+        buyer_score?: {
+            purchase_count?: number;
+            would_sell_to_again_count?: number;
+        };
+        created_at?: string;
+        followed_listings?: Array<unknown>;
+        id?: number;
+        country_code?: string;
+        seller_badges_revoked?: boolean;
+        follower_count?: number;
+        duties_covered_by_seller?: boolean;
+        account_preferences?: {
+            label_print_size?: string;
+            expedited_shipping?: boolean;
+            departments?: Array<string>;
+        };
+        is_verified?: boolean;
+        power_seller_group?: null;
+        needs_to_connect_paypal_merchant_account?: boolean;
+        is_quick_responder?: boolean;
+        is_ops_agent?: boolean;
+        is_trusted_seller?: boolean;
+        group?: string;
+        total_bought_and_sold?: number;
+        is_admin?: boolean;
+        username?: string;
+        location?: string;
+        seller_score?: {
+            rating_average?: number;
+            rating_count?: number;
+            tag_list?: Array<string>;
+            sold_count?: number;
+        };
+        is_trusted_partner?: boolean;
+        is_speedy_shipper?: boolean;
+        paypal_merchant_id?: null;
+        is_blocked?: boolean;
+        avatar_url?: string;
+        is_confirmed?: boolean;
+        vacation?: null;
+        is_deleted?: boolean;
+        is_managed_seller?: boolean;
+        is_banned?: boolean;
+    };
+    designers?: Array<{
+        id?: number;
+        name?: string;
+        departments?: Array<string>;
+        slug?: string;
+        logo_url?: string;
+    }>;
+    deleted_via_refund?: boolean;
+    dropped?: boolean;
+    sold?: boolean;
+    measurements?: Array<unknown>;
+    follower_count?: number;
+    price_updated_at?: string;
+    sold_price_includes_shipping?: null;
+    description?: string;
+    sold_at?: null;
+    sold_with_label?: null;
+    size?: string;
+    created_at?: string;
+    subcategory?: string;
+    traits?: Array<{
+        name?: string;
+        value?: string;
+    }>;
+    followed?: null;
+    was_digitally_authenticated?: boolean;
+    buy_now?: boolean;
+    minimum_price?: null;
+    strata?: string;
+    payment_status?: null;
+    buyer_id?: null;
+};
+
+export type GrailedServiceSearchResponse = {
+    hits?: Array<{
+        badges?: Array<unknown>;
+        bumped_at?: string;
+        buynow?: boolean;
+        category_path_size?: string;
+        category_path?: string;
+        category_size?: string;
+        category?: string;
+        color?: string;
+        condition?: string;
+        cover_photo?: {
+            id?: number;
+            listing_id?: number;
+            created_at?: string;
+            updated_at?: string;
+            width?: null;
+            height?: null;
+            url?: string;
+            position?: number;
+            rotate?: number;
+            image_url?: string;
+        };
+        created_at_i?: number;
+        created_at?: string;
+        deleted?: boolean;
+        department?: string;
+        designer_names?: string;
+        designers?: Array<{
+            id?: number;
+            name?: string;
+        }>;
+        dropped?: boolean;
+        followerno?: number;
+        heat_f?: number;
+        id?: number;
+        location?: string;
+        makeoffer?: boolean;
+        marketplace?: string;
+        price_drops?: Array<unknown>;
+        price_i?: number;
+        price_updated_at_i?: number;
+        price_updated_at?: string;
+        price?: number;
+        repost_id?: null;
+        size?: string;
+        sold_at?: null;
+        sold?: boolean;
+        strata?: string;
+        styles?: Array<string>;
+        title?: string;
+        traits?: Array<{
+            name?: string;
+            value?: string;
+        }>;
+        user?: {
+            id?: number;
+            username?: string;
+            total_bought_and_sold?: number;
+            avatar_url?: string;
+            seller_score?: {
+                rating_average?: number;
+                rating_count?: number;
+            };
+            trusted_seller?: boolean;
+        };
+        sold_price?: number;
+        sold_price_includes_shipping?: null;
+        sold_shipping_price?: null;
+        sold_at_i?: number;
+        shipping?: {
+            us?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            ca?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            uk?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            eu?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            asia?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            au?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+            other?: {
+                amount?: number;
+                enabled?: boolean;
+            };
+        };
+        heat_recency?: number;
+        photo_count?: number;
+        measurement_count?: number;
+        DZ_AH_enriched?: boolean;
+        DZ_AH_enriched_at_i?: number;
+        DZ_AH_tier?: number;
+        DZ_cl_ntiles_0_A?: number;
+        DZ_cl_ntiles_1_A?: number;
+        DZ_cl_ntiles_2_A?: number;
+        DZ_cl_ntiles_3_A?: number;
+        DZ_cl_ntiles_4_A?: number;
+        DZ_enriched_A?: boolean;
+        DZ_enriched_at_i_A?: number;
+        DZ_score_ntiles_0_A?: number;
+        DZ_score_ntiles_1_A?: number;
+        DZ_score_ntiles_2_A?: number;
+        DZ_score_ntiles_3_A?: number;
+        DZ_score_ntiles_4_A?: number;
+        objectID?: string;
+        _highlightResult?: {
+            category_path?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            color?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            department?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            designers?: Array<{
+                name?: {
+                    value?: string;
+                    matchLevel?: string;
+                    fullyHighlighted?: boolean;
+                    matchedWords?: Array<unknown>;
+                };
+            }>;
+            size?: {
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            };
+            styles?: Array<{
+                value?: string;
+                matchLevel?: string;
+                matchedWords?: Array<unknown>;
+            }>;
+            title?: {
+                value?: string;
+                matchLevel?: string;
+                fullyHighlighted?: boolean;
+                matchedWords?: Array<unknown>;
+            };
+            user?: {
+                username?: {
+                    value?: string;
+                    matchLevel?: string;
+                    matchedWords?: Array<unknown>;
+                };
+            };
+        };
+    }>;
+    nbHits?: number;
+    nbSortedHits?: number;
+    page?: number;
+    nbPages?: number;
+    hitsPerPage?: number;
+    exhaustiveNbHits?: boolean;
+    exhaustiveTypo?: boolean;
+    exhaustive?: {
+        nbHits?: boolean;
+        typo?: boolean;
+    };
+    query?: string;
+    params?: string;
+    appliedRelevancyStrictness?: number;
+    renderingContent?: {
+        [key: string]: unknown;
+    };
+    processingTimeMS?: number;
+    processingTimingsMS?: {
+        _request?: {
+            roundTrip?: number;
+        };
+        fetch?: {
+            scanning?: number;
+            total?: number;
+        };
+        total?: number;
+    };
+    serverTimeMS?: number;
+};
+
 export type KickscrewServiceGetProductResponse = {
     data?: {
         product?: {
@@ -5450,6 +5813,34 @@ export type PcktApiV1GoatSearchPayload = {
     page_number?: string;
 };
 
+/**
+ * Request payload to fetch a single listing from Grailed
+ */
+export type PcktApiV1GrailedServiceGetListingRequest = {
+    /**
+     * The listing ID (required)
+     */
+    id: string;
+};
+
+/**
+ * Request payload to search for listings on Grailed
+ */
+export type PcktApiV1GrailedServiceSearchRequest = {
+    /**
+     * The search query, matched against title, designer and category (required)
+     */
+    query: string;
+    /**
+     * The zero-based page to retrieve (default: 0)
+     */
+    page?: number;
+    /**
+     * The number of results per page, up to 100 (default: 20)
+     */
+    per_page?: number;
+};
+
 export type PcktApiV1HealthResponse = {
     message?: string;
     code?: number;
@@ -7248,6 +7639,74 @@ export type GoatServiceSearchResponses = {
 };
 
 export type GoatServiceSearchResponse = GoatServiceSearchResponses[keyof GoatServiceSearchResponses];
+
+export type GrailedServiceGetListingData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The listing ID (required)
+         */
+        id: string;
+    };
+    url: '/v1/grailed/listing';
+};
+
+export type GrailedServiceGetListingErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type GrailedServiceGetListingError = GrailedServiceGetListingErrors[keyof GrailedServiceGetListingErrors];
+
+export type GrailedServiceGetListingResponses = {
+    /**
+     * A successful response.
+     */
+    200: GrailedServiceGetListingResponse;
+};
+
+export type GrailedServiceGetListingResponse2 = GrailedServiceGetListingResponses[keyof GrailedServiceGetListingResponses];
+
+export type GrailedServiceSearchData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The search query, matched against title, designer and category (required)
+         */
+        query: string;
+        /**
+         * The zero-based page to retrieve (default: 0)
+         */
+        page?: number;
+        /**
+         * The number of results per page, up to 100 (default: 20)
+         */
+        per_page?: number;
+    };
+    url: '/v1/grailed/search';
+};
+
+export type GrailedServiceSearchErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type GrailedServiceSearchError = GrailedServiceSearchErrors[keyof GrailedServiceSearchErrors];
+
+export type GrailedServiceSearchResponses = {
+    /**
+     * A successful response.
+     */
+    200: GrailedServiceSearchResponse;
+};
+
+export type GrailedServiceSearchResponse2 = GrailedServiceSearchResponses[keyof GrailedServiceSearchResponses];
 
 export type KicksDbStockXServiceGetPricesData = {
     body: PcktApiV1KicksDbStockXServiceGetPricesRequest;
