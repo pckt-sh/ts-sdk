@@ -79,7 +79,8 @@ export const catalogGoatServiceGetProduct = <ThrowOnError extends boolean = fals
  * Browse products
  *
  * List every cached GOAT product with cursor-based pagination, designed for crawling the catalog.
- * Pass the `cursor` from the previous response to fetch the next page.
+ * Products are ordered by ascending GOAT ID. Pass the `cursor` from the previous response to fetch
+ * the next page, until it is `0`. Cursors never expire, so a traversal can be resumed at any time.
  */
 export const catalogGoatServiceGetProducts = <ThrowOnError extends boolean = false>(options?: Options<CatalogGoatServiceGetProductsData, ThrowOnError>): RequestResult<CatalogGoatServiceGetProductsResponses, CatalogGoatServiceGetProductsErrors, ThrowOnError> => (options?.client ?? client).get<CatalogGoatServiceGetProductsResponses, CatalogGoatServiceGetProductsErrors, ThrowOnError>({ url: '/v1/catalog/goat/products', ...options });
 

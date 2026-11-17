@@ -4951,6 +4951,9 @@ export type PcktApiV1CatalogGoatProduct = {
     title?: string;
     secondary_title?: string;
     product_type?: string;
+    /**
+     * The release date as provided by GOAT, empty when GOAT has none.
+     */
     release_date?: string;
     season?: string;
     sku?: string;
@@ -4983,9 +4986,10 @@ export type PcktApiV1CatalogGoatProductPayload = {
 
 export type PcktApiV1CatalogGoatProductsPayload = {
     /**
-     * A cursor to filter products
+     * The `cursor` returned by the previous page: products with a greater GOAT ID are returned.
+     * Omit it to start from the beginning of the catalog.
      */
-    cursor?: string;
+    cursor?: number;
     /**
      * The market to search in (default: US).
      */
@@ -4994,6 +4998,9 @@ export type PcktApiV1CatalogGoatProductsPayload = {
 
 export type PcktApiV1CatalogGoatProductsResponse = {
     products?: Array<PcktApiV1CatalogGoatProduct>;
+    /**
+     * The cursor to request the next page, `0` once the end of the catalog is reached.
+     */
     cursor?: string;
 };
 
@@ -5195,7 +5202,8 @@ export type PcktApiV1CatalogStockXProductPayload = {
 
 export type PcktApiV1CatalogStockXProductsPayload = {
     /**
-     * A cursor to filter products
+     * The `cursor` returned by the previous page: products with a greater StockX UUID are returned.
+     * Omit it to start from the beginning of the catalog.
      */
     cursor?: string;
     /**
@@ -6965,9 +6973,10 @@ export type CatalogGoatServiceGetProductsData = {
     path?: never;
     query?: {
         /**
-         * A cursor to filter products
+         * The `cursor` returned by the previous page: products with a greater GOAT ID are returned.
+         * Omit it to start from the beginning of the catalog.
          */
-        cursor?: string;
+        cursor?: number;
         /**
          * The market to search in (default: US).
          */
@@ -7173,7 +7182,8 @@ export type CatalogStockXServiceGetProductsData = {
     path?: never;
     query?: {
         /**
-         * A cursor to filter products
+         * The `cursor` returned by the previous page: products with a greater StockX UUID are returned.
+         * Omit it to start from the beginning of the catalog.
          */
         cursor?: string;
         /**

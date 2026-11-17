@@ -590,18 +590,18 @@
           "Cached GOAT"
         ],
         "summary": "Browse products",
-        "description": "List every cached GOAT product with cursor-based pagination, designed for crawling the catalog.\nPass the `cursor` from the previous response to fetch the next page.",
+        "description": "List every cached GOAT product with cursor-based pagination, designed for crawling the catalog.\nProducts are ordered by ascending GOAT ID. Pass the `cursor` from the previous response to fetch\nthe next page, until it is `0`. Cursors never expire, so a traversal can be resumed at any time.",
         "operationId": "CatalogGOATService_GetProducts",
         "parameters": [
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to filter products",
+            "description": "The `cursor` returned by the previous page: products with a greater GOAT ID are returned.\nOmit it to start from the beginning of the catalog.",
             "schema": {
-              "type": "string",
-              "format": "uint64",
+              "type": "integer",
+              "format": "int32",
               "examples": [
-                "1731794"
+                1731794
               ]
             }
           },
@@ -966,12 +966,11 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to filter products",
+            "description": "The `cursor` returned by the previous page: products with a greater StockX UUID are returned.\nOmit it to start from the beginning of the catalog.",
             "schema": {
               "type": "string",
-              "format": "uint64",
               "examples": [
-                "1731794"
+                "019cdec1-bfba-7a89-96c5-5dc57934a096"
               ]
             }
           },
@@ -27405,6 +27404,7 @@
             ]
           },
           "release_date": {
+            "description": "The release date as provided by GOAT, empty when GOAT has none.",
             "type": "string",
             "examples": [
               "2025-11-29"
@@ -27525,11 +27525,11 @@
         "type": "object",
         "properties": {
           "cursor": {
-            "description": "A cursor to filter products",
-            "type": "string",
-            "format": "uint64",
+            "description": "The `cursor` returned by the previous page: products with a greater GOAT ID are returned.\nOmit it to start from the beginning of the catalog.",
+            "type": "integer",
+            "format": "int32",
             "examples": [
-              "1731794"
+              1731794
             ]
           },
           "market": {
@@ -27551,6 +27551,7 @@
             }
           },
           "cursor": {
+            "description": "The cursor to request the next page, `0` once the end of the catalog is reached.",
             "type": "string",
             "format": "uint64",
             "examples": [
@@ -28349,11 +28350,10 @@
         "type": "object",
         "properties": {
           "cursor": {
-            "description": "A cursor to filter products",
+            "description": "The `cursor` returned by the previous page: products with a greater StockX UUID are returned.\nOmit it to start from the beginning of the catalog.",
             "type": "string",
-            "format": "uint64",
             "examples": [
-              "1731794"
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
             ]
           },
           "market": {
@@ -28376,9 +28376,8 @@
           },
           "cursor": {
             "type": "string",
-            "format": "uint64",
             "examples": [
-              "1731795"
+              "019cdec1-bfba-7a89-96c5-5dc57934a096"
             ]
           }
         }
