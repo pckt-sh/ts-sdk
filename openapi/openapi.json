@@ -685,6 +685,17 @@
                 "US"
               ]
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, sku, rank",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "sku IN [\"315122 111\"]"
+              ]
+            }
           }
         ],
         "responses": {
@@ -803,6 +814,17 @@
               "minimum": 0,
               "examples": [
                 1
+              ]
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, source, sku",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "sku IN [\"13786097\", \"13786083\"]"
               ]
             }
           }
@@ -27603,6 +27625,13 @@
             "examples": [
               "US"
             ]
+          },
+          "filter": {
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, sku, rank",
+            "type": "string",
+            "examples": [
+              "sku IN [\"315122 111\"]"
+            ]
           }
         }
       },
@@ -27742,6 +27771,13 @@
             "minimum": 0,
             "examples": [
               1
+            ]
+          },
+          "filter": {
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, source, sku",
+            "type": "string",
+            "examples": [
+              "sku IN [\"13786097\", \"13786083\"]"
             ]
           }
         }
@@ -31947,7 +31983,24 @@
       "pckt.models.v1.ShopifySource": {
         "type": "string",
         "enum": [
-          "KICKSCREW"
+          "KICKSCREW",
+          "SHOPIFY_SOURCE_STADIUMGOODS",
+          "SHOPIFY_SOURCE_KITH",
+          "SHOPIFY_SOURCE_BODEGA",
+          "SHOPIFY_SOURCE_UNDEFEATED",
+          "SHOPIFY_SOURCE_CNCPTS",
+          "SHOPIFY_SOURCE_EXTRA_BUTTER",
+          "SHOPIFY_SOURCE_A_MA_MANIERE",
+          "SHOPIFY_SOURCE_SOCIAL_STATUS",
+          "SHOPIFY_SOURCE_FEATURE",
+          "SHOPIFY_SOURCE_PACKER",
+          "SHOPIFY_SOURCE_SNEAKER_POLITICS",
+          "SHOPIFY_SOURCE_XHIBITION",
+          "SHOPIFY_SOURCE_LAPSTONE_AND_HAMMER",
+          "SHOPIFY_SOURCE_NOTRE",
+          "SHOPIFY_SOURCE_SHOE_PALACE",
+          "SHOPIFY_SOURCE_NICE_KICKS",
+          "SHOPIFY_SOURCE_DTLR"
         ]
       }
     }

@@ -5020,6 +5020,11 @@ export type PcktApiV1CatalogGoatSearchPayload = {
      * The market to search in (default: US).
      */
     market?: string;
+    /**
+     * A MeiliSearch-compatible filter query. The following fields can be filtered:
+     * id, brand, slug, product_type, sku, rank
+     */
+    filter?: string;
 };
 
 export type PcktApiV1CatalogGoatSearchProduct = {
@@ -5062,6 +5067,11 @@ export type PcktApiV1CatalogShopifyServiceSearchRequest = {
      * Page to retrieve, starting at 1, with 15 products per page (default: 1).
      */
     page?: number;
+    /**
+     * A MeiliSearch-compatible filter query. The following fields can be filtered:
+     * id, brand, slug, product_type, source, sku
+     */
+    filter?: string;
 };
 
 export type PcktApiV1CatalogShopifyServiceSearchResponse = {
@@ -6661,7 +6671,7 @@ export type PcktApiV1YahooFinanceSecurityPayload = {
     symbol: string;
 };
 
-export type PcktModelsV1ShopifySource = 'KICKSCREW';
+export type PcktModelsV1ShopifySource = 'KICKSCREW' | 'SHOPIFY_SOURCE_STADIUMGOODS' | 'SHOPIFY_SOURCE_KITH' | 'SHOPIFY_SOURCE_BODEGA' | 'SHOPIFY_SOURCE_UNDEFEATED' | 'SHOPIFY_SOURCE_CNCPTS' | 'SHOPIFY_SOURCE_EXTRA_BUTTER' | 'SHOPIFY_SOURCE_A_MA_MANIERE' | 'SHOPIFY_SOURCE_SOCIAL_STATUS' | 'SHOPIFY_SOURCE_FEATURE' | 'SHOPIFY_SOURCE_PACKER' | 'SHOPIFY_SOURCE_SNEAKER_POLITICS' | 'SHOPIFY_SOURCE_XHIBITION' | 'SHOPIFY_SOURCE_LAPSTONE_AND_HAMMER' | 'SHOPIFY_SOURCE_NOTRE' | 'SHOPIFY_SOURCE_SHOE_PALACE' | 'SHOPIFY_SOURCE_NICE_KICKS' | 'SHOPIFY_SOURCE_DTLR';
 
 export type AliasServiceGetOffersData = {
     body?: never;
@@ -7022,6 +7032,11 @@ export type CatalogGoatServiceSearchData = {
          * The market to search in (default: US).
          */
         market?: string;
+        /**
+         * A MeiliSearch-compatible filter query. The following fields can be filtered:
+         * id, brand, slug, product_type, sku, rank
+         */
+        filter?: string;
     };
     url: '/v1/catalog/goat/search';
 };
@@ -7090,6 +7105,11 @@ export type CatalogShopifyServiceSearchData = {
          * Page to retrieve, starting at 1, with 15 products per page (default: 1).
          */
         page?: number;
+        /**
+         * A MeiliSearch-compatible filter query. The following fields can be filtered:
+         * id, brand, slug, product_type, source, sku
+         */
+        filter?: string;
     };
     url: '/v1/catalog/shopify/search';
 };
