@@ -27446,6 +27446,24 @@
             "items": {
               "$ref": "#/components/schemas/pckt.api.v1.CatalogGOATProduct.Variant"
             }
+          },
+          "color": {
+            "type": "string",
+            "examples": [
+              "Red"
+            ]
+          },
+          "designer": {
+            "type": "string",
+            "examples": [
+              "Tinker Hatfield"
+            ]
+          },
+          "midsole": {
+            "type": "string",
+            "examples": [
+              "Air"
+            ]
           }
         }
       },

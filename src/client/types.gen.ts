@@ -4961,6 +4961,9 @@ export type PcktApiV1CatalogGoatProduct = {
     updated_at?: string;
     link?: string;
     variants?: Array<PcktApiV1CatalogGoatProductVariant>;
+    color?: string;
+    designer?: string;
+    midsole?: string;
 };
 
 export type PcktApiV1CatalogGoatProductVariant = {
