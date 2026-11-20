@@ -553,6 +553,12 @@
             "description": "The market to search in (default: US).",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "UK",
+                "NL",
+                "HK"
+              ],
               "examples": [
                 "US"
               ]
@@ -611,6 +617,12 @@
             "description": "The market to search in (default: US).",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "UK",
+                "NL",
+                "HK"
+              ],
               "examples": [
                 "US"
               ]
@@ -640,6 +652,185 @@
           }
         },
         "x-request-cost": 40
+      }
+    },
+    "/v1/catalog/goat/sales": {
+      "get": {
+        "tags": [
+          "Cached GOAT"
+        ],
+        "summary": "Get sales history",
+        "description": "Get the individual sales of a cached GOAT product.\nSet `cursor` to the `created_at` of the last sale received to fetch older sales.",
+        "operationId": "CatalogGOATService_GetSalesHistory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The product ID.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                1000003
+              ]
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor for advancing in sales history",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "examples": [
+                "2026-10-01T12:00:00Z"
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "The market to search in (default: US)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "US",
+                "HK"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "The page size (default: 100).",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                100
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/pckt.api.v1.CatalogGOATSalesResponse.Item"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 50
+      }
+    },
+    "/v1/catalog/goat/sales/daily": {
+      "get": {
+        "tags": [
+          "Cached GOAT"
+        ],
+        "summary": "Get daily sales history",
+        "description": "Get the sales of a cached GOAT product aggregated by day, with the average price and number\nof orders. Set `cursor` to a date (`YYYY-MM-DD`) to fetch older days.",
+        "operationId": "CatalogGOATService_GetSalesHistoryDaily",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The product ID.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                1000003
+              ]
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A optional cursor for advancing in the sales history",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "2026-10-01"
+              ]
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "description": "The market to search in (default: US)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "US",
+                "HK"
+              ],
+              "examples": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "The page size (default: 100).",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "examples": [
+                100
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/pckt.api.v1.CatalogGOATSalesDailyResponse.Item"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 50
       }
     },
     "/v1/catalog/goat/search": {
@@ -681,6 +872,12 @@
             "description": "The market to search in (default: US).",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "UK",
+                "NL",
+                "HK"
+              ],
               "examples": [
                 "US"
               ]
@@ -884,6 +1081,20 @@
             "description": "The market to search in (defaut: US).",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE",
+                "NL",
+                "IT",
+                "GB",
+                "FR",
+                "FI",
+                "DK",
+                "CH",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
               "examples": [
                 "US"
               ]
@@ -945,6 +1156,20 @@
             "description": "The market to search in (default: US).",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE",
+                "NL",
+                "IT",
+                "GB",
+                "FR",
+                "FI",
+                "DK",
+                "CH",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
               "examples": [
                 "US"
               ]
@@ -1002,6 +1227,20 @@
             "description": "Market for the product",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE",
+                "NL",
+                "IT",
+                "GB",
+                "FR",
+                "FI",
+                "DK",
+                "CH",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
               "examples": [
                 "US"
               ]
@@ -1083,6 +1322,10 @@
             "description": "The market to search in (default: US)",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE"
+              ],
               "examples": [
                 "US"
               ]
@@ -1126,7 +1369,7 @@
             }
           }
         },
-        "x-request-cost": 60
+        "x-request-cost": 50
       }
     },
     "/v1/catalog/stockx/sales/daily": {
@@ -1167,6 +1410,10 @@
             "description": "The market to search in (default: US)",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE"
+              ],
               "examples": [
                 "US"
               ]
@@ -1210,7 +1457,7 @@
             }
           }
         },
-        "x-request-cost": 60
+        "x-request-cost": 50
       }
     },
     "/v1/catalog/stockx/search": {
@@ -1252,6 +1499,20 @@
             "description": "The market to search in (default: US)",
             "schema": {
               "type": "string",
+              "enum": [
+                "US",
+                "DE",
+                "NL",
+                "IT",
+                "GB",
+                "FR",
+                "FI",
+                "DK",
+                "CH",
+                "PL",
+                "NL.vat-registered",
+                "FI.vat-registered"
+              ],
               "examples": [
                 "US"
               ]
@@ -27552,6 +27813,12 @@
           "market": {
             "description": "The market to search in (default: US).",
             "type": "string",
+            "enum": [
+              "US",
+              "UK",
+              "NL",
+              "HK"
+            ],
             "examples": [
               "US"
             ]
@@ -27575,6 +27842,12 @@
           "market": {
             "description": "The market to search in (default: US).",
             "type": "string",
+            "enum": [
+              "US",
+              "UK",
+              "NL",
+              "HK"
+            ],
             "examples": [
               "US"
             ]
@@ -27596,6 +27869,201 @@
             "format": "uint64",
             "examples": [
               "1731795"
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.CatalogGOATSalesDailyPayload": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The product ID.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              1000003
+            ]
+          },
+          "cursor": {
+            "description": "A optional cursor for advancing in the sales history",
+            "type": "string",
+            "examples": [
+              "2026-10-01"
+            ]
+          },
+          "market": {
+            "description": "The market to search in (default: US)",
+            "type": "string",
+            "enum": [
+              "US",
+              "HK"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "page_size": {
+            "description": "The page size (default: 100).",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              100
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.CatalogGOATSalesDailyResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.CatalogGOATSalesDailyResponse.Item"
+            }
+          }
+        }
+      },
+      "pckt.api.v1.CatalogGOATSalesDailyResponse.Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              1000003
+            ]
+          },
+          "avg_amount": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              221
+            ]
+          },
+          "orders": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              742
+            ]
+          },
+          "market": {
+            "type": "string",
+            "examples": [
+              "US"
+            ]
+          },
+          "date": {
+            "type": "string",
+            "examples": [
+              "2026-10-01"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "examples": [
+              "USD"
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.CatalogGOATSalesPayload": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The product ID.",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              1000003
+            ]
+          },
+          "cursor": {
+            "description": "A cursor for advancing in sales history",
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-10-01T12:00:00Z"
+            ]
+          },
+          "market": {
+            "description": "The market to search in (default: US)",
+            "type": "string",
+            "enum": [
+              "US",
+              "HK"
+            ],
+            "examples": [
+              "US"
+            ]
+          },
+          "page_size": {
+            "description": "The page size (default: 100).",
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              100
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "pckt.api.v1.CatalogGOATSalesResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pckt.api.v1.CatalogGOATSalesResponse.Item"
+            }
+          }
+        }
+      },
+      "pckt.api.v1.CatalogGOATSalesResponse.Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              1000003
+            ]
+          },
+          "size": {
+            "type": "string",
+            "examples": [
+              "0d4c2b0a-6b1e-4a43-9f1b-3c7f7d2e8a51"
+            ]
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              218
+            ]
+          },
+          "market": {
+            "type": "string",
+            "examples": [
+              "US"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "examples": [
+              "USD"
+            ]
+          },
+          "purchased_at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-10-01T12:00:00Z"
             ]
           }
         }
@@ -27622,6 +28090,12 @@
           "market": {
             "description": "The market to search in (default: US).",
             "type": "string",
+            "enum": [
+              "US",
+              "UK",
+              "NL",
+              "HK"
+            ],
             "examples": [
               "US"
             ]
@@ -27806,6 +28280,20 @@
           "market": {
             "description": "The market to search in (defaut: US).",
             "type": "string",
+            "enum": [
+              "US",
+              "DE",
+              "NL",
+              "IT",
+              "GB",
+              "FR",
+              "FI",
+              "DK",
+              "CH",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
             "examples": [
               "US"
             ]
@@ -28391,6 +28879,20 @@
           "market": {
             "description": "The market to search in (default: US).",
             "type": "string",
+            "enum": [
+              "US",
+              "DE",
+              "NL",
+              "IT",
+              "GB",
+              "FR",
+              "FI",
+              "DK",
+              "CH",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
             "examples": [
               "US"
             ]
@@ -28413,6 +28915,20 @@
           "market": {
             "description": "Market for the product",
             "type": "string",
+            "enum": [
+              "US",
+              "DE",
+              "NL",
+              "IT",
+              "GB",
+              "FR",
+              "FI",
+              "DK",
+              "CH",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
             "examples": [
               "US"
             ]
@@ -28456,6 +28972,10 @@
           "market": {
             "description": "The market to search in (default: US)",
             "type": "string",
+            "enum": [
+              "US",
+              "DE"
+            ],
             "examples": [
               "US"
             ]
@@ -28555,6 +29075,10 @@
           "market": {
             "description": "The market to search in (default: US)",
             "type": "string",
+            "enum": [
+              "US",
+              "DE"
+            ],
             "examples": [
               "US"
             ]
@@ -28654,6 +29178,20 @@
           "market": {
             "description": "The market to search in (default: US)",
             "type": "string",
+            "enum": [
+              "US",
+              "DE",
+              "NL",
+              "IT",
+              "GB",
+              "FR",
+              "FI",
+              "DK",
+              "CH",
+              "PL",
+              "NL.vat-registered",
+              "FI.vat-registered"
+            ],
             "examples": [
               "US"
             ]

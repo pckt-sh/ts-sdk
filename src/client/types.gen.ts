@@ -4984,7 +4984,7 @@ export type PcktApiV1CatalogGoatProductPayload = {
     /**
      * The market to search in (default: US).
      */
-    market?: string;
+    market?: 'US' | 'UK' | 'NL' | 'HK';
 };
 
 export type PcktApiV1CatalogGoatProductsPayload = {
@@ -4996,7 +4996,7 @@ export type PcktApiV1CatalogGoatProductsPayload = {
     /**
      * The market to search in (default: US).
      */
-    market?: string;
+    market?: 'US' | 'UK' | 'NL' | 'HK';
 };
 
 export type PcktApiV1CatalogGoatProductsResponse = {
@@ -5005,6 +5005,70 @@ export type PcktApiV1CatalogGoatProductsResponse = {
      * The cursor to request the next page, `0` once the end of the catalog is reached.
      */
     cursor?: string;
+};
+
+export type PcktApiV1CatalogGoatSalesDailyPayload = {
+    /**
+     * The product ID.
+     */
+    id: number;
+    /**
+     * A optional cursor for advancing in the sales history
+     */
+    cursor?: string;
+    /**
+     * The market to search in (default: US)
+     */
+    market?: 'US' | 'HK';
+    /**
+     * The page size (default: 100).
+     */
+    page_size?: number;
+};
+
+export type PcktApiV1CatalogGoatSalesDailyResponse = {
+    results?: Array<PcktApiV1CatalogGoatSalesDailyResponseItem>;
+};
+
+export type PcktApiV1CatalogGoatSalesDailyResponseItem = {
+    id?: number;
+    avg_amount?: number;
+    orders?: number;
+    market?: string;
+    date?: string;
+    currency?: string;
+};
+
+export type PcktApiV1CatalogGoatSalesPayload = {
+    /**
+     * The product ID.
+     */
+    id: number;
+    /**
+     * A cursor for advancing in sales history
+     */
+    cursor?: string;
+    /**
+     * The market to search in (default: US)
+     */
+    market?: 'US' | 'HK';
+    /**
+     * The page size (default: 100).
+     */
+    page_size?: number;
+};
+
+export type PcktApiV1CatalogGoatSalesResponse = {
+    results?: Array<PcktApiV1CatalogGoatSalesResponseItem>;
+};
+
+export type PcktApiV1CatalogGoatSalesResponseItem = {
+    id?: number;
+    size?: string;
+    amount?: number;
+    market?: string;
+    currency?: string;
+    purchased_at?: string;
 };
 
 export type PcktApiV1CatalogGoatSearchPayload = {
@@ -5019,7 +5083,7 @@ export type PcktApiV1CatalogGoatSearchPayload = {
     /**
      * The market to search in (default: US).
      */
-    market?: string;
+    market?: 'US' | 'UK' | 'NL' | 'HK';
     /**
      * A MeiliSearch-compatible filter query. The following fields can be filtered:
      * id, brand, slug, product_type, sku, rank
@@ -5086,7 +5150,7 @@ export type PcktApiV1CatalogStockXPricePayload = {
     /**
      * The market to search in (defaut: US).
      */
-    market?: string;
+    market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
 };
 
 export type PcktApiV1CatalogStockXPriceResponse = {
@@ -5210,7 +5274,7 @@ export type PcktApiV1CatalogStockXProductPayload = {
     /**
      * The market to search in (default: US).
      */
-    market?: string;
+    market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
 };
 
 export type PcktApiV1CatalogStockXProductsPayload = {
@@ -5222,7 +5286,7 @@ export type PcktApiV1CatalogStockXProductsPayload = {
     /**
      * Market for the product
      */
-    market?: string;
+    market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
 };
 
 export type PcktApiV1CatalogStockXProductsResponse = {
@@ -5242,7 +5306,7 @@ export type PcktApiV1CatalogStockXSalesDailyPayload = {
     /**
      * The market to search in (default: US)
      */
-    market?: string;
+    market?: 'US' | 'DE';
     /**
      * The page size (default: 100).
      */
@@ -5278,7 +5342,7 @@ export type PcktApiV1CatalogStockXSalesPayload = {
     /**
      * The market to search in (default: US)
      */
-    market?: string;
+    market?: 'US' | 'DE';
     /**
      * The page size (default: 100).
      */
@@ -5311,7 +5375,7 @@ export type PcktApiV1CatalogStockXSearchPayload = {
     /**
      * The market to search in (default: US)
      */
-    market?: string;
+    market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
 };
 
 export type PcktApiV1CatalogStockXSearchResponse = {
@@ -6958,7 +7022,7 @@ export type CatalogGoatServiceGetProductData = {
         /**
          * The market to search in (default: US).
          */
-        market?: string;
+        market?: 'US' | 'UK' | 'NL' | 'HK';
     };
     url: '/v1/catalog/goat/product';
 };
@@ -6993,7 +7057,7 @@ export type CatalogGoatServiceGetProductsData = {
         /**
          * The market to search in (default: US).
          */
-        market?: string;
+        market?: 'US' | 'UK' | 'NL' | 'HK';
     };
     url: '/v1/catalog/goat/products';
 };
@@ -7016,6 +7080,90 @@ export type CatalogGoatServiceGetProductsResponses = {
 
 export type CatalogGoatServiceGetProductsResponse = CatalogGoatServiceGetProductsResponses[keyof CatalogGoatServiceGetProductsResponses];
 
+export type CatalogGoatServiceGetSalesHistoryData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The product ID.
+         */
+        id: number;
+        /**
+         * A cursor for advancing in sales history
+         */
+        cursor?: string;
+        /**
+         * The market to search in (default: US)
+         */
+        market?: 'US' | 'HK';
+        /**
+         * The page size (default: 100).
+         */
+        page_size?: number;
+    };
+    url: '/v1/catalog/goat/sales';
+};
+
+export type CatalogGoatServiceGetSalesHistoryErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type CatalogGoatServiceGetSalesHistoryError = CatalogGoatServiceGetSalesHistoryErrors[keyof CatalogGoatServiceGetSalesHistoryErrors];
+
+export type CatalogGoatServiceGetSalesHistoryResponses = {
+    /**
+     * A successful response.
+     */
+    200: Array<PcktApiV1CatalogGoatSalesResponseItem>;
+};
+
+export type CatalogGoatServiceGetSalesHistoryResponse = CatalogGoatServiceGetSalesHistoryResponses[keyof CatalogGoatServiceGetSalesHistoryResponses];
+
+export type CatalogGoatServiceGetSalesHistoryDailyData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * The product ID.
+         */
+        id: number;
+        /**
+         * A optional cursor for advancing in the sales history
+         */
+        cursor?: string;
+        /**
+         * The market to search in (default: US)
+         */
+        market?: 'US' | 'HK';
+        /**
+         * The page size (default: 100).
+         */
+        page_size?: number;
+    };
+    url: '/v1/catalog/goat/sales/daily';
+};
+
+export type CatalogGoatServiceGetSalesHistoryDailyErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type CatalogGoatServiceGetSalesHistoryDailyError = CatalogGoatServiceGetSalesHistoryDailyErrors[keyof CatalogGoatServiceGetSalesHistoryDailyErrors];
+
+export type CatalogGoatServiceGetSalesHistoryDailyResponses = {
+    /**
+     * A successful response.
+     */
+    200: Array<PcktApiV1CatalogGoatSalesDailyResponseItem>;
+};
+
+export type CatalogGoatServiceGetSalesHistoryDailyResponse = CatalogGoatServiceGetSalesHistoryDailyResponses[keyof CatalogGoatServiceGetSalesHistoryDailyResponses];
+
 export type CatalogGoatServiceSearchData = {
     body?: never;
     path?: never;
@@ -7031,7 +7179,7 @@ export type CatalogGoatServiceSearchData = {
         /**
          * The market to search in (default: US).
          */
-        market?: string;
+        market?: 'US' | 'UK' | 'NL' | 'HK';
         /**
          * A MeiliSearch-compatible filter query. The following fields can be filtered:
          * id, brand, slug, product_type, sku, rank
@@ -7143,7 +7291,7 @@ export type CatalogStockXServiceGetPricesData = {
         /**
          * The market to search in (defaut: US).
          */
-        market?: string;
+        market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
     };
     url: '/v1/catalog/stockx/prices';
 };
@@ -7177,7 +7325,7 @@ export type CatalogStockXServiceGetProductData = {
         /**
          * The market to search in (default: US).
          */
-        market?: string;
+        market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
     };
     url: '/v1/catalog/stockx/product';
 };
@@ -7212,7 +7360,7 @@ export type CatalogStockXServiceGetProductsData = {
         /**
          * Market for the product
          */
-        market?: string;
+        market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
     };
     url: '/v1/catalog/stockx/products';
 };
@@ -7254,7 +7402,7 @@ export type CatalogStockXServiceGetSalesHistoryData = {
         /**
          * The market to search in (default: US)
          */
-        market?: string;
+        market?: 'US' | 'DE';
         /**
          * The page size (default: 100).
          */
@@ -7296,7 +7444,7 @@ export type CatalogStockXServiceGetSalesHistoryDailyData = {
         /**
          * The market to search in (default: US)
          */
-        market?: string;
+        market?: 'US' | 'DE';
         /**
          * The page size (default: 100).
          */
@@ -7338,7 +7486,7 @@ export type CatalogStockXServiceSearchData = {
         /**
          * The market to search in (default: US)
          */
-        market?: string;
+        market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
     };
     url: '/v1/catalog/stockx/search';
 };
