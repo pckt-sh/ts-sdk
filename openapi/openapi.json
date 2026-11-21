@@ -1517,6 +1517,17 @@
                 "US"
               ]
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, sku, skus, barcodes, rank",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "sku IN [\"315122-111\"]"
+              ]
+            }
           }
         ],
         "responses": {
@@ -29194,6 +29205,13 @@
             ],
             "examples": [
               "US"
+            ]
+          },
+          "filter": {
+            "description": "A MeiliSearch-compatible filter query. The following fields can be filtered:\nid, brand, slug, product_type, sku, skus, barcodes, rank",
+            "type": "string",
+            "examples": [
+              "sku IN [\"315122-111\"]"
             ]
           }
         }

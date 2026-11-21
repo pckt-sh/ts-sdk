@@ -5376,6 +5376,11 @@ export type PcktApiV1CatalogStockXSearchPayload = {
      * The market to search in (default: US)
      */
     market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+    /**
+     * A MeiliSearch-compatible filter query. The following fields can be filtered:
+     * id, brand, slug, product_type, sku, skus, barcodes, rank
+     */
+    filter?: string;
 };
 
 export type PcktApiV1CatalogStockXSearchResponse = {
@@ -7487,6 +7492,11 @@ export type CatalogStockXServiceSearchData = {
          * The market to search in (default: US)
          */
         market?: 'US' | 'DE' | 'NL' | 'IT' | 'GB' | 'FR' | 'FI' | 'DK' | 'CH' | 'PL' | 'NL.vat-registered' | 'FI.vat-registered';
+        /**
+         * A MeiliSearch-compatible filter query. The following fields can be filtered:
+         * id, brand, slug, product_type, sku, skus, barcodes, rank
+         */
+        filter?: string;
     };
     url: '/v1/catalog/stockx/search';
 };
