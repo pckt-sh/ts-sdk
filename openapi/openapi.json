@@ -4308,7 +4308,11 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "stockx/product"
+                  "stockx/product",
+                  "goat/product",
+                  "stockx/price",
+                  "goat/price",
+                  "shopify/product"
                 ]
               },
               "examples": [
@@ -4325,7 +4329,7 @@
             "schema": {
               "type": "string",
               "examples": [
-                "1795745676135-0"
+                "0-0"
               ]
             }
           }
@@ -32019,7 +32023,11 @@
             "items": {
               "type": "string",
               "enum": [
-                "stockx/product"
+                "stockx/product",
+                "goat/product",
+                "stockx/price",
+                "goat/price",
+                "shopify/product"
               ]
             },
             "examples": [
@@ -32032,7 +32040,7 @@
             "description": "Resume after this event ID, replaying the events published since then\n(up to the last 1,000). The `Last-Event-ID` header takes precedence, and\n`EventSource` sends it by itself when it reconnects. Only new events are\nsent when both are empty; use `0-0` to receive the whole history.",
             "type": "string",
             "examples": [
-              "1795745676135-0"
+              "0-0"
             ]
           }
         }

@@ -6473,7 +6473,7 @@ export type PcktApiV1SseServiceStreamRequest = {
      * Only send the events of these topics. Repeat the parameter for several
      * topics. All topics when empty.
      */
-    topics?: Array<'stockx/product'>;
+    topics?: Array<'stockx/product' | 'goat/product' | 'stockx/price' | 'goat/price' | 'shopify/product'>;
     /**
      * Resume after this event ID, replaying the events published since then
      * (up to the last 1,000). The `Last-Event-ID` header takes precedence, and
@@ -8900,7 +8900,7 @@ export type SseServiceStreamData = {
          * Only send the events of these topics. Repeat the parameter for several
          * topics. All topics when empty.
          */
-        topics?: Array<'stockx/product'>;
+        topics?: Array<'stockx/product' | 'goat/product' | 'stockx/price' | 'goat/price' | 'shopify/product'>;
         /**
          * Resume after this event ID, replaying the events published since then
          * (up to the last 1,000). The `Last-Event-ID` header takes precedence, and
