@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.2.0",
   "info": {
     "title": "PCKT API",
     "version": "1.0.0"
@@ -4273,6 +4273,98 @@
                 "schema": {
                   "$ref": "#/components/schemas/SNKRSService_GetUpcomingResponse"
                 }
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.rpc.Status"
+                }
+              }
+            }
+          }
+        },
+        "x-request-cost": 100
+      }
+    },
+    "/v1/sse": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Stream events",
+        "description": "Stream the records added or updated by our jobs, as Server-Sent Events\n(`Accept: text/event-stream`), or as a server stream over gRPC.\n\nEach event comes with an `id`. After a disconnection, reconnect with the\n`Last-Event-ID` header set to the last `id` received to get the events you\nmissed: the last 1,000 events are kept. A `: ping` comment is sent when the\nstream is idle for 15 seconds, to keep the connection open.\n\nOpening a stream costs one request; the events themselves are free.\nRequires a plan with event stream access.",
+        "operationId": "SSEService_Stream",
+        "parameters": [
+          {
+            "name": "topics",
+            "in": "query",
+            "description": "Only send the events of these topics. Repeat the parameter for several\ntopics. All topics when empty.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "stockx/product"
+                ]
+              },
+              "examples": [
+                [
+                  "stockx/product"
+                ]
+              ]
+            }
+          },
+          {
+            "name": "last_event_id",
+            "in": "query",
+            "description": "Resume after this event ID, replaying the events published since then\n(up to the last 1,000). The `Last-Event-ID` header takes precedence, and\n`EventSource` sends it by itself when it reconnects. Only new events are\nsent when both are empty; use `0-0` to receive the whole history.",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "1795745676135-0"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A stream of server-sent events, the data of each event being a JSON-encoded response.",
+            "content": {
+              "text/event-stream": {
+                "itemSchema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "The JSON-encoded response.",
+                      "type": "string",
+                      "contentMediaType": "application/json",
+                      "contentSchema": {
+                        "$ref": "#/components/schemas/pckt.api.v1.SSEChunk"
+                      }
+                    },
+                    "event": {
+                      "description": "The event type.",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "The event identifier.",
+                      "type": "string"
+                    },
+                    "retry": {
+                      "description": "The reconnection time, in milliseconds.",
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": ": ping\n\nid: 1795745676135-0\ndata: {\"topic\":\"stockx/product\",\"type\":\"UPDATE\",\"identifier\":{\"id\":\"0ec3a9c2-5c2b-4b8e-9a8c-1f2e3d4c5b6a\"}}\n\n"
               }
             }
           },
@@ -32734,6 +32826,10 @@
       "externalDocs": {
         "url": "https://pckt.sh/docs/snkrs"
       }
+    },
+    {
+      "name": "Events",
+      "description": "Real-time notifications of the records our jobs add or update, so you can\nrefresh your copy as soon as it changes instead of polling."
     },
     {
       "name": "StockX",

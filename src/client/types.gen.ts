@@ -8892,6 +8892,42 @@ export type SnkrsServiceGetUpcomingResponses = {
 
 export type SnkrsServiceGetUpcomingResponse2 = SnkrsServiceGetUpcomingResponses[keyof SnkrsServiceGetUpcomingResponses];
 
+export type SseServiceStreamData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Only send the events of these topics. Repeat the parameter for several
+         * topics. All topics when empty.
+         */
+        topics?: Array<'stockx/product'>;
+        /**
+         * Resume after this event ID, replaying the events published since then
+         * (up to the last 1,000). The `Last-Event-ID` header takes precedence, and
+         * `EventSource` sends it by itself when it reconnects. Only new events are
+         * sent when both are empty; use `0-0` to receive the whole history.
+         */
+        last_event_id?: string;
+    };
+    url: '/v1/sse';
+};
+
+export type SseServiceStreamErrors = {
+    /**
+     * An unexpected error response.
+     */
+    default: GoogleRpcStatus;
+};
+
+export type SseServiceStreamError = SseServiceStreamErrors[keyof SseServiceStreamErrors];
+
+export type SseServiceStreamResponses = {
+    /**
+     * A stream of server-sent events, the data of each event being a JSON-encoded response.
+     */
+    200: unknown;
+};
+
 export type StockXServiceGetAskBidData = {
     body?: never;
     path?: never;
