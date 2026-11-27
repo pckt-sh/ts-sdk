@@ -31891,6 +31891,60 @@
           "locale"
         ]
       },
+      "pckt.api.v1.SSEChunk": {
+        "description": "One message of the event stream: an event, or a keep-alive ping.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Event ID, sent as the SSE `id` field. Pass the last one you received as\n`Last-Event-ID` (or `last_event_id`) to resume after it. Empty for\nkeep-alive pings.",
+            "type": "string",
+            "examples": [
+              "1795745676135-0"
+            ]
+          },
+          "data": {
+            "description": "The event:\n- `topic`: what changed, e.g. `stockx/product`.\n- `type`: `NEW` for a record seen for the first time, `UPDATE` when it changed.\n- `identifier`: the keys of the record, e.g. `{\"id\": \"...\"}`. Fetch the\n  record with them to get its new data.",
+            "type": "object",
+            "additionalProperties": {},
+            "examples": [
+              {
+                "topic": "stockx/product",
+                "type": "UPDATE",
+                "identifier": {
+                  "id": "0ec3a9c2-5c2b-4b8e-9a8c-1f2e3d4c5b6a"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "pckt.api.v1.SSEServiceStreamRequest": {
+        "type": "object",
+        "properties": {
+          "topics": {
+            "description": "Only send the events of these topics. Repeat the parameter for several\ntopics. All topics when empty.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "stockx/product"
+              ]
+            },
+            "examples": [
+              [
+                "stockx/product"
+              ]
+            ]
+          },
+          "last_event_id": {
+            "description": "Resume after this event ID, replaying the events published since then\n(up to the last 1,000). The `Last-Event-ID` header takes precedence, and\n`EventSource` sends it by itself when it reconnects. Only new events are\nsent when both are empty; use `0-0` to receive the whole history.",
+            "type": "string",
+            "examples": [
+              "1795745676135-0"
+            ]
+          }
+        }
+      },
       "pckt.api.v1.ShopifyProduct": {
         "description": "A product cached from a Shopify store, with every variant (size) and its price.",
         "type": "object",

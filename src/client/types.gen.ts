@@ -6447,6 +6447,43 @@ export type PcktApiV1SnkrsThreadPayload = {
 };
 
 /**
+ * One message of the event stream: an event, or a keep-alive ping.
+ */
+export type PcktApiV1SseChunk = {
+    /**
+     * Event ID, sent as the SSE `id` field. Pass the last one you received as
+     * `Last-Event-ID` (or `last_event_id`) to resume after it. Empty for
+     * keep-alive pings.
+     */
+    id?: string;
+    /**
+     * The event:
+     * - `topic`: what changed, e.g. `stockx/product`.
+     * - `type`: `NEW` for a record seen for the first time, `UPDATE` when it changed.
+     * - `identifier`: the keys of the record, e.g. `{"id": "..."}`. Fetch the
+     * record with them to get its new data.
+     */
+    data?: {
+        [key: string]: unknown;
+    };
+};
+
+export type PcktApiV1SseServiceStreamRequest = {
+    /**
+     * Only send the events of these topics. Repeat the parameter for several
+     * topics. All topics when empty.
+     */
+    topics?: Array<'stockx/product'>;
+    /**
+     * Resume after this event ID, replaying the events published since then
+     * (up to the last 1,000). The `Last-Event-ID` header takes precedence, and
+     * `EventSource` sends it by itself when it reconnects. Only new events are
+     * sent when both are empty; use `0-0` to receive the whole history.
+     */
+    last_event_id?: string;
+};
+
+/**
  * A product cached from a Shopify store, with every variant (size) and its price.
  */
 export type PcktApiV1ShopifyProduct = {
